@@ -1,0 +1,4960 @@
+.daftar-buku-anggota {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 100%;
+  min-width: 1624px;
+  min-height: 1024px;
+  display: flex;
+  position: relative;
+}
+
+.daftar-buku-anggota .element-light {
+  height: 1642px;
+  margin-right: -480px;
+  flex: 1;
+  position: relative;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%),
+    linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  overflow-y: scroll;
+}
+
+.daftar-buku-anggota .element-light::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.daftar-buku-anggota .content-start {
+  position: absolute;
+  height: calc(100% - 1px);
+  top: 1px;
+  left: 261px;
+  width: 1672px;
+  background-color: #000000;
+}
+
+.daftar-buku-anggota .widgets-start {
+  position: absolute;
+  width: calc(100% - 24px);
+  top: 1084px;
+  left: 12px;
+  height: 399px;
+}
+
+.daftar-buku-anggota .background {
+  position: absolute;
+  width: calc(100% - 1121px);
+  height: calc(100% - 24px);
+  top: 24px;
+  left: 12px;
+  background-color: #191c24;
+  border-radius: 5px;
+}
+
+.daftar-buku-anggota .heading-messages {
+  width: 74px;
+  position: absolute;
+  top: 26px;
+  left: 24px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 19.2px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-show-all {
+  position: absolute;
+  top: 24px;
+  left: 438px;
+  width: 63px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #eb1616;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .horizontal-border {
+  position: absolute;
+  width: calc(100% - 48px);
+  top: 56px;
+  left: 24px;
+  height: 78px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .user-jpg {
+  position: absolute;
+  top: calc(50.00% - 20px);
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-image: url(./img/user-jpg.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.daftar-buku-anggota .heading-jhon-doe {
+  position: absolute;
+  top: 16px;
+  left: 56px;
+  width: 68px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 19.2px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .small-minutes-ago {
+  position: absolute;
+  top: 16px;
+  left: 376px;
+  width: 101px;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper {
+  position: absolute;
+  top: 38px;
+  left: 56px;
+  width: 201px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .div {
+  top: 134px;
+  height: 78px;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .user-jpg-2 {
+  position: absolute;
+  top: calc(50.00% - 20px);
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-image: url(./img/user-jpg-5.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.daftar-buku-anggota .horizontal-border-2 {
+  top: 212px;
+  height: 78px;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .user-jpg-3 {
+  position: absolute;
+  top: calc(50.00% - 20px);
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-image: url(./img/user-jpg-3.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.daftar-buku-anggota .user-jpg-4 {
+  position: absolute;
+  top: calc(50.00% + 121px);
+  left: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-image: url(./img/user-jpg-2.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.daftar-buku-anggota .heading-jhon-doe-2 {
+  top: 306px;
+  font-family: "Roboto-Bold", Helvetica;
+  line-height: 19.2px;
+  position: absolute;
+  left: 80px;
+  width: 68px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .small-minutes-ago-2 {
+  position: absolute;
+  top: 306px;
+  left: 400px;
+  width: 101px;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-2 {
+  position: absolute;
+  top: 328px;
+  left: 80px;
+  width: 201px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .background-2 {
+  position: absolute;
+  width: calc(100% - 1121px);
+  height: calc(100% - 24px);
+  top: 24px;
+  left: 561px;
+  background-color: #191c24;
+  border-radius: 5px;
+}
+
+.daftar-buku-anggota .heading-calender {
+  width: 65px;
+  position: absolute;
+  top: 26px;
+  left: 24px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 19.2px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .list-table {
+  position: absolute;
+  width: calc(100% - 48px);
+  top: 72px;
+  left: 24px;
+  height: 224px;
+  display: flex;
+  flex-direction: column;
+}
+
+.daftar-buku-anggota .header {
+  flex: 1;
+  max-height: 56px;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+
+.daftar-buku-anggota .row {
+  flex: 1;
+  max-height: 28px;
+  position: relative;
+}
+
+.daftar-buku-anggota .symbol {
+  position: absolute;
+  top: 6px;
+  left: calc(50.00% - 211px);
+  width: 10px;
+  height: 16px;
+  justify-content: center;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-february {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 53px);
+  width: 108px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .symbol-2 {
+  position: absolute;
+  top: 6px;
+  left: calc(50.00% + 202px);
+  width: 10px;
+  height: 16px;
+  justify-content: center;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-su {
+  left: calc(50.00% - 216px);
+  width: 19px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-mo {
+  left: calc(50.00% - 147px);
+  width: 24px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-3 {
+  left: calc(50.00% - 73px);
+  width: 19px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-we {
+  left: calc(50.00% - 5px);
+  width: 24px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-4 {
+  left: calc(50.00% + 69px);
+  width: 19px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-fr {
+  left: calc(50.00% + 135px);
+  width: 15px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-sa {
+  left: calc(50.00% + 198px);
+  width: 18px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .body {
+  flex: 1;
+  max-height: 168px;
+  display: flex;
+  flex-direction: column;
+}
+
+.daftar-buku-anggota .data {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 211px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-2 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 140px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-3 {
+  color: #6c7293;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 68px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-4 {
+  color: #6c7293;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 3px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-5 {
+  color: #6c7293;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 74px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-6 {
+  color: #6c7293;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 138px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-7 {
+  color: #6c7293;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 202px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-8 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 2px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-9 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 197px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-10 {
+  position: absolute;
+  width: calc(100% - 412px);
+  top: 0;
+  left: 349px;
+  height: 28px;
+  background-color: #eb1616;
+  border-radius: 4px;
+}
+
+.daftar-buku-anggota .border {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 7px;
+  height: 7px;
+  border-bottom-width: 7px;
+  border-bottom-style: solid;
+  border-left-width: 7px;
+  border-left-style: solid;
+  border-color: transparent;
+  border-image: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(255, 255, 255, 1) 0%
+    )
+    1;
+}
+
+.daftar-buku-anggota .text-wrapper-5 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 9px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0px -1px 0px #00000040;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-11 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 215px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-12 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 144px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-13 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 134px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-14 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 211px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-15 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 140px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-16 {
+  color: #6c757d;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 68px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-17 {
+  color: #6c757d;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 3px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-18 {
+  color: #6c757d;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 74px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-19 {
+  color: #6c757d;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 138px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-20 {
+  color: #6c757d;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 202px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-21 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 73px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-22 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 2px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-23 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 69px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-24 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 134px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-25 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 197px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .background-3 {
+  position: absolute;
+  width: calc(100% - 1121px);
+  height: calc(100% - 24px);
+  top: 24px;
+  left: 1109px;
+  background-color: #191c24;
+  border-radius: 5px;
+}
+
+.daftar-buku-anggota .heading-to-do-list {
+  position: absolute;
+  top: 26px;
+  left: 24px;
+  width: 72px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 19.2px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .input {
+  position: absolute;
+  width: calc(100% - 112px);
+  height: calc(100% - 337px);
+  top: 72px;
+  left: 24px;
+  display: flex;
+  background-color: #000000;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .container {
+  margin-top: 8px;
+  margin-left: 12px;
+  margin-right: 12px;
+  flex: 1;
+  display: flex;
+}
+
+.daftar-buku-anggota .text-wrapper-6 {
+  display: flex;
+  align-items: center;
+  width: 75.04px;
+  height: 22px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.daftar-buku-anggota .button {
+  all: unset;
+  box-sizing: border-box;
+  top: 72px;
+  left: 445px;
+  width: 56px;
+  height: 38px;
+  align-items: center;
+  background-color: #eb1616;
+  border-radius: 5px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+}
+
+.daftar-buku-anggota .text-wrapper-7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  margin-left: 0.4px;
+  width: 30.08px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .horizontal-border-3 {
+  top: 118px;
+  height: 48px;
+  display: flex;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .input-2 {
+  margin-top: -1px;
+  height: 16px;
+  width: 15.09px;
+  align-self: center;
+  background-color: #000000;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: #00000040;
+}
+
+.daftar-buku-anggota .text-wrapper-8 {
+  margin-top: 11.5px;
+  width: 165.74px;
+  height: 24px;
+  margin-left: 16.0px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .symbol-wrapper {
+  all: unset;
+  box-sizing: border-box;
+  margin-top: -1px;
+  height: 31px;
+  width: 27.63px;
+  align-self: center;
+  margin-left: 252.2px;
+  display: flex;
+  justify-content: center;
+  border-radius: 3.2px;
+  border: 1px solid;
+  border-color: transparent;
+}
+
+.daftar-buku-anggota .symbol-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 9px;
+  width: 9.94px;
+  height: 14px;
+  margin-left: 0.3px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .horizontal-border-4 {
+  top: 166px;
+  height: 48px;
+  display: flex;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .horizontal-border-5 {
+  top: 214px;
+  height: 48px;
+  display: flex;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .image-fill-wrapper {
+  margin-top: -1px;
+  width: 15.09px;
+  align-self: center;
+  display: flex;
+  background-color: #eb1616;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+.daftar-buku-anggota .image-fill {
+  width: 15.09px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.daftar-buku-anggota .image {
+  margin-top: 0;
+  height: 13.09px;
+  width: 13.09px;
+  display: flex;
+}
+
+.daftar-buku-anggota .vector {
+  flex: 1;
+  width: 5.89px;
+}
+
+.daftar-buku-anggota .del-short-task-goes {
+  display: flex;
+  align-items: center;
+  margin-top: 12.5px;
+  width: 165.74px;
+  height: 22px;
+  margin-left: 16.0px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .symbol-4 {
+  justify-content: center;
+  margin-top: 9px;
+  width: 9.94px;
+  height: 14px;
+  margin-left: 0.3px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #eb1616;
+  font-size: 14px;
+  text-align: center;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .horizontal-border-6 {
+  top: 262px;
+  height: 48px;
+  display: flex;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .input-3 {
+  position: absolute;
+  top: calc(50.00% + 138px);
+  left: 24px;
+  width: 15px;
+  height: 16px;
+  background-color: #000000;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: #00000040;
+}
+
+.daftar-buku-anggota .text-wrapper-9 {
+  position: absolute;
+  top: 322px;
+  left: 55px;
+  width: 166px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .div-wrapper {
+  all: unset;
+  box-sizing: border-box;
+  top: calc(50.00% + 130px);
+  left: 473px;
+  width: 28px;
+  height: 31px;
+  border-radius: 3.2px;
+  border-color: transparent;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+}
+
+.daftar-buku-anggota .footer-start {
+  position: absolute;
+  width: calc(100% - 48px);
+  top: 1507px;
+  left: 24px;
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #191c24;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.daftar-buku-anggota .your-site-name-all {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  width: 279.15px;
+  height: 22px;
+  margin-left: 24px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: transparent;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .span {
+  color: #6c7293;
+}
+
+.daftar-buku-anggota .text-wrapper-10 {
+  color: #eb1616;
+}
+
+.daftar-buku-anggota .designed-by-HTML {
+  margin-top: 25px;
+  width: 217.9px;
+  height: 46px;
+  margin-right: 23.8px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: transparent;
+  font-size: 16px;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.daftar-buku-anggota .navbar-start {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 64px;
+  display: flex;
+  gap: 1441.8px;
+  background-color: #191c24;
+}
+
+.daftar-buku-anggota .link {
+  height: 40px;
+  width: 40px;
+  align-self: center;
+  margin-left: 24px;
+  display: flex;
+  background-color: #000000;
+  border-radius: 40px;
+}
+
+.daftar-buku-anggota .symbol-5 {
+  margin-top: 12px;
+  width: 14.36px;
+  height: 16px;
+  margin-left: 13px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #eb1616;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-2 {
+  width: 140.23px;
+  height: 64px;
+  display: flex;
+}
+
+.daftar-buku-anggota .user-jpg-5 {
+  margin-top: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-image: url(./img/user-jpg-4.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.daftar-buku-anggota .text-wrapper-11 {
+  display: flex;
+  align-items: center;
+  margin-top: 19.3px;
+  width: 72.39px;
+  height: 22px;
+  margin-left: 12.2px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .symbol-6 {
+  margin-top: 20px;
+  width: 10.31px;
+  height: 24px;
+  margin-left: 5.7px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-12 {
+  position: absolute;
+  top: 81px;
+  left: 24px;
+  width: 216px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .form-input {
+  position: absolute;
+  width: calc(100% - 360px);
+  height: calc(100% - 1590px);
+  top: 131px;
+  left: 16px;
+  background-color: #343a40;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-13 {
+  position: absolute;
+  top: 15px;
+  left: 122px;
+  width: 144px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.daftar-buku-anggota .search {
+  position: absolute;
+  top: 15px;
+  left: 13px;
+  width: 43px;
+  height: 21px;
+  display: flex;
+  overflow: hidden;
+  transform: rotate(180deg);
+}
+
+.daftar-buku-anggota .img {
+  flex: 1;
+  width: 43px;
+  transform: rotate(-180deg);
+}
+
+.daftar-buku-anggota .recent-sales-start {
+  position: absolute;
+  width: calc(100% + 714px);
+  top: 123px;
+  left: -20px;
+  height: 784px;
+  background-color: #191c24;
+  border-radius: 5px;
+}
+
+.daftar-buku-anggota .form-input-2 {
+  top: 585px;
+  left: 26px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .element {
+  position: absolute;
+  top: 7px;
+  left: 27px;
+  width: 159px;
+  height: 239px;
+  aspect-ratio: 0.67;
+  object-fit: cover;
+}
+
+.daftar-buku-anggota .text-wrapper-14 {
+  position: absolute;
+  top: 246px;
+  left: calc(50.00% - 82px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-15 {
+  position: absolute;
+  top: 265px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-16 {
+  position: absolute;
+  top: 285px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .detail-wrapper {
+  position: absolute;
+  top: 329px;
+  left: 5px;
+  width: 81px;
+  height: 29px;
+  display: flex;
+  justify-content: center;
+  background-color: #2f50aa;
+  border-radius: 30px;
+  border: 1px solid;
+}
+
+.daftar-buku-anggota .detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  width: 103px;
+  height: 19px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-3 {
+  position: absolute;
+  top: 327px;
+  left: 93px;
+  width: 116px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  background-color: #eb1616;
+  border-radius: 30px;
+  border: 1px solid;
+}
+
+.daftar-buku-anggota .text-wrapper-17 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  width: 103px;
+  height: 19px;
+  margin-left: -1px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .form-input-3 {
+  top: 204px;
+  left: 24px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .link-4 {
+  position: absolute;
+  top: 328px;
+  left: 6px;
+  width: 81px;
+  height: 29px;
+  display: flex;
+  justify-content: center;
+  background-color: #2f50aa;
+  border-radius: 30px;
+  border: 1px solid;
+}
+
+.daftar-buku-anggota .text-wrapper-18 {
+  position: absolute;
+  top: 256px;
+  left: calc(50.00% - 86px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-19 {
+  position: absolute;
+  top: 286px;
+  left: calc(50.00% - 88px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .form-input-4 {
+  top: 204px;
+  left: 262px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .p {
+  position: absolute;
+  top: 262px;
+  left: calc(50.00% - 94px);
+  width: 185px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-20 {
+  position: absolute;
+  top: 292px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-5 {
+  position: absolute;
+  top: 329px;
+  left: 5px;
+  width: 81px;
+  height: 29px;
+  display: flex;
+  justify-content: center;
+  background-color: #343a40;
+  border-radius: 30px;
+  border: 1px solid;
+}
+
+.daftar-buku-anggota .link-6 {
+  position: absolute;
+  top: 328px;
+  left: 90px;
+  width: 116px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  background-color: #eb1616;
+  border-radius: 30px;
+  border: 1px solid;
+}
+
+.daftar-buku-anggota .form-input-5 {
+  top: 204px;
+  left: 512px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-21 {
+  position: absolute;
+  top: 254px;
+  left: calc(50.00% - 82px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-22 {
+  top: 281px;
+  left: calc(50.00% - 82px);
+  position: absolute;
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .form-input-6 {
+  top: 204px;
+  left: 758px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-23 {
+  position: absolute;
+  top: 257px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-24 {
+  position: absolute;
+  top: 287px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .form-input-7 {
+  top: 204px;
+  left: 1014px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-25 {
+  top: 287px;
+  left: calc(50.00% - 82px);
+  position: absolute;
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-26 {
+  position: absolute;
+  top: 257px;
+  left: calc(50.00% - 82px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .form-input-8 {
+  top: 585px;
+  left: 763px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .form-input-9 {
+  top: 585px;
+  left: 1010px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-27 {
+  position: absolute;
+  top: 256px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-28 {
+  top: 286px;
+  left: calc(50.00% - 84px);
+  position: absolute;
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .form-input-10 {
+  top: 585px;
+  left: 262px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-29 {
+  position: absolute;
+  top: 255px;
+  left: calc(50.00% - 112px);
+  width: 238px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-30 {
+  position: absolute;
+  top: 284px;
+  left: calc(50.00% - 104px);
+  width: 221px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .form-input-11 {
+  top: 585px;
+  left: 510px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-31 {
+  position: absolute;
+  top: 251px;
+  left: calc(50.00% - 108px);
+  width: 221px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .element-2 {
+  position: absolute;
+  top: 7px;
+  left: 30px;
+  width: 156px;
+  height: 234px;
+  aspect-ratio: 0.67;
+  object-fit: cover;
+}
+
+.daftar-buku-anggota .vector-2 {
+  position: absolute;
+  width: 98.05%;
+  height: 95.62%;
+  top: 4.38%;
+  left: 0;
+}
+
+.daftar-buku-anggota .sidebar-start {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 261px;
+  height: 1020px;
+  background-color: #191c24;
+  overflow: scroll;
+}
+
+.daftar-buku-anggota .sidebar-start::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.daftar-buku-anggota .nav {
+  position: absolute;
+  width: calc(100% - 24px);
+  top: 0;
+  left: 0;
+  height: 529px;
+  background-color: #191c24;
+}
+
+.daftar-buku-anggota .link-heading {
+  position: absolute;
+  top: 13px;
+  left: 24px;
+  width: 150px;
+  height: 34px;
+  display: flex;
+  gap: 7.7px;
+}
+
+.daftar-buku-anggota .symbol-7 {
+  margin-top: 1px;
+  width: 35.31px;
+  height: 29px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #eb1616;
+  font-size: 28px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-32 {
+  display: flex;
+  align-items: center;
+  width: 107.34px;
+  height: 33px;
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #eb1616;
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: 33.6px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .heading-jhon-doe-3 {
+  top: 76px;
+  font-family: "Open Sans-Bold", Helvetica;
+  line-height: 24px;
+  position: absolute;
+  left: 80px;
+  width: 68px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-33 {
+  position: absolute;
+  top: 96px;
+  left: 80px;
+  width: 71px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-34 {
+  top: 159px;
+  width: 126px;
+  color: #6c7293;
+  position: absolute;
+  left: 68px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-7 {
+  position: absolute;
+  width: 100%;
+  top: 254px;
+  left: -1px;
+  height: 54px;
+  display: flex;
+  gap: 8px;
+  border-radius: 0px 30px 30px 0px;
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-color: #191c24;
+}
+
+.daftar-buku-anggota .background-4 {
+  margin-top: 7px;
+  width: 40px;
+  height: 40px;
+  margin-left: 23px;
+  display: flex;
+  background-color: #000000;
+  border-radius: 40px;
+}
+
+.daftar-buku-anggota .symbol-8 {
+  margin-top: 12px;
+  width: 18.31px;
+  height: 16px;
+  margin-left: 11px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-35 {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  width: 104px;
+  height: 22px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-8 {
+  position: absolute;
+  width: 100%;
+  top: 308px;
+  left: -1px;
+  height: 54px;
+  display: flex;
+  gap: 8px;
+  border-radius: 0px 30px 30px 0px;
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-color: #191c24;
+}
+
+.daftar-buku-anggota .symbol-9 {
+  margin-top: 12px;
+  width: 16.39px;
+  height: 16px;
+  margin-left: 12px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-36 {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  width: 124px;
+  height: 22px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-9 {
+  position: absolute;
+  width: 100%;
+  top: 355px;
+  left: 0;
+  height: 54px;
+  display: flex;
+  gap: 8px;
+  border-radius: 0px 30px 30px 0px;
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-color: #191c24;
+}
+
+.daftar-buku-anggota .symbol-10 {
+  margin-top: 12px;
+  width: 12.34px;
+  height: 16px;
+  margin-left: 14px;
+  font-family: "Font Awesome 5 Free-Regular", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-37 {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  width: 76px;
+  height: 22px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-10 {
+  position: absolute;
+  width: 100%;
+  top: 421px;
+  left: -1px;
+  height: 54px;
+  display: flex;
+  gap: 8px;
+  border-radius: 0px 30px 30px 0px;
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-color: #191c24;
+}
+
+.daftar-buku-anggota .background-5 {
+  position: absolute;
+  top: 150px;
+  left: 19px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  background-color: #000000;
+  border-radius: 40px;
+}
+
+.daftar-buku-anggota .text-wrapper-38 {
+  top: 214px;
+  width: 115px;
+  color: #eb1616;
+  position: absolute;
+  left: 68px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .background-6 {
+  position: absolute;
+  top: 202px;
+  left: 21px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  background-color: #000000;
+  border-radius: 40px;
+}
+
+.daftar-buku-anggota .symbol-11 {
+  margin-top: 12px;
+  width: 16.39px;
+  height: 16px;
+  margin-left: 12px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #eb1616;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .vector-3 {
+  position: absolute;
+  width: 83.91%;
+  height: 93.04%;
+  top: 6.96%;
+  left: 16.09%;
+}
+/* =============================================
+   ORIGINAL CSS CODE INJECTED BELOW
+   ============================================= */
+
+.daftar-buku-anggota {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 100%;
+  min-width: 1624px;
+  min-height: 1024px;
+  display: flex;
+  position: relative;
+}
+
+.daftar-buku-anggota .element-light {
+  height: 1642px;
+  margin-right: -480px;
+  flex: 1;
+  position: relative;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%),
+    linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  overflow-y: scroll;
+}
+
+.daftar-buku-anggota .element-light::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.daftar-buku-anggota .content-start {
+  position: absolute;
+  height: calc(100% - 1px);
+  top: 1px;
+  left: 261px;
+  width: 1672px;
+  background-color: #000000;
+}
+
+.daftar-buku-anggota .widgets-start {
+  position: absolute;
+  width: calc(100% - 24px);
+  top: 1084px;
+  left: 12px;
+  height: 399px;
+}
+
+.daftar-buku-anggota .background {
+  position: absolute;
+  width: calc(100% - 1121px);
+  height: calc(100% - 24px);
+  top: 24px;
+  left: 12px;
+  background-color: #191c24;
+  border-radius: 5px;
+}
+
+.daftar-buku-anggota .heading-messages {
+  width: 74px;
+  position: absolute;
+  top: 26px;
+  left: 24px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 19.2px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .link-show-all {
+  position: absolute;
+  top: 24px;
+  left: 438px;
+  width: 63px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #eb1616;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .horizontal-border {
+  position: absolute;
+  width: calc(100% - 48px);
+  top: 56px;
+  left: 24px;
+  height: 78px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .user-jpg {
+  position: absolute;
+  top: calc(50.00% - 20px);
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-image: url(./img/user-jpg.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.daftar-buku-anggota .heading-jhon-doe {
+  position: absolute;
+  top: 16px;
+  left: 56px;
+  width: 68px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 19.2px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .small-minutes-ago {
+  position: absolute;
+  top: 16px;
+  left: 376px;
+  width: 101px;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper {
+  position: absolute;
+  top: 38px;
+  left: 56px;
+  width: 201px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .div {
+  top: 134px;
+  height: 78px;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .user-jpg-2 {
+  position: absolute;
+  top: calc(50.00% - 20px);
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-image: url(./img/user-jpg-5.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.daftar-buku-anggota .horizontal-border-2 {
+  top: 212px;
+  height: 78px;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .user-jpg-3 {
+  position: absolute;
+  top: calc(50.00% - 20px);
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-image: url(./img/user-jpg-3.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.daftar-buku-anggota .user-jpg-4 {
+  position: absolute;
+  top: calc(50.00% + 121px);
+  left: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-image: url(./img/user-jpg-2.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.daftar-buku-anggota .heading-jhon-doe-2 {
+  top: 306px;
+  font-family: "Roboto-Bold", Helvetica;
+  line-height: 19.2px;
+  position: absolute;
+  left: 80px;
+  width: 68px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .small-minutes-ago-2 {
+  position: absolute;
+  top: 306px;
+  left: 400px;
+  width: 101px;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-2 {
+  position: absolute;
+  top: 328px;
+  left: 80px;
+  width: 201px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .background-2 {
+  position: absolute;
+  width: calc(100% - 1121px);
+  height: calc(100% - 24px);
+  top: 24px;
+  left: 561px;
+  background-color: #191c24;
+  border-radius: 5px;
+}
+
+.daftar-buku-anggota .heading-calender {
+  width: 65px;
+  position: absolute;
+  top: 26px;
+  left: 24px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 19.2px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .list-table {
+  position: absolute;
+  width: calc(100% - 48px);
+  top: 72px;
+  left: 24px;
+  height: 224px;
+  display: flex;
+  flex-direction: column;
+}
+
+.daftar-buku-anggota .header {
+  flex: 1;
+  max-height: 56px;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+
+.daftar-buku-anggota .row {
+  flex: 1;
+  max-height: 28px;
+  position: relative;
+}
+
+.daftar-buku-anggota .symbol {
+  position: absolute;
+  top: 6px;
+  left: calc(50.00% - 211px);
+  width: 10px;
+  height: 16px;
+  justify-content: center;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-february {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 53px);
+  width: 108px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .symbol-2 {
+  position: absolute;
+  top: 6px;
+  left: calc(50.00% + 202px);
+  width: 10px;
+  height: 16px;
+  justify-content: center;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-su {
+  left: calc(50.00% - 216px);
+  width: 19px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-mo {
+  left: calc(50.00% - 147px);
+  width: 24px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-3 {
+  left: calc(50.00% - 73px);
+  width: 19px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-we {
+  left: calc(50.00% - 5px);
+  width: 24px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-4 {
+  left: calc(50.00% + 69px);
+  width: 19px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-fr {
+  left: calc(50.00% + 135px);
+  width: 15px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .cell-sa {
+  left: calc(50.00% + 198px);
+  width: 18px;
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .body {
+  flex: 1;
+  max-height: 168px;
+  display: flex;
+  flex-direction: column;
+}
+
+.daftar-buku-anggota .data {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 211px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-2 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 140px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-3 {
+  color: #6c7293;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 68px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-4 {
+  color: #6c7293;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 3px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-5 {
+  color: #6c7293;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 74px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-6 {
+  color: #6c7293;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 138px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-7 {
+  color: #6c7293;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 202px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-8 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 2px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-9 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 197px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-10 {
+  position: absolute;
+  width: calc(100% - 412px);
+  top: 0;
+  left: 349px;
+  height: 28px;
+  background-color: #eb1616;
+  border-radius: 4px;
+}
+
+.daftar-buku-anggota .border {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 7px;
+  height: 7px;
+  border-bottom-width: 7px;
+  border-bottom-style: solid;
+  border-left-width: 7px;
+  border-left-style: solid;
+  border-color: transparent;
+  border-image: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(255, 255, 255, 1) 0%
+    )
+    1;
+}
+
+.daftar-buku-anggota .text-wrapper-5 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 9px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0px -1px 0px #00000040;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-11 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 215px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-12 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 144px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-13 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 134px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-14 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 211px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-15 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 140px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-16 {
+  color: #6c757d;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 68px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-17 {
+  color: #6c757d;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 3px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-18 {
+  color: #6c757d;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 74px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-19 {
+  color: #6c757d;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 138px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-20 {
+  color: #6c757d;
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 202px);
+  width: 9px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-21 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 73px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-22 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% - 2px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-23 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 69px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-24 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 134px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .data-25 {
+  position: absolute;
+  top: 3px;
+  left: calc(50.00% + 197px);
+  width: 19px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .background-3 {
+  position: absolute;
+  width: calc(100% - 1121px);
+  height: calc(100% - 24px);
+  top: 24px;
+  left: 1109px;
+  background-color: #191c24;
+  border-radius: 5px;
+}
+
+.daftar-buku-anggota .heading-to-do-list {
+  position: absolute;
+  top: 26px;
+  left: 24px;
+  width: 72px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 19.2px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .input {
+  position: absolute;
+  width: calc(100% - 112px);
+  height: calc(100% - 337px);
+  top: 72px;
+  left: 24px;
+  display: flex;
+  background-color: #000000;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .container {
+  margin-top: 8px;
+  margin-left: 12px;
+  margin-right: 12px;
+  flex: 1;
+  display: flex;
+}
+
+.daftar-buku-anggota .text-wrapper-6 {
+  display: flex;
+  align-items: center;
+  width: 75.04px;
+  height: 22px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  cursor: text;
+}
+
+.daftar-buku-anggota .button {
+  all: unset;
+  box-sizing: border-box;
+  top: 72px;
+  left: 445px;
+  width: 56px;
+  height: 38px;
+  align-items: center;
+  background-color: #eb1616;
+  border-radius: 5px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .text-wrapper-7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  margin-left: 0.4px;
+  width: 30.08px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .horizontal-border-3 {
+  top: 118px;
+  height: 48px;
+  display: flex;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .input-2 {
+  margin-top: -1px;
+  height: 16px;
+  width: 15.09px;
+  align-self: center;
+  background-color: #000000;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: #00000040;
+}
+
+.daftar-buku-anggota .text-wrapper-8 {
+  margin-top: 11.5px;
+  width: 165.74px;
+  height: 24px;
+  margin-left: 16.0px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .symbol-wrapper {
+  all: unset;
+  box-sizing: border-box;
+  margin-top: -1px;
+  height: 31px;
+  width: 27.63px;
+  align-self: center;
+  margin-left: 252.2px;
+  display: flex;
+  justify-content: center;
+  border-radius: 3.2px;
+  border: 1px solid;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .symbol-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 9px;
+  width: 9.94px;
+  height: 14px;
+  margin-left: 0.3px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .horizontal-border-4 {
+  top: 166px;
+  height: 48px;
+  display: flex;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .horizontal-border-5 {
+  top: 214px;
+  height: 48px;
+  display: flex;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .image-fill-wrapper {
+  margin-top: -1px;
+  width: 15.09px;
+  align-self: center;
+  display: flex;
+  background-color: #eb1616;
+  border-radius: 4px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .image-fill {
+  width: 15.09px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.daftar-buku-anggota .image {
+  margin-top: 0;
+  height: 13.09px;
+  width: 13.09px;
+  display: flex;
+}
+
+.daftar-buku-anggota .vector {
+  flex: 1;
+  width: 5.89px;
+}
+
+.daftar-buku-anggota .del-short-task-goes {
+  display: flex;
+  align-items: center;
+  margin-top: 12.5px;
+  width: 165.74px;
+  height: 22px;
+  margin-left: 16.0px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .symbol-4 {
+  justify-content: center;
+  margin-top: 9px;
+  width: 9.94px;
+  height: 14px;
+  margin-left: 0.3px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #eb1616;
+  font-size: 14px;
+  text-align: center;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .horizontal-border-6 {
+  top: 262px;
+  height: 48px;
+  display: flex;
+  position: absolute;
+  width: calc(100% - 48px);
+  left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #000000;
+}
+
+.daftar-buku-anggota .input-3 {
+  position: absolute;
+  top: calc(50.00% + 138px);
+  left: 24px;
+  width: 15px;
+  height: 16px;
+  background-color: #000000;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: #00000040;
+}
+
+.daftar-buku-anggota .text-wrapper-9 {
+  position: absolute;
+  top: 322px;
+  left: 55px;
+  width: 166px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .div-wrapper {
+  all: unset;
+  box-sizing: border-box;
+  top: calc(50.00% + 130px);
+  left: 473px;
+  width: 28px;
+  height: 31px;
+  border-radius: 3.2px;
+  border-color: transparent;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .footer-start {
+  position: absolute;
+  width: calc(100% - 48px);
+  top: 1507px;
+  left: 24px;
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #191c24;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.daftar-buku-anggota .your-site-name-all {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  width: 279.15px;
+  height: 22px;
+  margin-left: 24px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: transparent;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .span {
+  color: #6c7293;
+}
+
+.daftar-buku-anggota .text-wrapper-10 {
+  color: #eb1616;
+}
+
+.daftar-buku-anggota .designed-by-HTML {
+  margin-top: 25px;
+  width: 217.9px;
+  height: 46px;
+  margin-right: 23.8px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: transparent;
+  font-size: 16px;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.daftar-buku-anggota .navbar-start {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 64px;
+  display: flex;
+  gap: 1441.8px;
+  background-color: #191c24;
+}
+
+.daftar-buku-anggota .link {
+  height: 40px;
+  width: 40px;
+  align-self: center;
+  margin-left: 24px;
+  display: flex;
+  background-color: #000000;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .symbol-5 {
+  margin-top: 12px;
+  width: 14.36px;
+  height: 16px;
+  margin-left: 13px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #eb1616;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-2 {
+  width: 140.23px;
+  height: 64px;
+  display: flex;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .user-jpg-5 {
+  margin-top: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-image: url(./img/user-jpg-4.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.daftar-buku-anggota .text-wrapper-11 {
+  display: flex;
+  align-items: center;
+  margin-top: 19.3px;
+  width: 72.39px;
+  height: 22px;
+  margin-left: 12.2px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .symbol-6 {
+  margin-top: 20px;
+  width: 10.31px;
+  height: 24px;
+  margin-left: 5.7px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-12 {
+  position: absolute;
+  top: 81px;
+  left: 24px;
+  width: 216px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .form-input {
+  position: absolute;
+  width: calc(100% - 360px);
+  height: calc(100% - 1590px);
+  top: 131px;
+  left: 16px;
+  background-color: #343a40;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-13 {
+  position: absolute;
+  top: 15px;
+  left: 122px;
+  width: 144px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c757d;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.daftar-buku-anggota .search {
+  position: absolute;
+  top: 15px;
+  left: 13px;
+  width: 43px;
+  height: 21px;
+  display: flex;
+  overflow: hidden;
+  transform: rotate(180deg);
+}
+
+.daftar-buku-anggota .img {
+  flex: 1;
+  width: 43px;
+  transform: rotate(-180deg);
+}
+
+.daftar-buku-anggota .recent-sales-start {
+  position: absolute;
+  width: calc(100% + 714px);
+  top: 123px;
+  left: -20px;
+  height: 784px;
+  background-color: #191c24;
+  border-radius: 5px;
+}
+
+.daftar-buku-anggota .form-input-2 {
+  top: 585px;
+  left: 26px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .element {
+  position: absolute;
+  top: 7px;
+  left: 27px;
+  width: 159px;
+  height: 239px;
+  aspect-ratio: 0.67;
+  object-fit: cover;
+}
+
+.daftar-buku-anggota .text-wrapper-14 {
+  position: absolute;
+  top: 246px;
+  left: calc(50.00% - 82px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .text-wrapper-15 {
+  position: absolute;
+  top: 265px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .text-wrapper-16 {
+  position: absolute;
+  top: 285px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .detail-wrapper {
+  position: absolute;
+  top: 329px;
+  left: 5px;
+  width: 81px;
+  height: 29px;
+  display: flex;
+  justify-content: center;
+  background-color: #2f50aa;
+  border-radius: 30px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  width: 103px;
+  height: 19px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-3 {
+  position: absolute;
+  top: 327px;
+  left: 93px;
+  width: 116px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  background-color: #eb1616;
+  border-radius: 30px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .text-wrapper-17 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  width: 103px;
+  height: 19px;
+  margin-left: -1px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .form-input-3 {
+  top: 204px;
+  left: 24px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .link-4 {
+  position: absolute;
+  top: 328px;
+  left: 6px;
+  width: 81px;
+  height: 29px;
+  display: flex;
+  justify-content: center;
+  background-color: #2f50aa;
+  border-radius: 30px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .text-wrapper-18 {
+  position: absolute;
+  top: 256px;
+  left: calc(50.00% - 86px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .text-wrapper-19 {
+  position: absolute;
+  top: 286px;
+  left: calc(50.00% - 88px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .form-input-4 {
+  top: 204px;
+  left: 262px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .p {
+  position: absolute;
+  top: 262px;
+  left: calc(50.00% - 94px);
+  width: 185px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .text-wrapper-20 {
+  position: absolute;
+  top: 292px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .link-5 {
+  position: absolute;
+  top: 329px;
+  left: 5px;
+  width: 81px;
+  height: 29px;
+  display: flex;
+  justify-content: center;
+  background-color: #343a40;
+  border-radius: 30px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .link-6 {
+  position: absolute;
+  top: 328px;
+  left: 90px;
+  width: 116px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  background-color: #eb1616;
+  border-radius: 30px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .form-input-5 {
+  top: 204px;
+  left: 512px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-21 {
+  position: absolute;
+  top: 254px;
+  left: calc(50.00% - 82px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .text-wrapper-22 {
+  top: 281px;
+  left: calc(50.00% - 82px);
+  position: absolute;
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .form-input-6 {
+  top: 204px;
+  left: 758px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-23 {
+  position: absolute;
+  top: 257px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .text-wrapper-24 {
+  position: absolute;
+  top: 287px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .form-input-7 {
+  top: 204px;
+  left: 1014px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-25 {
+  top: 287px;
+  left: calc(50.00% - 82px);
+  position: absolute;
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .text-wrapper-26 {
+  position: absolute;
+  top: 257px;
+  left: calc(50.00% - 82px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .form-input-8 {
+  top: 585px;
+  left: 763px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .form-input-9 {
+  top: 585px;
+  left: 1010px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-27 {
+  position: absolute;
+  top: 256px;
+  left: calc(50.00% - 84px);
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .text-wrapper-28 {
+  top: 286px;
+  left: calc(50.00% - 84px);
+  position: absolute;
+  width: 163px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .form-input-10 {
+  top: 585px;
+  left: 262px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-29 {
+  position: absolute;
+  top: 255px;
+  left: calc(50.00% - 112px);
+  width: 238px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .text-wrapper-30 {
+  position: absolute;
+  top: 284px;
+  left: calc(50.00% - 104px);
+  width: 221px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .form-input-11 {
+  top: 585px;
+  left: 510px;
+  position: absolute;
+  width: calc(100% - 1459px);
+  height: calc(100% - 1277px);
+  background-color: #6c757d;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.daftar-buku-anggota .text-wrapper-31 {
+  position: absolute;
+  top: 251px;
+  left: calc(50.00% - 108px);
+  width: 221px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.daftar-buku-anggota .element-2 {
+  position: absolute;
+  top: 7px;
+  left: 30px;
+  width: 156px;
+  height: 234px;
+  aspect-ratio: 0.67;
+  object-fit: cover;
+}
+
+.daftar-buku-anggota .vector-2 {
+  position: absolute;
+  width: 98.05%;
+  height: 95.62%;
+  top: 4.38%;
+  left: 0;
+}
+
+.daftar-buku-anggota .sidebar-start {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 261px;
+  height: 1020px;
+  background-color: #191c24;
+  overflow: scroll;
+}
+
+.daftar-buku-anggota .sidebar-start::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.daftar-buku-anggota .nav {
+  position: absolute;
+  width: calc(100% - 24px);
+  top: 0;
+  left: 0;
+  height: 529px;
+  background-color: #191c24;
+}
+
+.daftar-buku-anggota .link-heading {
+  position: absolute;
+  top: 13px;
+  left: 24px;
+  width: 150px;
+  height: 34px;
+  display: flex;
+  gap: 7.7px;
+}
+
+.daftar-buku-anggota .symbol-7 {
+  margin-top: 1px;
+  width: 35.31px;
+  height: 29px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #eb1616;
+  font-size: 28px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-32 {
+  display: flex;
+  align-items: center;
+  width: 107.34px;
+  height: 33px;
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #eb1616;
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: 33.6px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .heading-jhon-doe-3 {
+  top: 76px;
+  font-family: "Open Sans-Bold", Helvetica;
+  line-height: 24px;
+  position: absolute;
+  left: 80px;
+  width: 68px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-33 {
+  position: absolute;
+  top: 96px;
+  left: 80px;
+  width: 71px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-34 {
+  top: 159px;
+  width: 126px;
+  color: #6c7293;
+  position: absolute;
+  left: 68px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-7 {
+  position: absolute;
+  width: 100%;
+  top: 254px;
+  left: -1px;
+  height: 54px;
+  display: flex;
+  gap: 8px;
+  border-radius: 0px 30px 30px 0px;
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-color: #191c24;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .background-4 {
+  margin-top: 7px;
+  width: 40px;
+  height: 40px;
+  margin-left: 23px;
+  display: flex;
+  background-color: #000000;
+  border-radius: 40px;
+}
+
+.daftar-buku-anggota .symbol-8 {
+  margin-top: 12px;
+  width: 18.31px;
+  height: 16px;
+  margin-left: 11px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-35 {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  width: 104px;
+  height: 22px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-8 {
+  position: absolute;
+  width: 100%;
+  top: 308px;
+  left: -1px;
+  height: 54px;
+  display: flex;
+  gap: 8px;
+  border-radius: 0px 30px 30px 0px;
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-color: #191c24;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .symbol-9 {
+  margin-top: 12px;
+  width: 16.39px;
+  height: 16px;
+  margin-left: 12px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-36 {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  width: 124px;
+  height: 22px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-9 {
+  position: absolute;
+  width: 100%;
+  top: 355px;
+  left: 0;
+  height: 54px;
+  display: flex;
+  gap: 8px;
+  border-radius: 0px 30px 30px 0px;
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-color: #191c24;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .symbol-10 {
+  margin-top: 12px;
+  width: 12.34px;
+  height: 16px;
+  margin-left: 14px;
+  font-family: "Font Awesome 5 Free-Regular", Helvetica;
+  color: #6c7293;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .text-wrapper-37 {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  width: 76px;
+  height: 22px;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #6c7293;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .link-10 {
+  position: absolute;
+  width: 100%;
+  top: 421px;
+  left: -1px;
+  height: 54px;
+  display: flex;
+  gap: 8px;
+  border-radius: 0px 30px 30px 0px;
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-color: #191c24;
+  cursor: pointer;
+}
+
+.daftar-buku-anggota .background-5 {
+  position: absolute;
+  top: 150px;
+  left: 19px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  background-color: #000000;
+  border-radius: 40px;
+}
+
+.daftar-buku-anggota .text-wrapper-38 {
+  top: 214px;
+  width: 115px;
+  color: #eb1616;
+  position: absolute;
+  left: 68px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .background-6 {
+  position: absolute;
+  top: 202px;
+  left: 21px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  background-color: #000000;
+  border-radius: 40px;
+}
+
+.daftar-buku-anggota .symbol-11 {
+  margin-top: 12px;
+  width: 16.39px;
+  height: 16px;
+  margin-left: 12px;
+  font-family: "Font Awesome 5 Free-Solid", Helvetica;
+  color: #eb1616;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.daftar-buku-anggota .vector-3 {
+  position: absolute;
+  width: 83.91%;
+  height: 93.04%;
+  top: 6.96%;
+  left: 16.09%;
+}
