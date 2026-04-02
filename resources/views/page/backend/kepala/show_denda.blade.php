@@ -19,12 +19,15 @@
             {{-- Foto Buku --}}
             <div class="w-full md:w-1/3 text-center border-r border-gray-800 pr-8">
                 <div class="bg-[#2a2e35] rounded-lg p-3 shadow-inner inline-block w-full border border-gray-700">
-                    @if($denda->buku && $denda->buku->foto)
-                        {{-- Logika Gambar: Cek folder root storage, lalu folder buku --}}
-                        <img src="{{ asset('storage/' . $denda->buku->foto) }}" 
+                    {{-- CEK DISINI: Menggunakan 'cover' sesuai screenshot database kamu --}}
+                    @if($denda->buku && $denda->buku->cover)
+                        @php
+                            $nama_file = str_replace('buku/', '', $denda->buku->cover);
+                        @endphp
+                        <img src="{{ asset('assetsbackend/img/' . $nama_file) }}" 
                              class="w-full rounded shadow-md object-cover" 
                              style="max-height: 400px;"
-                             onerror="this.onerror=null;this.src='{{ asset('storage/buku/' . $denda->buku->foto) }}';">
+                             onerror="this.onerror=null;this.src='{{ asset('assetsbackend/img/user.jpg') }}';">
                     @else
                         <div class="w-full h-64 bg-gray-900 flex items-center justify-center rounded border border-gray-700 italic text-gray-600 uppercase">No Image</div>
                     @endif
@@ -53,7 +56,7 @@
                     </div>
                 </div>
 
-                {{-- Bagian Tanggal: Sudah Diperbaiki Formatnya --}}
+                {{-- Bagian Tanggal --}}
                 <div class="grid grid-cols-2 gap-4 border-y border-gray-800/50 py-4">
                     <div>
                         <label class="text-gray-500 text-[10px] uppercase font-bold tracking-widest block mb-1">Seharusnya Kembali</label>

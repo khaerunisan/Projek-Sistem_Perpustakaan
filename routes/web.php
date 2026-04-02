@@ -55,7 +55,7 @@ Route::middleware('role:petugas')->group(function () {
     Route::get('/petugas/buku/create', [PetugasBukuController::class, 'create'])->name('petugas.buku.create');
 
     // Simpan Buku (Proses Submit Form)
-    // Route::post('/petugas/buku/store', [PetugasBukuController::class, 'store'])->name('petugas.buku.store');
+    Route::post('/petugas/buku/store', [PetugasBukuController::class, 'store'])->name('petugas.buku.store');
 
     // Hapus Buku
     Route::delete('/petugas/buku/{id}', [PetugasBukuController::class, 'destroy'])->name('petugas.buku.destroy');
@@ -79,10 +79,22 @@ Route::middleware('role:petugas')->group(function () {
     Route::get('/petugas/peminjaman', [PetugasPeminjamanController::class, 'index'])->name('petugas.peminjaman');
     Route::get('/petugas/peminjaman/{id}', [PetugasPeminjamanController::class, 'show'])->name('petugas.peminjaman.show');
     
+    // FIX: Rute Simpan Data Peminjaman (Tanpa Route Create)
+    Route::post('/petugas/peminjaman/store', [PetugasPeminjamanController::class, 'store'])->name('petugas.peminjaman.store');
+    
+    // FIX: Rute Hapus Peminjaman agar tidak RouteNotFound
+    Route::delete('/petugas/peminjaman/{id}', [PetugasPeminjamanController::class, 'destroy'])->name('petugas.peminjaman.destroy');
+    
     // TAMBAHAN ROUTE PENGEMBALIAN DAN HAPUS
     Route::get('/petugas/pengembalian', [PetugasPeminjamanController::class, 'riwayatPengembalian'])->name('petugas.pengembalian');
     Route::get('/petugas/pengembalian/{id}', [PetugasPeminjamanController::class, 'detailPengembalian'])->name('petugas.pengembalian.detail');
-    Route::delete('/petugas/peminjaman/{id}', [PetugasPeminjamanController::class, 'destroy'])->name('petugas.peminjaman.destroy');
+    
+    // --- TAMBAHAN BARU: EDIT & UPDATE PENGEMBALIAN ---
+    Route::get('/petugas/pengembalian/{id}/edit', [PetugasPeminjamanController::class, 'editPengembalian'])->name('petugas.pengembalian.edit');
+    Route::put('/petugas/pengembalian/{id}', [PetugasPeminjamanController::class, 'updatePengembalian'])->name('petugas.pengembalian.update');
+    
+    // PERBAIKAN: Mengganti nama route agar sesuai dengan pemanggilan di Blade (pengembalian.destroy)
+    Route::delete('/petugas/pengembalian/{id}', [PetugasPeminjamanController::class, 'destroy'])->name('petugas.pengembalian.destroy');
     
     // TAMBAHAN ROUTE DENDA PETUGAS
     Route::get('/petugas/denda', [PetugasPeminjamanController::class, 'daftarDenda'])->name('petugas.denda');
@@ -103,9 +115,8 @@ Route::middleware('role:petugas')->group(function () {
         // Tabel daftar petugas
         Route::get('/petugas-data', [PetugasAnggotaController::class, 'index'])->name('kepala.petugas');
 
-        // --- INI KUNCI BIAR TIDAK KE DASHBOARD ---
-        // Kita pakai URL "/info-petugas/" agar Laravel tidak bingung dengan route lain
-        Route::get('/info-petugas/detail/{id}', [PetugasAnggotaController::class, 'show'])->name('petugas.anggota.show');
+        // --- PERBAIKAN: Menggunakan name unik agar tidak bentrok ---
+        Route::get('/info-petugas/detail/{id}', [PetugasAnggotaController::class, 'show'])->name('kepala.petugas.show');
         
         Route::get('/kepala/data-buku', [AdminDashboardController::class, 'dataBukuKepala'])->name('kepala.data-buku');
         Route::get('/kepala/buku-detail/{id}', [AdminDashboardController::class, 'showBukuKepala'])->name('kepala.buku.show');

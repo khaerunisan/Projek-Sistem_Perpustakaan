@@ -70,10 +70,6 @@
                    class="px-5 py-2 rounded text-gray-400 text-[10px] font-bold uppercase hover:text-white transition border border-transparent hover:border-gray-700">
                     Kembali
                 </a>
-                <a href="{{ route('petugas.anggota.edit', $petugas->id) }}" 
-                   class="px-5 py-2 rounded bg-red-600 text-white text-[10px] font-bold uppercase hover:bg-red-700 transition shadow-lg tracking-wider">
-                    Ubah Data
-                </a>
             </div>
         </div>
     </div>

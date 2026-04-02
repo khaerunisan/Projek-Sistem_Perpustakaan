@@ -42,7 +42,8 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-300 text-xs">
-                    @forelse($anggota as $item)
+                    {{-- PERBAIKAN: Menggunakan $petugas agar sinkron dengan compact('petugas') di Controller --}}
+                    @forelse($petugas as $item)
                     <tr class="border-b border-gray-800/50 hover:bg-white/5 transition">
                         <td class="px-4 py-4 text-center text-gray-500 font-mono">
                             {{-- ID Unik --}}
@@ -97,10 +98,10 @@
             </table>
         </div>
 
-        {{-- Pagination (Aman dari Error BadMethodCallException) --}}
-        @if(method_exists($anggota, 'links'))
+        {{-- Pagination (Menggunakan $petugas agar sinkron dengan Controller) --}}
+        @if(method_exists($petugas, 'links'))
             <div class="mt-6">
-                {{ $anggota->links() }}
+                {{ $petugas->appends(['search' => request('search')])->links() }}
             </div>
         @endif
     </div>

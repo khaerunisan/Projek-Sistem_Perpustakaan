@@ -11,7 +11,7 @@
         
         {{-- Toolbar: Search & Tambah (Optional) --}}
         <div class="flex justify-between items-center mb-6 gap-4">
-            {{-- Tambahan: Form agar fitur Search di Controller berfungsi --}}
+            {{-- Form agar fitur Search di Controller berfungsi --}}
             <form action="{{ route('kepala.petugas') }}" method="GET" class="relative flex-1 max-w-xl">
                 <span class="absolute inset-y-0 left-3 flex items-center shadow-sm">
                     <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -20,6 +20,8 @@
                 </span>
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Petugas..." 
                        class="w-full bg-[#1c1f26] text-gray-300 text-xs rounded-lg py-2.5 pl-10 pr-4 border border-gray-800 outline-none focus:ring-1 focus:ring-red-600">
+                {{-- Hidden submit agar Enter berfungsi di beberapa browser --}}
+                <button type="submit" class="hidden"></button>
             </form>
         </div>
 
@@ -57,10 +59,10 @@
                         </td>
 
                         <td class="px-6 py-4 text-center">
-                            {{-- DISAMBUNGKAN: Menggunakan route yang terdaftar di web.php (petugas.anggota.show) --}}
-                            <a href="{{ route('petugas.anggota.show', $item->id) }}" 
+                            {{-- Menggunakan route kepala.petugas.show sesuai web.php --}}
+                            <a href="{{ route('kepala.petugas.show', $item->id) }}" 
                                class="bg-[#b91c1c] text-[10px] text-white px-4 py-1.5 rounded font-bold uppercase hover:bg-red-700 transition shadow-lg">
-                                 Detail
+                                  Detail
                             </a>
                         </td>
                     </tr>
@@ -76,7 +78,8 @@
         {{-- Pagination Safe --}}
         @if(method_exists($petugas, 'links'))
             <div class="mt-6">
-                {{ $petugas->links() }}
+                {{-- Appends search agar saat pindah halaman pencarian tidak hilang --}}
+                {{ $petugas->appends(['search' => request('search')])->links() }}
             </div>
         @endif
     </div>

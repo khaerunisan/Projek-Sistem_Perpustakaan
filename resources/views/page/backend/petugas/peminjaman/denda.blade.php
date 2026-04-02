@@ -8,17 +8,15 @@
     <div class="bg-[#111419] rounded-xl p-6 border border-gray-800 shadow-2xl">
         
         <div class="flex justify-between items-center mb-6 gap-4">
-            {{-- Search Bar --}}
-            <div class="relative flex-1 max-w-2xl">
+            {{-- Search Bar - Dibuat Mentok Sampai Ujung --}}
+            <div class="relative w-full">
                 <span class="absolute inset-y-0 left-3 flex items-center">
                     <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </span>
-                <input type="text" placeholder="Cari Anggota" class="w-full bg-[#1c2128] text-gray-300 text-xs rounded-full py-2.5 pl-10 pr-4 border border-gray-800 outline-none">
+                <input type="text" placeholder="Cari Anggota" class="w-full bg-[#1c2128] text-gray-300 text-xs rounded-full py-2.5 pl-10 pr-4 border border-gray-800 outline-none focus:ring-1 focus:ring-orange-500 transition">
             </div>
-            {{-- Tombol Tambah --}}
-            <button class="bg-[#e67e22] text-white px-10 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:opacity-90 transition shadow-lg">Tambah</button>
         </div>
 
         <div class="overflow-x-auto">

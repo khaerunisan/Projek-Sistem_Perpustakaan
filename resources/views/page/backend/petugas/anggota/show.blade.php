@@ -1,10 +1,10 @@
 @extends('layouts.backend.app')
 
 @section('content')
-<div class="min-h-screen bg-[#000000] p-8 text-sm">
+<div class="min-h-screen bg-[#000000] p-8 text-sm font-sans">
     {{-- Header Halaman --}}
-    <div class="mb-6 ml-2 text-uppercase italic">
-        <h1 class="text-white font-bold text-xl uppercase">Detail Profil Anggota</h1>
+    <div class="mb-6 ml-2 uppercase italic">
+        <h1 class="text-white font-bold text-xl">Detail Profil Anggota</h1>
     </div>
 
     {{-- Kartu Detail --}}
@@ -20,8 +20,9 @@
                 </div>
                 
                 <div class="mt-6 text-center uppercase italic">
-                    <h2 class="text-white font-bold text-lg tracking-tight">{{ $anggota->name }}</h2>
-                    <p class="text-gray-500 text-[10px] mt-1 tracking-widest">ID: 10.{{ str_pad($anggota->id, 3, '0', STR_PAD_LEFT) }}</p>
+                    {{-- PERBAIKAN: Menggunakan $petugas sesuai compact di Controller --}}
+                    <h2 class="text-white font-bold text-lg tracking-tight">{{ $petugas->name }}</h2>
+                    <p class="text-gray-500 text-[10px] mt-1 tracking-widest">ID: 10.{{ str_pad($petugas->id, 3, '0', STR_PAD_LEFT) }}</p>
                 </div>
                 
                 <a href="{{ route('petugas.anggota') }}" class="mt-10 bg-[#2c3038] hover:bg-gray-700 text-white text-center py-2.5 px-6 rounded-full transition-all text-[10px] w-full font-bold uppercase tracking-widest border border-gray-700 shadow-lg">
@@ -35,13 +36,13 @@
                     <div>
                         <label class="text-gray-600 text-[9px] block mb-2 font-black tracking-widest">Nama Lengkap Anggota</label>
                         <div class="bg-[#000000] border border-gray-800 rounded-lg px-4 py-3 text-gray-200 font-bold shadow-inner">
-                            {{ $anggota->name }}
+                            {{ $petugas->name }}
                         </div>
                     </div>
                     <div>
                         <label class="text-gray-600 text-[9px] block mb-2 font-black tracking-widest">Program Studi / Jurusan</label>
                         <div class="bg-[#000000] border border-gray-800 rounded-lg px-4 py-3 text-gray-200 font-bold shadow-inner">
-                            {{ $anggota->prodi ?? 'BELUM DIISI' }}
+                            {{ $petugas->prodi ?? 'BELUM DIISI' }}
                         </div>
                     </div>
                 </div>
@@ -50,14 +51,13 @@
                     <div>
                         <label class="text-gray-600 text-[9px] block mb-2 font-black tracking-widest">Alamat Email</label>
                         <div class="bg-[#000000] border border-gray-800 rounded-lg px-4 py-3 text-gray-400">
-                            {{ $anggota->email }}
+                            {{ $petugas->email }}
                         </div>
                     </div>
                     <div>
                         <label class="text-gray-600 text-[9px] block mb-2 font-black tracking-widest">No. Telepon / WhatsApp</label>
                         <div class="bg-[#000000] border border-gray-800 rounded-lg px-4 py-3 text-emerald-500 font-bold shadow-inner">
-                            {{-- Menggunakan kolom 'phone' sesuai database --}}
-                            {{ $anggota->phone ?? '-' }}
+                            {{ $petugas->phone ?? '-' }}
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                 <div>
                     <label class="text-gray-600 text-[9px] block mb-2 font-black tracking-widest">Alamat Domisili Lengkap</label>
                     <div class="bg-[#000000] border border-gray-800 rounded-lg px-4 py-3 text-gray-400 italic">
-                        {{ $anggota->alamat ?? 'INFORMASI ALAMAT BELUM DILENGKAPI' }}
+                        {{ $petugas->alamat ?? 'INFORMASI ALAMAT BELUM DILENGKAPI' }}
                     </div>
                 </div>
 
@@ -73,13 +73,13 @@
                     <div>
                         <label class="text-gray-600 text-[9px] block mb-2 font-black tracking-widest">Status Keanggotaan</label>
                         <div class="bg-blue-900/10 border border-blue-800/30 rounded-lg px-4 py-3 text-blue-500 font-bold">
-                            {{ strtoupper($anggota->role) }} TETAP
+                            {{ strtoupper($petugas->role) }} TETAP
                         </div>
                     </div>
                     <div>
                         <label class="text-gray-600 text-[9px] block mb-2 font-black tracking-widest">Tanggal Registrasi</label>
                         <div class="bg-[#000000] border border-gray-800 rounded-lg px-4 py-3 text-gray-400 font-bold">
-                            {{ $anggota->created_at->translatedFormat('d F Y') }}
+                            {{ $petugas->created_at->translatedFormat('d F Y') }}
                         </div>
                     </div>
                 </div>
