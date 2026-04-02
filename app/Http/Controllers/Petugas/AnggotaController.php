@@ -3,21 +3,32 @@
 namespace App\Http\Controllers\Petugas;
 
 use App\Http\Controllers\Controller;
-use App\Models\User; // Mengasumsikan data anggota ada di tabel users dengan role anggota
+use App\Models\User; 
 use Illuminate\Http\Request;
 
 class AnggotaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Mengambil user yang rolenya 'anggota'
-        $anggota = User::where('role', 'anggota')->latest()->get();
-        return view('page.backend.petugas.anggota.index', compact('anggota'));
+        $search = $request->input('search');
+
+        // Mengambil data petugas
+        $petugas = User::where('role', 'petugas')
+            ->when($search, function ($query, $search) {
+                return $query->where('name', 'like', "%{$search}%");
+            })
+            ->latest()
+            ->paginate(10);
+
+        // --- PERHATIKAN BARIS INI ---
+        // Ini adalah jalur yang benar kalau filamu ada di resources/views/page/backend/petugas/index.blade.php
+        return view('page.backend.petugas.index', compact('petugas'));
     }
 
     public function create()
     {
-        return view('page.backend.petugas.anggota.create');
+        // Jalur ke folder petugas file create.blade.php
+        return view('page.backend.petugas.create');
     }
 
     public function store(Request $request)
@@ -27,65 +38,72 @@ class AnggotaController extends Controller
             'email'    => 'required|email|unique:users',
             'password' => 'required|min:6',
             'alamat'   => 'nullable',
-            'telp'     => 'nullable',
+            'phone'    => 'nullable',
         ]);
 
         User::create([
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => bcrypt($request->password),
-            'role'     => 'anggota',
+            'role'     => 'petugas', 
             'alamat'   => $request->alamat,
-            'telp'     => $request->telp,
+            'phone'    => $request->phone,
         ]);
 
-        return redirect()->route('petugas.anggota')->with('success', 'Anggota berhasil ditambahkan!');
+        // Sesuaikan dengan name route di web.php (petugas.anggota)
+        return redirect()->route('kepala.petugas')->with('success', 'Petugas berhasil ditambahkan!');
     }
 
     public function show($id)
     {
-        $anggota = User::findOrFail($id);
-        return view('page.backend.petugas.anggota.show', compact('anggota'));
+        // 1. Ambil data petugas berdasarkan ID
+        $petugas = User::where('role', 'petugas')->findOrFail($id);
+        
+        // 2. PERBAIKAN: Memanggil file detail_index.blade.php sesuai namamu
+        return view('page.backend.petugas.detail_index', compact('petugas'));
     }
 
     public function edit($id)
     {
-        $anggota = User::findOrFail($id);
-        return view('page.backend.petugas.anggota.edit', compact('anggota'));
+        $petugas = User::where('role', 'petugas')->findOrFail($id);
+        // Jalur ke folder petugas file edit.blade.php
+        return view('page.backend.petugas.edit', compact('petugas'));
     }
 
     public function update(Request $request, $id)
     {
-        $anggota = User::findOrFail($id);
+        $petugas = User::where('role', 'petugas')->findOrFail($id);
 
         $request->validate([
             'name'   => 'required',
             'email'  => 'required|email|unique:users,email,' . $id,
             'alamat' => 'nullable',
-            'telp'   => 'nullable',
+            'phone'  => 'nullable',
         ]);
 
         $data = [
             'name'   => $request->name,
             'email'  => $request->email,
             'alamat' => $request->alamat,
-            'telp'   => $request->telp,
+            'phone'  => $request->phone,
         ];
 
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         }
 
-        $anggota->update($data);
+        $petugas->update($data);
 
-        return redirect()->route('petugas.anggota')->with('success', 'Data anggota diperbarui!');
+        // Sesuaikan dengan name route di web.php
+        return redirect()->route('kepala.petugas')->with('success', 'Data petugas diperbarui!');
     }
 
     public function destroy($id)
     {
-        $anggota = User::findOrFail($id);
-        $anggota->delete();
+        $petugas = User::where('role', 'petugas')->findOrFail($id);
+        $petugas->delete();
 
-        return redirect()->route('petugas.anggota')->with('success', 'Anggota berhasil dihapus!');
+        // Sesuaikan dengan name route di web.php
+        return redirect()->route('kepala.petugas')->with('success', 'Petugas berhasil dihapus!');
     }
 }

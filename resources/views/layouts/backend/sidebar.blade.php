@@ -81,21 +81,21 @@
                 </li>
 
                 <li class="mb-2">
-                    <a href="{{ route('petugas.peminjaman') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('petugas/peminjaman*') ? 'bg-red-600 text-white' : '' }}">
+                    <a href="{{ route('kepala.peminjaman') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('petugas/peminjaman*') ? 'bg-red-600 text-white' : '' }}">
                         <i class="fas fa-keyboard w-5 text-center"></i>
                         <span>Peminjaman</span>
                     </a>
                 </li>
 
                 <li class="mb-2">
-                    <a href="{{ route('petugas.pengembalian') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('petugas/pengembalian*') ? 'bg-red-600 text-white' : '' }}">
+                    <a href="{{ route('kepala.pengembalian') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('petugas/pengembalian*') ? 'bg-red-600 text-white' : '' }}">
                         <i class="fas fa-table w-5 text-center"></i>
                         <span>Pengembalian</span>
                     </a>
                 </li>
 
                 <li class="mb-2">
-                    <a href="{{ route('petugas.denda') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('petugas/denda*') ? 'bg-red-600 text-white' : '' }}">
+                    <a href="{{ route('kepala.denda') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('petugas/denda*') ? 'bg-red-600 text-white' : '' }}">
                         <i class="fas fa-file-alt w-5 text-center"></i>
                         <span>Denda</span>
                     </a>

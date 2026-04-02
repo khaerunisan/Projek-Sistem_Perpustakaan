@@ -17,6 +17,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 Route::middleware('guest')->group(function () {
     // Login
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+    // Jika login menggunakan proses manual
     Route::post('login', [LoginController::class, 'login']);
 
     // Register
@@ -96,22 +97,30 @@ Route::middleware('role:petugas')->group(function () {
     */
     Route::middleware('role:kepala')->group(function () {
         Route::get('/laporan', function() {
-            return "Halaman Laporan Cetak"; // Sementara
+            return "Halaman Laporan Cetak";
         })->name('kepala.laporan');
 
-       Route::get('/petugas-data', [AdminDashboardController::class, 'dataPetugas'])->name('kepala.petugas');
+        // Tabel daftar petugas
+        Route::get('/petugas-data', [PetugasAnggotaController::class, 'index'])->name('kepala.petugas');
+
+        // --- INI KUNCI BIAR TIDAK KE DASHBOARD ---
+        // Kita pakai URL "/info-petugas/" agar Laravel tidak bingung dengan route lain
+        Route::get('/info-petugas/detail/{id}', [PetugasAnggotaController::class, 'show'])->name('petugas.anggota.show');
+        
+        Route::get('/kepala/data-buku', [AdminDashboardController::class, 'dataBukuKepala'])->name('kepala.data-buku');
+        Route::get('/kepala/buku-detail/{id}', [AdminDashboardController::class, 'showBukuKepala'])->name('kepala.buku.show');
+        Route::get('/kepala/data-anggota', [AdminDashboardController::class, 'dataAnggotaKepala'])->name('kepala.anggota');
+        Route::get('/kepala/anggota/{id}', [AdminDashboardController::class, 'showAnggotaKepala'])->name('kepala.anggota.show');
        
-       // SINKRONISASI: Menggunakan 'kepala.data-buku' agar sesuai dengan file Blade Detail
-       Route::get('/kepala/data-buku', [AdminDashboardController::class, 'dataBukuKepala'])->name('kepala.data-buku');
-
-       // TAMBAHAN: Route ini ditambahkan agar tombol Detail di tabel tidak error
-       Route::get('/kepala/buku-detail/{id}', [AdminDashboardController::class, 'showBukuKepala'])->name('kepala.buku.show');
-
-       // --- LANGKAH 2: ROUTE DATA ANGGOTA KHUSUS KEPALA ---
-       Route::get('/kepala/data-anggota', [AdminDashboardController::class, 'dataAnggotaKepala'])->name('kepala.anggota');
-
-       // --- TAMBAHAN BARU: ROUTE DETAIL ANGGOTA KHUSUS KEPALA ---
-       Route::get('/kepala/anggota/{id}', [AdminDashboardController::class, 'showAnggotaKepala'])->name('kepala.anggota.show');
+        // Halaman daftar peminjaman kepala
+        Route::get('/kepala/peminjaman', [AdminDashboardController::class, 'dataPeminjamanKepala'])->name('kepala.peminjaman');
+        Route::get('/kepala/peminjaman/detail/{id}', [AdminDashboardController::class, 'showPeminjamanKepala'])->name('kepala.show_peminjaman');
+        
+        // Halaman daftar pengembalian kepala
+        Route::get('/kepala/pengembalian', [AdminDashboardController::class, 'dataPengembalianKepala'])->name('kepala.pengembalian');
+        Route::get('/kepala/pengembalian/detail/{id}', [AdminDashboardController::class, 'showPengembalianKepala'])->name('kepala.show_pengembalian');
+        Route::get('/kepala/denda', [AdminDashboardController::class, 'dataDendaKepala'])->name('kepala.denda');
+        Route::get('/kepala/denda/detail/{id}', [AdminDashboardController::class, 'showDendaKepala'])->name('kepala.show_denda');
     });
 
     /*

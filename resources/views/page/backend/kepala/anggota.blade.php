@@ -3,7 +3,7 @@
 @section('content')
 <div class="min-h-screen bg-[#000000] p-8 text-sm">
     {{-- Header --}}
-    <h1 class="text-white font-bold text-xl mb-6 ml-2 italic text-uppercase">Data Anggota</h1>
+    <h1 class="text-white font-bold text-xl mb-6 ml-2 italic text-uppercase uppercase">Data Anggota</h1>
 
     {{-- Container Tabel --}}
     <div class="bg-[#1c1f26] rounded-md shadow-2xl p-6 border border-gray-800">
@@ -29,11 +29,11 @@
                         <td class="px-6 py-4">{{ $item->alamat ?? 'Alamat belum diisi' }}</td>
                         <td class="px-6 py-4 text-center">
                             {{-- Cek kolom no telp sesuai database --}}
-                            {{ $item->no_telp ?? $item->no_hp ?? '-' }}
+                            {{ $item->no_telp ?? $item->no_hp ?? $item->telp ?? '-' }}
                         </td>
                         <td class="px-6 py-4 text-center">
-                            {{-- Tombol Detail Merah sesuai Gambar --}}
-                            <a href="#" class="bg-[#ef3d3d] hover:bg-[#d32f2f] text-white text-[10px] px-5 py-1.5 rounded font-bold transition-all shadow-md uppercase tracking-tighter">
+                            {{-- Tombol Detail Merah - Sekarang sudah terhubung ke route kepala --}}
+                            <a href="{{ route('kepala.anggota.show', $item->id) }}" class="bg-[#ef3d3d] hover:bg-[#d32f2f] text-white text-[10px] px-5 py-1.5 rounded font-bold transition-all shadow-md uppercase tracking-tighter inline-block">
                                 Detail
                             </a>
                         </td>
