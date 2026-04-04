@@ -28,8 +28,8 @@
                         <td class="px-6 py-4">{{ $item->name ?? $item->nama }}</td>
                         <td class="px-6 py-4">{{ $item->alamat ?? 'Alamat belum diisi' }}</td>
                         <td class="px-6 py-4 text-center">
-                            {{-- Cek kolom no telp sesuai database --}}
-                            {{ $item->no_telp ?? $item->no_hp ?? $item->telp ?? '-' }}
+                            {{-- Menambahkan pengecekan phone dan phone_number --}}
+                            {{ $item->no_telp ?? $item->no_hp ?? $item->telp ?? $item->telepon ?? $item->phone ?? $item->phone_number ?? '-' }}
                         </td>
                         <td class="px-6 py-4 text-center">
                             {{-- Tombol Detail Merah - Sekarang sudah terhubung ke route kepala --}}

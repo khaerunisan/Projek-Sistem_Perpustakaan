@@ -20,9 +20,12 @@ class Buku extends Model
         'cover'
     ];
 
+    /**
+     * Relasi: Satu Buku bisa dipinjam berkali-kali (memiliki banyak data peminjaman)
+     */
     public function peminjaman()
     {
-        return $this->hasMany(Peminjaman::class);
+        return $this->hasMany(Peminjaman::class, 'buku_id');
     }
     
 }

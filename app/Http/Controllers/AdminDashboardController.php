@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
-use App\Models\User;
+use App\Models\User; // Penting agar error di VS Code hilang
 use App\Models\Peminjaman;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AdminDashboardController extends Controller
 {
@@ -43,38 +44,47 @@ class AdminDashboardController extends Controller
             // Ambil angka untuk kartu statistik
             $totalBuku = Buku::count();
             $totalAnggota = User::where('role', 'anggota')->count();
-            $totalPinjam = Peminjaman::where('status', 'dipinjam')->count();
+            
+            // PERBAIKAN LOGIKA: Total Pinjam menghitung SEMUA riwayat agar muncul angka 7
+            $totalPinjam = Peminjaman::count(); 
+            
+            // PERBAIKAN LOGIKA: Buku Dipinjam (Variabel Baru agar sinkron dengan blade) menghitung status 'dipinjam' agar muncul angka 2
+            $totalPinjamAktif = Peminjaman::where('status', 'dipinjam')->count();
+            
+            // Tambahan: Hitung Total Denda Keseluruhan untuk Petugas
+            $totalDenda = Peminjaman::sum('denda');
+
+            // Perbaikan Logika Terlambat: membandingkan tgl_kembali (deadline) dengan waktu sekarang
             $totalTerlambat = Peminjaman::where('status', 'dipinjam')
                                 ->where('tgl_kembali', '<', now())
                                 ->count();
 
-            // Ambil data untuk tabel
+            // Ambil data untuk tabel - Menggunakan Eager Loading 'with' agar tidak berat
             $peminjamanAktif = Peminjaman::with(['user', 'buku'])
                                 ->where('status', 'dipinjam')
-                                ->latest()->take(5)->get();
+                                ->latest()->get();
 
             // Diubah menjadi $pengembalian agar sinkron dengan file Blade
             $pengembalian = Peminjaman::with(['user', 'buku'])
                                 ->where('status', 'dikembalikan')
-                                ->latest()->take(5)->get();
+                                ->latest()->get();
 
             // Arahkan ke folder petugas dan file dashboard yang baru kamu buat
             return view('page.backend.petugas.dashboard', compact(
-                'totalBuku', 'totalAnggota', 'totalPinjam', 'totalTerlambat',
+                'totalBuku', 'totalAnggota', 'totalPinjam', 'totalPinjamAktif', 'totalTerlambat', 'totalDenda',
                 'peminjamanAktif', 'pengembalian'
             ));
         }
 
         // --- JALUR UNTUK KEPALA ---
         if ($role == 'kepala') {
-            // Mengambil data yang sama dengan petugas untuk ditampilkan di dashboard kepala
-            $jumlahBuku = Buku::count();
-            $jumlahAnggota = User::where('role', 'anggota')->count();
-            $bukuDipinjam = Peminjaman::where('status', 'dipinjam')->count();
-            $bukuTerlambat = Peminjaman::where('status', 'dipinjam')
-                                ->where('tgl_kembali', '<', now())
-                                ->count();
+            // Mengambil data untuk 4 kartu statistik sesuai permintaan:
+            $bukuDipinjam = Peminjaman::where('status', 'dipinjam')->count(); // Kartu 1: Dipinjam
+            $totalPinjam = Peminjaman::count();                              // Kartu 2: Total Pinjam (Semua Riwayat)
+            $totalDenda = Peminjaman::sum('denda');                          // Kartu 3: Total Denda
+            $jumlahBuku = Buku::count();                                     // Kartu 4: Koleksi Buku
 
+            // Variabel tambahan untuk tabel di bawah kartu (tetap dipertahankan)
             $peminjamanAktif = Peminjaman::with(['user', 'buku'])
                                 ->where('status', 'dipinjam')
                                 ->latest()->take(5)->get();
@@ -85,10 +95,13 @@ class AdminDashboardController extends Controller
 
             // Arahkan ke folder kepala yang baru dibuat
             return view('page.backend.kepala.index', compact(
-                'jumlahBuku', 'jumlahAnggota', 'bukuDipinjam', 'bukuTerlambat',
+                'bukuDipinjam', 'totalPinjam', 'totalDenda', 'jumlahBuku',
                 'peminjamanAktif', 'riwayatTerbaru'
             ));
         }
+
+        // Jika role tidak dikenali, redirect ke home atau login
+        return redirect('/');
     }
 
     // --- FUNGSI BARU: DATA BUKU KHUSUS KEPALA ---
@@ -161,6 +174,8 @@ class AdminDashboardController extends Controller
             ->when($search, function($query) use ($search) {
                 $query->whereHas('user', function($q) use ($search) {
                     $q->where('name', 'like', "%$search%");
+                })->orWhereHas('buku', function($q) use ($search) {
+                    $q->where('judul', 'like', "%$search%");
                 });
             })
             ->latest()

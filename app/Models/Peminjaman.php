@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User; // Tambahan eksplisit agar tidak error
+use App\Models\Buku; // Tambahan eksplisit agar tidak error
 
 class Peminjaman extends Model
 {
     use HasFactory;
     protected $table = 'peminjamans';
 
-    
     protected $fillable = [
         'id_peminjaman',
         'user_id',
@@ -22,11 +23,19 @@ class Peminjaman extends Model
     ];
 
     /**
+     * Otomatis mengubah string tanggal menjadi objek Carbon
+     */
+    protected $casts = [
+        'tgl_pinjam' => 'date',
+        'tgl_kembali' => 'date',
+    ];
+
+    /**
      * Relasi ke model User (Siapa yang meminjam)
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -34,6 +43,6 @@ class Peminjaman extends Model
      */
     public function buku()
     {
-        return $this->belongsTo(Buku::class);
+        return $this->belongsTo(Buku::class, 'buku_id');
     }
 }
