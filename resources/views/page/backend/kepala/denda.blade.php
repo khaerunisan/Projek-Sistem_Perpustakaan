@@ -4,12 +4,22 @@
 <div class="min-h-screen bg-[#000000] p-6 text-sm font-sans">
     <h2 class="text-white font-bold text-lg mb-6 ml-2 uppercase italic tracking-wider">Denda</h2>
     <div class="bg-[#111419] rounded-xl p-6 border border-gray-800 shadow-2xl">
+        
+        {{-- Search Section --}}
         <div class="mb-6">
             <form action="{{ route('kepala.denda') }}" method="GET" class="relative">
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Anggota..." 
-                       class="w-full bg-[#1c1f26] text-gray-400 text-xs rounded-full py-2 pl-10 border border-gray-800 outline-none focus:ring-1 focus:ring-red-600">
+                <span class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                    <i class="fas fa-search text-gray-500 text-xs"></i>
+                </span>
+                <input type="text" 
+                       name="search" 
+                       value="{{ request('search') }}" 
+                       placeholder="Cari Anggota atau Judul Buku..." 
+                       class="w-full bg-[#1c1f26] text-gray-400 text-xs rounded-full py-2.5 pl-10 border border-gray-800 outline-none focus:ring-1 focus:ring-red-600 transition"
+                       onchange="this.form.submit()">
             </form>
         </div>
+
         <div class="overflow-x-auto">
             <table class="w-full text-left border border-gray-800">
                 <thead>
@@ -23,11 +33,11 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-400 text-xs">
-                    @foreach($denda as $item)
-                    <tr class="border-b border-gray-800 hover:bg-white/5">
+                    @forelse($denda as $item)
+                    <tr class="border-b border-gray-800 hover:bg-white/5 transition">
                         <td class="px-4 py-4 border-r border-gray-800">#DND{{ $item->id }}</td>
-                        <td class="px-4 py-4 border-r border-gray-800">{{ $item->buku->judul }}</td>
-                        <td class="px-4 py-4 border-r border-gray-800">{{ $item->user->name }}</td>
+                        <td class="px-4 py-4 border-r border-gray-800">{{ $item->buku->judul ?? 'Buku Tidak Ditemukan' }}</td>
+                        <td class="px-4 py-4 border-r border-gray-800">{{ $item->user->name ?? 'User Tidak Ditemukan' }}</td>
                         <td class="px-4 py-4 border-r border-gray-800 text-center">
                             @php
                                 $to = \Carbon\Carbon::parse($item->tgl_kembali);
@@ -40,12 +50,23 @@
                             Rp. {{ number_format($item->denda, 0, ',', '.') }}
                         </td>
                         <td class="px-4 py-4 text-center">
-                           <a href="{{ route('kepala.show_denda', $item->id) }}" class="bg-red-600 text-white px-3 py-1 rounded text-[10px] font-bold uppercase">Detail</a>
+                           <a href="{{ route('kepala.show_denda', $item->id) }}" class="bg-red-600 text-white px-3 py-1 rounded text-[10px] font-bold uppercase hover:opacity-80 transition">Detail</a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="6" class="px-4 py-10 text-center text-gray-500 italic uppercase tracking-widest text-[10px]">
+                            Data denda tidak ditemukan.
+                        </td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
+        </div>
+
+        {{-- Pagination --}}
+        <div class="mt-6">
+            {{ $denda->appends(request()->query())->links() }}
         </div>
     </div>
 </div>

@@ -104,17 +104,32 @@ class AdminDashboardController extends Controller
         return redirect('/');
     }
 
-    // --- FUNGSI BARU: DATA BUKU KHUSUS KEPALA ---
-    public function dataBukuKepala()
+    // --- FUNGSI BARU: DATA BUKU KHUSUS KEPALA (DITAMBAHKAN SEARCH & PAGINATE) ---
+    public function dataBukuKepala(Request $request)
     {
-        $allBuku = Buku::all();
+        $search = $request->input('search');
+        $allBuku = Buku::when($search, function ($query, $search) {
+                        return $query->where('judul', 'like', "%{$search}%")
+                                     ->orWhere('penulis', 'like', "%{$search}%");
+                    })
+                    ->latest()
+                    ->paginate(10);
+
         return view('page.backend.kepala.data_buku', compact('allBuku'));
     }
 
-    // --- FUNGSI BARU: DATA PETUGAS KHUSUS KEPALA ---
-    public function dataPetugas()
+    // --- FUNGSI BARU: DATA PETUGAS KHUSUS KEPALA (DITAMBAHKAN SEARCH & PAGINATE) ---
+    public function dataPetugas(Request $request)
     {
-        $petugas = User::where('role', 'petugas')->get();
+        $search = $request->input('search');
+        $petugas = User::where('role', 'petugas')
+                    ->when($search, function ($query, $search) {
+                        return $query->where('name', 'like', "%{$search}%")
+                                     ->orWhere('email', 'like', "%{$search}%");
+                    })
+                    ->latest()
+                    ->paginate(10);
+
         return view('page.backend.kepala.data_petugas', compact('petugas'));
     }
 
@@ -125,10 +140,18 @@ class AdminDashboardController extends Controller
         return view('page.backend.kepala.show', compact('buku'));
     }
 
-    // --- FUNGSI BARU: DATA ANGGOTA KHUSUS KEPALA ---
-    public function dataAnggotaKepala()
+    // --- FUNGSI BARU: DATA ANGGOTA KHUSUS KEPALA (DITAMBAHKAN SEARCH & PAGINATE) ---
+    public function dataAnggotaKepala(Request $request)
     {
-        $anggota = User::where('role', 'anggota')->get();
+        $search = $request->input('search');
+        $anggota = User::where('role', 'anggota')
+                    ->when($search, function ($query, $search) {
+                        return $query->where('name', 'like', "%{$search}%")
+                                     ->orWhere('email', 'like', "%{$search}%");
+                    })
+                    ->latest()
+                    ->paginate(10);
+
         return view('page.backend.kepala.anggota', compact('anggota'));
     }
 
@@ -200,6 +223,8 @@ class AdminDashboardController extends Controller
             ->when($search, function($query) use ($search) {
                 $query->whereHas('user', function($q) use ($search) {
                     $q->where('name', 'like', "%$search%");
+                })->orWhereHas('buku', function($q) use ($search) {
+                    $q->where('judul', 'like', "%$search%");
                 });
             })
             ->latest()

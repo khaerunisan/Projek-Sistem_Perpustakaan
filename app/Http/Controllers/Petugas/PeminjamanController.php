@@ -21,6 +21,8 @@ class PeminjamanController extends Controller
                         ->when($search, function ($query, $search) {
                             return $query->whereHas('user', function($q) use ($search) {
                                 $q->where('name', 'like', "%{$search}%");
+                            })->orWhereHas('buku', function($q) use ($search) {
+                                $q->where('judul', 'like', "%{$search}%");
                             });
                         })
                         ->latest()
@@ -33,7 +35,7 @@ class PeminjamanController extends Controller
         return view('page.backend.petugas.peminjaman.index', compact('peminjaman', 'users', 'buku'));
     }
 
-    // --- FUNGSI STORE (UNTUK SIMPAN DATA) ---
+    // --- FUNGSI STORE (UNTUK SIMPAN DATA PEMINJAMAN BARU) ---
     public function store(Request $request)
     {
         $request->validate([
@@ -72,6 +74,8 @@ class PeminjamanController extends Controller
                         ->when($search, function ($query, $search) {
                             return $query->whereHas('user', function($q) use ($search) {
                                 $q->where('name', 'like', "%{$search}%");
+                            })->orWhereHas('buku', function($q) use ($search) {
+                                $q->where('judul', 'like', "%{$search}%");
                             });
                         })
                         ->latest()
@@ -110,25 +114,55 @@ class PeminjamanController extends Controller
         return redirect()->back()->with('success', 'Data berhasil dihapus!');
     }
 
-    public function daftarDenda()
+    public function daftarDenda(Request $request)
     {
+        $search = $request->input('search');
+
         // Mengambil data peminjaman yang memiliki denda (lebih dari 0)
         $denda = Peminjaman::with(['user', 'buku'])
                     ->where('denda', '>', 0)
+                    ->when($search, function ($query, $search) {
+                        return $query->whereHas('user', function($q) use ($search) {
+                            $q->where('name', 'like', "%{$search}%");
+                        })->orWhereHas('buku', function($q) use ($search) {
+                            $q->where('judul', 'like', "%{$search}%");
+                        });
+                    })
                     ->latest()
                     ->paginate(10); // GANTI KE PAGINATE
 
         return view('page.backend.petugas.peminjaman.denda', compact('denda'));
     }
 
-    // --- TAMBAHAN BARU: FUNGSI EDIT PENGEMBALIAN ---
+    // --- TAMBAHAN BARU: FUNGSI UNTUK MENAMPILKAN HALAMAN CREATE PENGEMBALIAN ---
+    public function createPengembalian()
+    {
+        $peminjaman = Peminjaman::with(['user', 'buku'])
+                        ->where('status', 'dipinjam')
+                        ->get();
+
+        return view('page.backend.petugas.peminjaman.create_pengembalian', compact('peminjaman'));
+    }
+
+    // --- TAMBAHAN BARU: FUNGSI UNTUK MENAMPILKAN HALAMAN CREATE DENDA ---
+    public function createDenda()
+    {
+        // Mengambil data peminjaman yang statusnya masih 'dipinjam' untuk diproses dendanya
+        $peminjaman = Peminjaman::with(['user', 'buku'])
+                        ->where('status', 'dipinjam')
+                        ->get();
+
+        return view('page.backend.petugas.peminjaman.create_denda', compact('peminjaman'));
+    }
+
+    // --- TAMBAHAN BARU: EDIT PENGEMBALIAN ---
     public function editPengembalian($id)
     {
         $peminjaman = Peminjaman::with(['user', 'buku'])->findOrFail($id);
         return view('page.backend.petugas.peminjaman.edit_pengembalian', compact('peminjaman'));
     }
 
-    // --- TAMBAHAN BARU: FUNGSI UPDATE PENGEMBALIAN ---
+    // --- PERBAIKAN: FUNGSI UPDATE PENGEMBALIAN (OTOMATIS SELESAI & STOK KEMBALI) ---
     public function updatePengembalian(Request $request, $id)
     {
         $peminjaman = Peminjaman::findOrFail($id);
@@ -138,11 +172,113 @@ class PeminjamanController extends Controller
             'denda' => 'required|numeric',
         ]);
 
+        // Tambahkan stok kembali hanya jika status sebelumnya masih 'dipinjam'
+        if ($peminjaman->status == 'dipinjam') {
+            $buku = Buku::find($peminjaman->buku_id);
+            if ($buku) {
+                $buku->increment('stok');
+            }
+        }
+
         $peminjaman->update([
             'tgl_kembali' => $request->tgl_kembali,
             'denda' => $request->denda,
+            'status' => 'dikembalikan' // Pastikan status berubah
         ]);
 
         return redirect()->route('petugas.pengembalian')->with('success', 'Data pengembalian berhasil diperbarui!');
+    }
+
+    // --- TAMBAHAN BARU: EDIT DATA PEMINJAMAN (YANG MASIH DIPINJAM) ---
+    public function edit($id)
+    {
+        $peminjaman = Peminjaman::findOrFail($id);
+        $users = User::where('role', 'anggota')->get();
+        $buku = Buku::all();
+
+        return view('page.backend.petugas.peminjaman.edit', compact('peminjaman', 'users', 'buku'));
+    }
+
+    // --- TAMBAHAN BARU: UPDATE DATA PEMINJAMAN (YANG MASIH DIPINJAM) ---
+    public function update(Request $request, $id)
+    {
+        $peminjaman = Peminjaman::findOrFail($id);
+
+        $request->validate([
+            'user_id' => 'required',
+            'buku_id' => 'required',
+            'tgl_pinjam' => 'required|date',
+        ]);
+
+        // Cek jika buku diganti, maka stok buku lama dikembalikan, stok buku baru dikurangi
+        if ($peminjaman->buku_id != $request->buku_id) {
+            // Balikin stok buku lama
+            $bukuLama = Buku::find($peminjaman->buku_id);
+            if ($bukuLama) $bukuLama->increment('stok');
+            
+            // Kurangi stok buku baru
+            $bukuBaru = Buku::find($request->buku_id);
+            if ($bukuBaru) $bukuBaru->decrement('stok');
+        }
+
+        $peminjaman->update([
+            'user_id' => $request->user_id,
+            'buku_id' => $request->buku_id,
+            'tgl_pinjam' => $request->tgl_pinjam,
+        ]);
+
+        return redirect()->route('petugas.peminjaman')->with('success', 'Data peminjaman berhasil diperbarui!');
+    }
+
+    // --- TAMBAHAN BARU: PROSES PENGEMBALIAN BUKU (DARI HALAMAN INDEX PEMINJAMAN) ---
+    public function kembalikanBuku(Request $request, $id)
+    {
+        $peminjaman = Peminjaman::findOrFail($id);
+
+        // Update data peminjaman jadi dikembalikan
+        $peminjaman->update([
+            'tgl_kembali' => now(),
+            'status' => 'dikembalikan',
+            'denda' => $request->denda ?? 0
+        ]);
+
+        // Tambahkan kembali stok buku
+        $buku = Buku::find($peminjaman->buku_id);
+        if ($buku) {
+            $buku->increment('stok');
+        }
+
+        return redirect()->route('petugas.pengembalian')->with('success', 'Buku telah berhasil dikembalikan!');
+    }
+
+    /**
+     * --- TAMBAHAN BARU: FUNGSI STORE KHUSUS PENGEMBALIAN ---
+     * Fungsi ini menangani input dari form create_pengembalian.blade.php
+     */
+    public function storePengembalian(Request $request)
+    {
+        $request->validate([
+            'peminjaman_id' => 'required|exists:peminjaman,id',
+            'tgl_kembali' => 'required|date',
+            'denda' => 'required|numeric',
+        ]);
+
+        $peminjaman = Peminjaman::findOrFail($request->peminjaman_id);
+
+        // Pastikan stok hanya bertambah jika sebelumnya statusnya dipinjam
+        if ($peminjaman->status == 'dipinjam') {
+            $buku = Buku::find($peminjaman->buku_id);
+            if ($buku) {
+                $buku->increment('stok');
+            }
+        }
+
+        $peminjaman->update([
+            'tgl_kembali' => $request->tgl_kembali,
+            'denda' => $request->denda,
+            'status' => 'dikembalikan'
+        ]);
+
+        return redirect()->route('petugas.pengembalian')->with('success', 'Data pengembalian berhasil diproses!');
     }
 }

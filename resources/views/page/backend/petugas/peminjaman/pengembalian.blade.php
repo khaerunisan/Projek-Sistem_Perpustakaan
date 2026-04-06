@@ -14,19 +14,24 @@
 
     <div class="bg-[#111419] rounded-xl p-6 border border-gray-800 shadow-2xl">
         
-        {{-- Search - Dibuat Mentok Sampai Ujung --}}
-        <div class="mb-6">
-            <div class="relative w-full">
-                <span class="absolute inset-y-0 left-3 flex items-center">
-                    <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </span>
-                {{-- Form Pencarian agar input berfungsi --}}
-                <form action="{{ route('petugas.pengembalian') }}" method="GET">
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Nama Anggota atau Judul Buku..." class="w-full bg-[#1c2128] text-gray-300 text-xs rounded-full py-2.5 pl-10 pr-4 border border-gray-800 outline-none focus:border-orange-500 transition">
-                </form>
-            </div>
+        {{-- Search Melebar Penuh --}}
+        <div class="mb-6 w-full">
+            <form action="{{ route('petugas.pengembalian') }}" method="GET" class="w-full">
+                <div class="relative w-full">
+                    <span class="absolute inset-y-0 left-3 flex items-center">
+                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </span>
+                    {{-- Input Search dengan submit otomatis --}}
+                    <input type="text" 
+                           name="search" 
+                           value="{{ request('search') }}" 
+                           placeholder="Cari Nama Anggota atau Judul Buku..." 
+                           class="w-full bg-[#1c2128] text-gray-300 text-xs rounded-full py-2.5 pl-10 pr-4 border border-gray-800 outline-none focus:border-orange-500 transition"
+                           onchange="this.form.submit()">
+                </div>
+            </form>
         </div>
 
         <div class="overflow-x-auto">
@@ -46,18 +51,18 @@
                 <tbody class="text-gray-300 text-xs">
                     @forelse($pengembalian as $index => $item)
                     <tr class="border-b border-gray-800/50 hover:bg-white/5 transition">
-                        {{-- Menghitung nomor urut agar sinkron dengan pagination --}}
-                        <td class="px-4 py-5 text-center text-gray-500">{{ $index + $pengembalian->firstItem() }}</td>
+                        {{-- Nomor urut sinkron dengan pagination --}}
+                        <td class="px-4 py-5 text-center text-gray-500">
+                            {{ $pengembalian->firstItem() + $index }}
+                        </td>
                         <td class="px-4 py-5 text-gray-400 font-medium">{{ $item->user->name ?? 'User Tidak Ditemukan' }}</td>
                         <td class="px-4 py-5 text-gray-500">{{ $item->buku->judul ?? 'Buku Tidak Ditemukan' }}</td>
                         <td class="px-4 py-5 text-gray-500 font-mono italic">#BK-{{ $item->buku_id }}</td>
                         
-                        {{-- Tanggal Pinjam --}}
                         <td class="px-4 py-5 text-center text-gray-500">
                             {{ \Carbon\Carbon::parse($item->tgl_pinjam)->format('d F Y') }}
                         </td>
                         
-                        {{-- Tanggal Pengembalian --}}
                         <td class="px-4 py-5 text-center text-gray-500 italic">
                             {{ \Carbon\Carbon::parse($item->tgl_kembali)->format('d F Y') }}
                         </td>

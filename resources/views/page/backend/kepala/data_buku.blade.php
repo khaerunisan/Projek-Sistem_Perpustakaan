@@ -5,17 +5,28 @@
     
     {{-- Header Section: Judul dan Search --}}
     <div class="mb-10">
-        <h2 class="text-white font-bold text-sm italic uppercase tracking-widest leading-none">Katalog Data Buku</h2>
-        <p class="text-gray-600 text-[9px] uppercase mt-1 italic mb-6">Project PERSDI</p>
+        {{-- Judul dengan ukuran lebih besar --}}
+        <h2 class="text-white font-extrabold text-2xl mb-6 ml-2 italic uppercase tracking-tighter leading-none"> 
+            Data Buku
+        </h2>
         
-        {{-- Search Bar --}}
-        <div class="relative w-full max-w-4xl">
-            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <i class="fas fa-search text-red-600 text-xs"></i>
-            </div>
-            <input type="text" id="searchInput" 
-                class="bg-[#111419] border border-gray-800 text-gray-300 text-[11px] rounded-full block w-full pl-12 p-3 focus:ring-1 focus:ring-red-600 focus:border-red-600 outline-none transition-all duration-300 shadow-lg" 
-                placeholder="Cari Judul Buku atau Nama Penulis secara spesifik...">
+        {{-- Search Bar: Melebar Penuh (Max-w-none) --}}
+        <div class="w-full px-2">
+            <form action="#" method="GET" class="w-full" onsubmit="return false;">
+                <div class="relative w-full">
+                    {{-- Icon Pencarian --}}
+                    <span class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-red-600 text-sm"></i>
+                    </span>
+                    {{-- Input Search dengan Padding Kiri yang Pas agar tidak numpuk --}}
+                    <input type="text" 
+                           id="searchInput" 
+                           name="search"
+                           value="{{ request('search') }}"
+                           placeholder="Cari Judul Buku atau Nama Penulis" 
+                           class="w-full bg-[#111419] border border-gray-800 text-gray-300 text-xs rounded-full py-3.5 pl-12 pr-6 focus:ring-1 focus:ring-red-600 focus:border-red-600 outline-none transition-all duration-300 shadow-2xl">
+                </div>
+            </form>
         </div>
     </div>
 
@@ -40,12 +51,12 @@
                 <p class="text-gray-500 text-[9px] italic mb-3">{{ $buku->penulis }}</p>
             </div>
 
-            {{-- Action Detail: Diarahkan ke route Kepala --}}
+            {{-- Action Detail --}}
             <div class="p-4 pt-0">
                 <a href="{{ route('kepala.buku.show', $buku->id) }}" 
                    class="flex items-center justify-center gap-2 w-full bg-[#1c2128] text-gray-400 hover:bg-red-600 hover:text-white text-[9px] font-bold py-2.5 rounded-lg text-center uppercase tracking-widest transition-all duration-300 border border-gray-800 hover:border-red-600">
-                   <span>Lihat Detail</span>
-                   <i class="fas fa-arrow-right text-[7px]"></i>
+                    <span>Lihat Detail</span>
+                    <i class="fas fa-arrow-right text-[7px]"></i>
                 </a>
             </div>
         </div>
@@ -55,6 +66,11 @@
             <p class="italic text-gray-600 uppercase tracking-widest text-[10px]">Belum ada data buku tersedia.</p>
         </div>
         @endforelse
+    </div>
+
+    {{-- BAGIAN PAGINATION --}}
+    <div class="mt-10 mb-10">
+        {{ $allBuku->appends(request()->query())->links() }}
     </div>
 </div>
 

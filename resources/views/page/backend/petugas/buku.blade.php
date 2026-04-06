@@ -74,5 +74,11 @@
             </div>
         @endforelse
     </div>
+
+    {{-- BAGIAN PAGINATION --}}
+    <div class="mt-8 px-2">
+        {{-- Menampilkan navigasi halaman --}}
+        {{ $buku->appends(request()->query())->links() }}
+    </div>
 </div>
 @endsection

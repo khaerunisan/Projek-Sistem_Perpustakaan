@@ -9,9 +9,19 @@ use Illuminate\Support\Facades\Storage;
 
 class BukuController extends Controller
 {
-    public function index()
+    // Update fungsi Index agar support Search dan Pagination
+    public function index(Request $request)
     {
-        $buku = Buku::latest()->get();
+        $search = $request->input('search');
+
+        // Menggunakan paginate agar support ->links() di Blade petugas
+        $buku = Buku::when($search, function ($query, $search) {
+                        return $query->where('judul', 'like', "%{$search}%")
+                                     ->orWhere('pengarang', 'like', "%{$search}%");
+                    })
+                    ->latest()
+                    ->paginate(10); // Menampilkan 10 data per halaman
+
         return view('page.backend.petugas.buku', compact('buku'));
     }
 

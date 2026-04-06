@@ -20,7 +20,8 @@
                 {{-- Form Pencarian: Diarahkan ke route anggota.daftarbuku --}}
                 <form action="{{ route('anggota.daftarbuku') }}" method="GET" class="relative flex-1">
                     <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Judul Buku" class="w-full search-bg py-2.5 pl-12 pr-4 rounded-full border border-gray-700 focus:outline-none text-sm text-white">
+                    {{-- Tambahan onchange agar search langsung berfungsi --}}
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Judul Buku" class="w-full search-bg py-2.5 pl-12 pr-4 rounded-full border border-gray-700 focus:outline-none text-sm text-white" onchange="this.form.submit()">
                 </form>
             </div>
         </header>
@@ -66,11 +67,19 @@
                 </div>
             @empty
                 {{-- Tampilan jika data tidak ditemukan --}}
-                <div class="col-span-5 py-20 text-center">
+                <div class="col-span-2 md:col-span-3 lg:col-span-5 py-20 text-center">
                     <p class="text-gray-500 italic">Data buku "{{ request('search') }}" tidak ditemukan.</p>
                 </div>
             @endforelse
 
+        </div>
+
+        {{-- BAGIAN PAGINATION --}}
+        <div class="px-6 mb-10">
+            <div class="mt-4">
+                {{-- Menjaga parameter pencarian tetap ada saat pindah halaman --}}
+                {{ $semuaBuku->appends(request()->query())->links() }}
+            </div>
         </div>
     </main>
 

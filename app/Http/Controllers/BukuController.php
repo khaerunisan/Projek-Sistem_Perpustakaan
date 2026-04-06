@@ -10,10 +10,19 @@ use Carbon\Carbon; // Tambahkan ini agar pemanggilan Carbon lebih simpel
 
 class BukuController extends Controller
 {
-    // Menampilkan semua daftar buku
-    public function daftarBuku()
+    // Menampilkan semua daftar buku dengan Fitur Search & Pagination
+    public function daftarBuku(Request $request)
     {
-        $semuaBuku = Buku::all(); 
+        $search = $request->input('search');
+
+        // Menggunakan paginate agar support ->links() dan ->appends() di Blade
+        $semuaBuku = Buku::when($search, function ($query, $search) {
+                        return $query->where('judul', 'like', "%{$search}%")
+                                     ->orWhere('pengarang', 'like', "%{$search}%");
+                    })
+                    ->latest()
+                    ->paginate(10); // Menampilkan 10 buku per halaman
+
         // Disesuaikan dengan gambar folder kamu: Buku (B besar)
         return view('page.backend.Buku.daftarbuku', compact('semuaBuku'));
     }
