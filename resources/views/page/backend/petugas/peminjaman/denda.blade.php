@@ -39,7 +39,7 @@
                         <th class="px-4 py-4 text-center">Action</th>
                     </tr>
                 </thead>
-                <tbody class="text-gray-400 text-xs">
+                <tbody class="text-gray-400 text-xs" id="dendaBody">
                     @forelse($denda as $item)
                     <tr class="border-b border-gray-800/50 hover:bg-white/5 transition">
                         <td class="px-4 py-5 border-r border-gray-800 text-center font-mono italic">{{ $item->id_peminjaman ?? $item->id }}</td>
@@ -56,10 +56,12 @@
                         <td class="px-4 py-5 border-r border-gray-800 font-bold text-gray-200">Rp. {{ number_format($item->denda, 0, ',', '.') }}</td>
                         <td class="px-4 py-5">
                             <div class="flex items-center justify-center gap-1.5">
-                                {{-- Detail --}}
-                                <a href="{{ route('petugas.pengembalian.detail', $item->id) }}" class="bg-[#b91c1c] text-[9px] text-white px-2.5 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">Detail</a>
-                                {{-- Edit --}}
-                                <a href="{{ route('petugas.pengembalian.edit', $item->id) }}" class="bg-[#10b981] text-[9px] text-white px-2.5 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">Edit</a>
+                                {{-- Detail - Diarahkan ke route denda.show --}}
+                                <a href="{{ route('petugas.denda.show', $item->id) }}" class="bg-[#b91c1c] text-[9px] text-white px-2.5 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">Detail</a>
+                                
+                                {{-- Edit - Diarahkan ke route denda.edit --}}
+                                <a href="{{ route('petugas.denda.edit', $item->id) }}" class="bg-[#10b981] text-[9px] text-white px-2.5 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">Edit</a>
+                                
                                 {{-- Delete --}}
                                 <form action="{{ route('petugas.peminjaman.destroy', $item->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus data denda?')">
                                     @csrf @method('DELETE')
@@ -69,12 +71,17 @@
                         </td>
                     </tr>
                     @empty
-                    <tr>
+                    <tr id="noDataRow">
                         <td colspan="6" class="px-4 py-10 text-center text-gray-600 italic">Tidak ada data denda saat ini.</td>
                     </tr>
                     @endforelse
                 </tbody>
             </table>
+        </div>
+
+        {{-- BAGIAN PAGINATION --}}
+        <div class="mt-6">
+            {{ $denda->links() }}
         </div>
     </div>
 </div>
@@ -86,15 +93,22 @@
         let filter = input.value.toUpperCase();
         let table = document.getElementById("dendaTable");
         let tr = table.getElementsByTagName("tr");
+        let visibleCount = 0;
 
         for (let i = 1; i < tr.length; i++) {
+            // Abaikan baris "Tidak ada data" saat memfilter
+            if (tr[i].id === "noDataRow") continue;
+
             let tdBuku = tr[i].getElementsByTagName("td")[1];
             let tdNama = tr[i].getElementsByTagName("td")[2];
+            
             if (tdBuku || tdNama) {
                 let textValueBuku = tdBuku.textContent || tdBuku.innerText;
                 let textValueNama = tdNama.textContent || tdNama.innerText;
+                
                 if (textValueBuku.toUpperCase().indexOf(filter) > -1 || textValueNama.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
+                    visibleCount++;
                 } else {
                     tr[i].style.display = "none";
                 }

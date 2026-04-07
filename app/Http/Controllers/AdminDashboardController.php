@@ -240,4 +240,34 @@ class AdminDashboardController extends Controller
         
         return view('page.backend.kepala.show_denda', compact('denda'));
     }
+
+   
+    public function laporan()
+    {
+        // 1. Mengambil semua data peminjaman
+        $semuaPeminjaman = Peminjaman::with(['user', 'buku'])->latest()->get();
+
+        // 2. Memisahkan data agar bisa tampil di kotak-kotak (card/tabel) terpisah
+        $dataPeminjaman = $semuaPeminjaman->where('status', 'dipinjam');
+        $dataPengembalian = $semuaPeminjaman->where('status', 'dikembalikan');
+        $dataDenda = $semuaPeminjaman->where('denda', '>', 0);
+
+        // 3. Menghitung data statistik
+        $totalPeminjaman = $semuaPeminjaman->count();
+        $totalKembali = $dataPengembalian->count();
+        $totalPinjamAktif = $dataPeminjaman->count();
+        $totalDenda = $semuaPeminjaman->sum('denda');
+
+        // 4. Mengirim data ke view laporan
+        return view('page.backend.kepala.laporan', compact(
+            'semuaPeminjaman', 
+            'dataPeminjaman', 
+            'dataPengembalian', 
+            'dataDenda', 
+            'totalPeminjaman', 
+            'totalKembali',
+            'totalPinjamAktif',
+            'totalDenda'
+        ));
+    }
 }

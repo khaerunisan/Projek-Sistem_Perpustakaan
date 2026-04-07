@@ -107,8 +107,12 @@ Route::middleware('auth')->group(function () {
         // TAMBAHAN ROUTE DENDA PETUGAS
         Route::get('/petugas/denda', [PetugasPeminjamanController::class, 'daftarDenda'])->name('petugas.denda');
 
-        // --- ROUTE CREATE DENDA ---
+        // --- ROUTE MANAJEMEN DENDA (DISINKRONKAN AGAR TIDAK ERROR) ---
         Route::get('/petugas/denda/create', [PetugasPeminjamanController::class, 'createDenda'])->name('petugas.denda.create');
+        Route::post('/petugas/denda/store', [PetugasPeminjamanController::class, 'storeDenda'])->name('petugas.denda.store');
+        Route::get('/petugas/denda/show/{id}', [PetugasPeminjamanController::class, 'showDenda'])->name('petugas.denda.show');
+        Route::get('/petugas/denda/edit/{id}', [PetugasPeminjamanController::class, 'editDenda'])->name('petugas.denda.edit');
+        Route::put('/petugas/denda/update/{id}', [PetugasPeminjamanController::class, 'updateDenda'])->name('petugas.denda.update');
         
         // --- PERBAIKAN: Sekarang mengarah ke createPengembalian agar tidak Not Found ---
         Route::get('/petugas/pengembalian/create', [PetugasPeminjamanController::class, 'createPengembalian'])->name('petugas.pengembalian.create');
@@ -145,6 +149,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/kepala/pengembalian/detail/{id}', [AdminDashboardController::class, 'showPengembalianKepala'])->name('kepala.show_pengembalian');
         Route::get('/kepala/denda', [AdminDashboardController::class, 'dataDendaKepala'])->name('kepala.denda');
         Route::get('/kepala/denda/detail/{id}', [AdminDashboardController::class, 'showDendaKepala'])->name('kepala.show_denda');
+        Route::get('/laporan', [AdminDashboardController::class, 'laporan'])->name('kepala.laporan');
     });
 
     /*

@@ -13,12 +13,12 @@
         <h2 class="text-white font-bold text-lg uppercase italic tracking-wider">Tambah Data Denda</h2>
     </div>
 
-    {{-- Container Form Mentok ke Kanan --}}
+    {{-- Container Form --}}
     <div class="max-w-full">
         <div class="bg-[#111419] rounded-xl border border-gray-800 shadow-2xl overflow-hidden w-full">
             
-            {{-- Form ID digunakan untuk manipulasi action via JS --}}
-            <form action="{{ route('petugas.pengembalian.update', '0') }}" method="POST" id="formCreateDenda">
+            {{-- PERBAIKAN: Action diarahkan ke petugas.denda.update --}}
+            <form action="#" method="POST" id="formCreateDenda">
                 @csrf
                 @method('PUT')
 
@@ -70,11 +70,15 @@
 </div>
 
 <script>
-    /** * Fungsi untuk mengubah action form secara dinamis 
-     * sesuai dengan ID peminjaman yang dipilih dari dropdown
+    /** * PERBAIKAN: Fungsi diarahkan ke petugas.pengembalian.update 
+     * Namun karena ini dari halaman denda, Controller akan mendeteksi 
+     * untuk mengembalikan ke halaman denda jika denda > 0.
+     * Atau lebih amannya, pastikan di Controller fungsi updatePengembalian 
+     * kamu mengarah ke denda jika input denda diisi.
      */
     function updateAction(id) {
         const form = document.getElementById('formCreateDenda');
+        // Arahkan ke route update yang benar
         let url = "{{ route('petugas.pengembalian.update', ':id') }}";
         form.action = url.replace(':id', id);
     }

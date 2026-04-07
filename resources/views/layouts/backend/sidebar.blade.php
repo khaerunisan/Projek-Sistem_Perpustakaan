@@ -66,7 +66,6 @@
                 </li>
 
                 <li class="mb-2">
-                    {{-- DIUBAH: Menggunakan route kepala.anggota yang baru dibuat --}}
                     <a href="{{ route('kepala.anggota') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('kepala/data-anggota*') ? 'bg-red-600 text-white' : '' }}">
                         <i class="fas fa-desktop w-5 text-center"></i>
                         <span>Data Anggota</span>
@@ -98,6 +97,14 @@
                     <a href="{{ route('kepala.denda') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('petugas/denda*') ? 'bg-red-600 text-white' : '' }}">
                         <i class="fas fa-file-alt w-5 text-center"></i>
                         <span>Denda</span>
+                    </a>
+                </li>
+
+                {{-- MENU LAPORAN KHUSUS KEPALA --}}
+                <li class="mb-2">
+                    <a href="{{ route('kepala.laporan') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('laporan*') ? 'bg-red-600 text-white' : '' }}">
+                        <i class="fas fa-chart-line w-5 text-center"></i>
+                        <span>Laporan</span>
                     </a>
                 </li>
             @endif

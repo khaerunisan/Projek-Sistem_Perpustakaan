@@ -155,6 +155,32 @@ class PeminjamanController extends Controller
         return view('page.backend.petugas.peminjaman.create_denda', compact('peminjaman'));
     }
 
+    // --- TAMBAHAN BARU: STORE KHUSUS DENDA (DARI FORM CREATE DENDA) ---
+    public function storeDenda(Request $request)
+    {
+        $request->validate([
+            'peminjaman_id' => 'required|exists:peminjaman,id',
+            'tgl_kembali' => 'required|date',
+            'denda' => 'required|numeric',
+        ]);
+
+        $peminjaman = Peminjaman::findOrFail($request->peminjaman_id);
+
+        // Jika diproses lewat denda, otomatis buku dianggap kembali & stok nambah
+        if ($peminjaman->status == 'dipinjam') {
+            $buku = Buku::find($peminjaman->buku_id);
+            if ($buku) $buku->increment('stok');
+        }
+
+        $peminjaman->update([
+            'tgl_kembali' => $request->tgl_kembali,
+            'denda' => $request->denda,
+            'status' => 'dikembalikan'
+        ]);
+
+        return redirect()->route('petugas.denda')->with('success', 'Data denda baru berhasil ditambahkan!');
+    }
+
     // --- TAMBAHAN BARU: EDIT PENGEMBALIAN ---
     public function editPengembalian($id)
     {
@@ -185,6 +211,11 @@ class PeminjamanController extends Controller
             'denda' => $request->denda,
             'status' => 'dikembalikan' // Pastikan status berubah
         ]);
+
+        // LOGIKA PENGALIHAN: Jika ada denda, balik ke halaman denda
+        if ($request->denda > 0) {
+            return redirect()->route('petugas.denda')->with('success', 'Data denda berhasil diproses!');
+        }
 
         return redirect()->route('petugas.pengembalian')->with('success', 'Data pengembalian berhasil diperbarui!');
     }
@@ -279,6 +310,39 @@ class PeminjamanController extends Controller
             'status' => 'dikembalikan'
         ]);
 
+        if ($request->denda > 0) {
+            return redirect()->route('petugas.denda')->with('success', 'Data denda berhasil disimpan!');
+        }
+
         return redirect()->route('petugas.pengembalian')->with('success', 'Data pengembalian berhasil diproses!');
+    }
+
+    // --- TAMBAHAN BARU: DETAIL KHUSUS DENDA ---
+    public function showDenda($id)
+    {
+        $peminjaman = Peminjaman::with(['user', 'buku'])->findOrFail($id);
+        return view('page.backend.petugas.peminjaman.show_denda', compact('peminjaman'));
+    }
+
+    // --- TAMBAHAN BARU: EDIT KHUSUS DENDA ---
+    public function editDenda($id)
+    {
+        $peminjaman = Peminjaman::with(['user', 'buku'])->findOrFail($id);
+        return view('page.backend.petugas.peminjaman.edit_denda', compact('peminjaman'));
+    }
+
+    // --- TAMBAHAN BARU: UPDATE KHUSUS DENDA ---
+    public function updateDenda(Request $request, $id)
+    {
+        $request->validate([
+            'denda' => 'required|numeric',
+        ]);
+
+        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman->update([
+            'denda' => $request->denda
+        ]);
+
+        return redirect()->route('petugas.denda')->with('success', 'Nominal denda berhasil diperbarui!');
     }
 }
