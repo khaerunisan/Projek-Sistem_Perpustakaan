@@ -65,9 +65,59 @@
         </div>
 
         {{-- Pagination --}}
-        <div class="mt-6">
-            {{ $denda->appends(request()->query())->links() }}
-        </div>
+        @if(method_exists($denda, 'links') && $denda->hasPages())
+            <div class="mt-8 px-2 border-t border-gray-800 pt-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="text-gray-500 text-[11px]">
+                        Menampilkan {{ $denda->firstItem() }} sampai {{ $denda->lastItem() }} dari {{ $denda->total() }} Data Denda
+                    </div>
+                    <div class="pagination-custom">
+                        {{ $denda->appends(request()->query())->links() }}
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 </div>
+
+{{-- CSS KHUSUS PAGINATION --}}
+<style>
+    /* Sembunyikan informasi default Laravel agar tidak double */
+    .pagination-custom nav div:first-child { display: none !important; }
+    
+    /* Container Tombol Navigasi */
+    .pagination-custom nav div:last-child { 
+        display: flex !important; 
+        gap: 5px; 
+        box-shadow: none !important; 
+    }
+    
+    /* Ukuran Icon Navigasi Panah */
+    .pagination-custom nav svg { width: 14px !important; height: 14px !important; }
+    
+    /* Styling Tombol Anggota */
+    .pagination-custom span, .pagination-custom a { 
+        background-color: #1c1f26 !important; 
+        color: #9ca3af !important; 
+        border: 1px solid #374151 !important; 
+        border-radius: 6px !important;
+        font-size: 10px !important;
+        padding: 6px 12px !important;
+        text-decoration: none !important;
+        transition: all 0.2s ease;
+    }
+    
+    /* Hover state */
+    .pagination-custom a:hover { 
+        background-color: #2d333d !important; 
+        color: white !important; 
+    }
+    
+    /* Active state (Halaman Sekarang) */
+    .pagination-custom span[aria-current="page"] span { 
+        background-color: #dc2626 !important; 
+        border-color: #dc2626 !important;
+        color: white !important; 
+    }
+</style>
 @endsection

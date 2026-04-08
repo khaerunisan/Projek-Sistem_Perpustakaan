@@ -19,12 +19,6 @@
             </div>
 
             {{-- Tombol Tambah Data - Diubah ke Link Halaman Baru --}}
-            <a href="{{ route('petugas.denda.create') }}" class="bg-[#b91c1c] text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-red-700 transition shadow-lg flex items-center gap-2 shrink-0">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"></path>
-                </svg>
-                Tambah Data
-            </a>
         </div>
 
         <div class="overflow-x-auto">
@@ -58,15 +52,6 @@
                             <div class="flex items-center justify-center gap-1.5">
                                 {{-- Detail - Diarahkan ke route denda.show --}}
                                 <a href="{{ route('petugas.denda.show', $item->id) }}" class="bg-[#b91c1c] text-[9px] text-white px-2.5 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">Detail</a>
-                                
-                                {{-- Edit - Diarahkan ke route denda.edit --}}
-                                <a href="{{ route('petugas.denda.edit', $item->id) }}" class="bg-[#10b981] text-[9px] text-white px-2.5 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">Edit</a>
-                                
-                                {{-- Delete --}}
-                                <form action="{{ route('petugas.peminjaman.destroy', $item->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus data denda?')">
-                                    @csrf @method('DELETE')
-                                    <button type="submit" class="bg-[#e67e22] text-[9px] text-white px-2.5 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">Delete</button>
-                                </form>
                             </div>
                         </td>
                     </tr>
@@ -80,11 +65,53 @@
         </div>
 
         {{-- BAGIAN PAGINATION --}}
-        <div class="mt-6">
-            {{ $denda->links() }}
-        </div>
+        @if($denda->hasPages())
+            <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 px-2 border-t border-gray-800 pt-6">
+                <div class="text-gray-500 text-[11px]">
+                    Menampilkan {{ $denda->firstItem() }} sampai {{ $denda->lastItem() }} dari {{ $denda->total() }} Data Denda
+                </div>
+                <div class="pagination-wrapper">
+                    {{ $denda->links() }}
+                </div>
+            </div>
+        @endif
     </div>
 </div>
+
+{{-- Styling Pagination Agar Sesuai Tema --}}
+<style>
+    /* Sembunyikan informasi teks bawaan Laravel agar tidak double */
+    .pagination-wrapper nav div:first-child { display: none !important; }
+    .pagination-wrapper nav div:last-child { display: flex !important; gap: 5px; }
+    
+    /* Style untuk tombol angka dan panah */
+    .pagination-wrapper span, .pagination-wrapper a { 
+        background-color: #1c2128 !important; 
+        color: #9ca3af !important; 
+        border: 1px solid #374151 !important;
+        border-radius: 4px !important;
+        padding: 5px 12px !important;
+        font-size: 11px !important;
+        text-decoration: none !important;
+    }
+    
+    /* Style untuk halaman aktif */
+    .pagination-wrapper .active span, 
+    .pagination-wrapper [aria-current="page"] span { 
+        background-color: #e06c1a !important; 
+        color: white !important; 
+        border-color: #e06c1a !important;
+    }
+    
+    /* Hover effect */
+    .pagination-wrapper a:hover { 
+        background-color: #2d333b !important; 
+        color: white !important; 
+    }
+
+    /* Ukuran icon panah */
+    .pagination-wrapper svg { width: 16px; height: 16px; vertical-align: middle; }
+</style>
 
 {{-- Script untuk Search Filter Otomatis --}}
 <script>
@@ -93,10 +120,8 @@
         let filter = input.value.toUpperCase();
         let table = document.getElementById("dendaTable");
         let tr = table.getElementsByTagName("tr");
-        let visibleCount = 0;
 
         for (let i = 1; i < tr.length; i++) {
-            // Abaikan baris "Tidak ada data" saat memfilter
             if (tr[i].id === "noDataRow") continue;
 
             let tdBuku = tr[i].getElementsByTagName("td")[1];
@@ -108,7 +133,6 @@
                 
                 if (textValueBuku.toUpperCase().indexOf(filter) > -1 || textValueNama.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
-                    visibleCount++;
                 } else {
                     tr[i].style.display = "none";
                 }

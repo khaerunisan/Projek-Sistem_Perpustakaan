@@ -76,11 +76,6 @@
                                 <a href="{{ route('petugas.pengembalian.detail', $item->id) }}" class="bg-[#b91c1c] text-[10px] text-white px-3 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">
                                     Detail
                                 </a>
-                                <a href="{{ route('petugas.pengembalian.edit', $item->id) }}" class="bg-[#10b981] text-[10px] text-white px-3 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">Edit</a>
-                                <form action="{{ route('petugas.pengembalian.destroy', $item->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin ingin menghapus riwayat ini?')">
-                                    @csrf @method('DELETE')
-                                    <button class="bg-[#e06c1a] text-[10px] text-white px-3 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">Delete</button>
-                                </form>
                             </div>
                         </td>
                     </tr>
@@ -93,10 +88,47 @@
             </table>
         </div>
 
-        {{-- Pagination --}}
-        <div class="mt-6 border-t border-gray-800 pt-4">
-            {{ $pengembalian->appends(request()->query())->links() }}
-        </div>
+        {{-- BAGIAN PAGINATION DENGAN INFO DATA --}}
+        @if($pengembalian->hasPages())
+            <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 px-2 border-t border-gray-800 pt-6">
+                <div class="text-gray-500 text-[11px]">
+                    Menampilkan {{ $pengembalian->firstItem() }} sampai {{ $pengembalian->lastItem() }} dari {{ $pengembalian->total() }} Riwayat
+                </div>
+                <div class="pagination-wrapper">
+                    {{ $pengembalian->appends(request()->query())->links() }}
+                </div>
+            </div>
+        @endif
     </div>
 </div>
+
+{{-- Styling Pagination Agar Sesuai Tema Gelap Dashboard --}}
+<style>
+    .pagination-wrapper nav div:first-child { display: none !important; }
+    .pagination-wrapper nav div:last-child { display: flex !important; gap: 5px !important; }
+    
+    .pagination-wrapper span, .pagination-wrapper a { 
+        background-color: #1c2128 !important; 
+        color: #9ca3af !important; 
+        border: 1px solid #374151 !important;
+        border-radius: 4px !important;
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+        text-decoration: none !important;
+    }
+    
+    .pagination-wrapper .active span, 
+    .pagination-wrapper [aria-current="page"] span { 
+        background-color: #e06c1a !important; 
+        color: white !important; 
+        border-color: #e06c1a !important;
+    }
+    
+    .pagination-wrapper a:hover { 
+        background-color: #2d333b !important; 
+        color: white !important; 
+    }
+    
+    .pagination-wrapper svg { width: 16px !important; height: 16px !important; }
+</style>
 @endsection

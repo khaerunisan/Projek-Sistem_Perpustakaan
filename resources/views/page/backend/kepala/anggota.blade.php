@@ -48,6 +48,74 @@
                 </tbody>
             </table>
         </div>
+
+        {{-- Pagination --}}
+        @if(method_exists($anggota, 'links') && $anggota->hasPages())
+            <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 px-2 border-t border-gray-800 pt-6">
+                <div class="text-gray-500 text-[11px]">
+                    Menampilkan {{ $anggota->firstItem() }} sampai {{ $anggota->lastItem() }} dari {{ $anggota->total() }} Anggota
+                </div>
+                <div class="pagination-wrapper">
+                    {{ $anggota->links() }}
+                </div>
+            </div>
+        @endif
     </div>
 </div>
+
+{{-- CSS Tambahan agar pagination rapi di tema gelap --}}
+<style>
+    /* Menghilangkan teks "Showing..." bawaan Laravel di dalam wrapper agar tidak double */
+    .pagination-wrapper nav div:first-child {
+        display: none !important;
+    }
+
+    /* Memaksa navigasi tombol muncul sebagai flex */
+    .pagination-wrapper nav div:last-child {
+        display: flex !important;
+        align-items: center;
+        gap: 4px;
+        box-shadow: none !important;
+    }
+
+    /* Ukuran Icon Panah agar tidak raksasa */
+    .pagination-wrapper nav svg { 
+        width: 16px !important; 
+        height: 16px !important; 
+        display: inline !important;
+    }
+
+    /* Styling tombol angka dan panah */
+    .pagination-wrapper span, .pagination-wrapper a { 
+        background-color: #2c3038 !important; 
+        color: #9ca3af !important; 
+        border: 1px solid #374151 !important; 
+        border-radius: 4px !important;
+        font-size: 10px !important;
+        padding: 5px 12px !important;
+        text-decoration: none !important;
+        transition: all 0.2s;
+    }
+
+    /* Hover effect */
+    .pagination-wrapper a:hover {
+        background-color: #3f444e !important;
+        color: white !important;
+    }
+
+    /* Warna saat tombol aktif (Halaman Sekarang) */
+    .pagination-wrapper span[aria-current="page"] span { 
+        background-color: #ef3d3d !important; 
+        border-color: #ef3d3d !important;
+        color: white !important; 
+    }
+    
+    /* Perbaikan khusus untuk mobile agar tidak bertumpuk */
+    @media (max-width: 768px) {
+        .pagination-wrapper nav div:last-child {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+</style>
 @endsection

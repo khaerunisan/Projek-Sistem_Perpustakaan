@@ -3,11 +3,46 @@
 @section('content')
 <div class="min-h-screen bg-[#000000] p-6 text-sm font-sans">
     
+    {{-- TAMBAHAN: FORM FILTER (No Print) --}}
+    <div class="mb-8 no-print bg-[#111419] p-6 rounded-xl border border-gray-800 shadow-xl">
+        <form action="{{ request()->url() }}" method="GET" class="flex flex-wrap items-end gap-4">
+            <div class="flex flex-col gap-2">
+                <label class="text-gray-500 text-[10px] uppercase tracking-widest font-black">Rentang Waktu</label>
+                <select name="filter" class="bg-[#000000] text-white border border-gray-700 rounded-lg px-4 py-2 text-xs focus:border-blue-500 outline-none transition w-48">
+                    <option value="all" {{ request('filter') == 'all' ? 'selected' : '' }}>Semua Data</option>
+                    <option value="today" {{ request('filter') == 'today' ? 'selected' : '' }}>Hari Ini</option>
+                    <option value="weekly" {{ request('filter') == 'weekly' ? 'selected' : '' }}>Minggu Ini</option>
+                    <option value="monthly" {{ request('filter') == 'monthly' ? 'selected' : '' }}>Bulan Ini</option>
+                    <option value="yearly" {{ request('filter') == 'yearly' ? 'selected' : '' }}>Tahun Ini</option>
+                </select>
+            </div>
+
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                Terapkan Filter
+            </button>
+
+            @if(request('filter'))
+                <a href="{{ request()->url() }}" class="text-gray-500 hover:text-white text-[10px] uppercase font-bold mb-3 ml-2 underline">Reset</a>
+            @endif
+        </form>
+    </div>
+
     {{-- Header & Tombol Cetak --}}
     <div class="flex justify-between items-center mb-8 no-print">
         <div>
             <h2 class="text-white font-bold text-2xl italic uppercase tracking-wider">Laporan Perpustakaan</h2>
-            <p class="text-gray-500 text-[10px] uppercase tracking-widest mt-1">Rekapitulasi Transaksi & Denda</p>
+            <p class="text-gray-500 text-[10px] uppercase tracking-widest mt-1">
+                Rekapitulasi: 
+                <span class="text-blue-500 font-black">
+                    @if(request('filter') == 'today') PER HARI (HARI INI)
+                    @elseif(request('filter') == 'weekly') PER MINGGU
+                    @elseif(request('filter') == 'monthly') PER BULAN
+                    @elseif(request('filter') == 'yearly') PER TAHUN
+                    @else SEMUA DATA
+                    @endif
+                </span>
+            </p>
         </div>
         
         <button onclick="window.print()" class="bg-white text-black px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-gray-200 transition shadow-lg flex items-center gap-2">

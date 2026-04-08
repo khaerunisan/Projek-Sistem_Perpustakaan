@@ -25,7 +25,8 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            // PERBAIKAN: Ubah '/' menjadi '/dashboard' agar tidak mampir ke landing page
+            return redirect()->intended('/dashboard');
         }
 
         throw ValidationException::withMessages([
@@ -39,6 +40,8 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        // TAMBAHAN: Setelah logout, lebih bagus balik ke landing page ('/') 
+        // daripada ke halaman login yang sepi.
+        return redirect('/')->with('success', 'Berhasil keluar');
     }
 }

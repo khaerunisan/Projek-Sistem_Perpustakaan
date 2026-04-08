@@ -150,7 +150,7 @@ class AdminDashboardController extends Controller
                                      ->orWhere('email', 'like', "%{$search}%");
                     })
                     ->latest()
-                    ->paginate(10);
+                    ->paginate(2); // Set 2 agar pagination muncul meski data sedikit (misal 5 data)
 
         return view('page.backend.kepala.anggota', compact('anggota'));
     }
@@ -177,7 +177,7 @@ class AdminDashboardController extends Controller
                 });
             })
             ->latest()
-            ->paginate(10);
+            ->paginate(2);
 
         return view('page.backend.kepala.peminjaman', compact('peminjaman'));
     }
@@ -202,7 +202,7 @@ class AdminDashboardController extends Controller
                 });
             })
             ->latest()
-            ->paginate(10);
+            ->paginate(2);
 
         return view('page.backend.kepala.pengembalian', compact('pengembalian'));
     }
@@ -228,37 +228,55 @@ class AdminDashboardController extends Controller
                 });
             })
             ->latest()
-            ->paginate(10);
+            ->paginate(2);
 
         return view('page.backend.kepala.denda', compact('denda'));
     }
 
     public function showDendaKepala($id)
     {
-        // Mencari data berdasarkan ID, pastikan hanya yang memiliki denda > 0
-        $denda = Peminjaman::with(['user', 'buku'])->where('denda', '>', 0)->findOrFail($id);
+        // Menggunakan nama variabel $peminjaman agar cocok dengan file Blade yang kamu copy
+        $peminjaman = Peminjaman::with(['user', 'buku'])
+            ->where('denda', '>', 0)
+            ->findOrFail($id);
         
-        return view('page.backend.kepala.show_denda', compact('denda'));
+        return view('page.backend.kepala.show_denda', compact('peminjaman'));
     }
 
-   
-    public function laporan()
+    // --- FUNGSI LAPORAN DENGAN FILTER ---
+    public function laporan(Request $request)
     {
-        // 1. Mengambil semua data peminjaman
-        $semuaPeminjaman = Peminjaman::with(['user', 'buku'])->latest()->get();
+        $filter = $request->query('filter'); 
+        $query = Peminjaman::with(['user', 'buku']);
 
-        // 2. Memisahkan data agar bisa tampil di kotak-kotak (card/tabel) terpisah
+        if ($filter == 'today') {
+            $query->whereDate('created_at', Carbon::today());
+        } 
+        elseif ($filter == 'weekly') {
+            // Mengambil awal minggu sampai akhir minggu dengan format waktu lengkap
+            $start = Carbon::now()->startOfWeek()->format('Y-m-d 00:00:00');
+            $end = Carbon::now()->endOfWeek()->format('Y-m-d 23:59:59');
+            $query->whereBetween('created_at', [$start, $end]);
+        } 
+        elseif ($filter == 'monthly') {
+            $query->whereMonth('created_at', Carbon::now()->month)
+                  ->whereYear('created_at', Carbon::now()->year);
+        } 
+        elseif ($filter == 'yearly') {
+            $query->whereYear('created_at', Carbon::now()->year);
+        }
+
+        $semuaPeminjaman = $query->latest()->get();
+
         $dataPeminjaman = $semuaPeminjaman->where('status', 'dipinjam');
         $dataPengembalian = $semuaPeminjaman->where('status', 'dikembalikan');
         $dataDenda = $semuaPeminjaman->where('denda', '>', 0);
 
-        // 3. Menghitung data statistik
         $totalPeminjaman = $semuaPeminjaman->count();
         $totalKembali = $dataPengembalian->count();
         $totalPinjamAktif = $dataPeminjaman->count();
         $totalDenda = $semuaPeminjaman->sum('denda');
 
-        // 4. Mengirim data ke view laporan
         return view('page.backend.kepala.laporan', compact(
             'semuaPeminjaman', 
             'dataPeminjaman', 

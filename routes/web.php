@@ -12,6 +12,16 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
+| Landing Page (Halaman Utama Publik)
+|--------------------------------------------------------------------------
+*/
+// TAMBAHAN: Route ini agar file welcome.blade.php bisa diakses tanpa login
+Route::get('/', function () {
+    return view('welcome');
+})->name('landing');
+
+/*
+|--------------------------------------------------------------------------
 | Guest Routes (Hanya bisa diakses jika BELUM login)
 |--------------------------------------------------------------------------
 */
@@ -35,7 +45,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     
     // Dashboard (Bisa diakses semua role yang sudah login)
-    Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+    // PERBAIKAN: URL diubah ke /dashboard agar tidak bentrok dengan landing page /
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     // Logout
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -81,38 +92,21 @@ Route::middleware('auth')->group(function () {
         Route::get('/petugas/peminjaman', [PetugasPeminjamanController::class, 'index'])->name('petugas.peminjaman');
         Route::get('/petugas/peminjaman/{id}', [PetugasPeminjamanController::class, 'show'])->name('petugas.peminjaman.show');
         
-        // --- TAMBAHAN BARU: EDIT & UPDATE DATA PEMINJAMAN ---
-        Route::get('/petugas/peminjaman/{id}/edit', [PetugasPeminjamanController::class, 'edit'])->name('petugas.peminjaman.edit');
-        Route::put('/petugas/peminjaman/{id}', [PetugasPeminjamanController::class, 'update'])->name('petugas.peminjaman.update');
-
         // FIX: Rute Simpan Data Peminjaman (Tanpa Route Create)
         Route::post('/petugas/peminjaman/store', [PetugasPeminjamanController::class, 'store'])->name('petugas.peminjaman.store');
-        
-        // FIX: Rute Hapus Peminjaman agar tidak RouteNotFound
-        Route::delete('/petugas/peminjaman/{id}', [PetugasPeminjamanController::class, 'destroy'])->name('petugas.peminjaman.destroy');
         
         // --- TAMBAHAN BARU: PROSES KEMBALIKAN BUKU ---
         Route::put('/petugas/peminjaman/kembali/{id}', [PetugasPeminjamanController::class, 'kembalikanBuku'])->name('petugas.peminjaman.kembali');
 
-        // TAMBAHAN ROUTE PENGEMBALIAN DAN HAPUS
+        // TAMBAHAN ROUTE PENGEMBALIAN
         Route::get('/petugas/pengembalian', [PetugasPeminjamanController::class, 'riwayatPengembalian'])->name('petugas.pengembalian');
         Route::get('/petugas/pengembalian/{id}', [PetugasPeminjamanController::class, 'detailPengembalian'])->name('petugas.pengembalian.detail');
-        
-        // --- TAMBAHAN BARU: EDIT & UPDATE PENGEMBALIAN ---
-        Route::get('/petugas/pengembalian/{id}/edit', [PetugasPeminjamanController::class, 'editPengembalian'])->name('petugas.pengembalian.edit');
-        Route::put('/petugas/pengembalian/{id}', [PetugasPeminjamanController::class, 'updatePengembalian'])->name('petugas.pengembalian.update');
-        
-        Route::delete('/petugas/pengembalian/{id}', [PetugasPeminjamanController::class, 'destroy'])->name('petugas.pengembalian.destroy');
         
         // TAMBAHAN ROUTE DENDA PETUGAS
         Route::get('/petugas/denda', [PetugasPeminjamanController::class, 'daftarDenda'])->name('petugas.denda');
 
-        // --- ROUTE MANAJEMEN DENDA (DISINKRONKAN AGAR TIDAK ERROR) ---
-        Route::get('/petugas/denda/create', [PetugasPeminjamanController::class, 'createDenda'])->name('petugas.denda.create');
-        Route::post('/petugas/denda/store', [PetugasPeminjamanController::class, 'storeDenda'])->name('petugas.denda.store');
+        // --- ROUTE MANAJEMEN DENDA (DETAIL SAJA) ---
         Route::get('/petugas/denda/show/{id}', [PetugasPeminjamanController::class, 'showDenda'])->name('petugas.denda.show');
-        Route::get('/petugas/denda/edit/{id}', [PetugasPeminjamanController::class, 'editDenda'])->name('petugas.denda.edit');
-        Route::put('/petugas/denda/update/{id}', [PetugasPeminjamanController::class, 'updateDenda'])->name('petugas.denda.update');
         
         // --- PERBAIKAN: Sekarang mengarah ke createPengembalian agar tidak Not Found ---
         Route::get('/petugas/pengembalian/create', [PetugasPeminjamanController::class, 'createPengembalian'])->name('petugas.pengembalian.create');

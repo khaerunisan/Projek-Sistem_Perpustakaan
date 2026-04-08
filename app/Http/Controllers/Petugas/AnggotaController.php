@@ -13,12 +13,13 @@ class AnggotaController extends Controller
         $search = $request->input('search');
 
         // PERBAIKAN: Mengambil data anggota (bukan petugas)
+        // Set paginate(2) agar dengan 5 data, tombol navigasi halaman muncul
         $petugas = User::where('role', 'anggota')
             ->when($search, function ($query, $search) {
                 return $query->where('name', 'like', "%{$search}%");
             })
             ->latest()
-            ->paginate(10);
+            ->paginate(2); 
 
         // SESUAIKAN JALUR: Karena folder anggota ada di dalam folder petugas
         return view('page.backend.petugas.anggota.index', compact('petugas'));

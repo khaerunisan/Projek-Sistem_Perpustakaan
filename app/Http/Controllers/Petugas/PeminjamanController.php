@@ -26,7 +26,7 @@ class PeminjamanController extends Controller
                             });
                         })
                         ->latest()
-                        ->paginate(10); // GANTI KE PAGINATE AGAR TIDAK ERROR firstItem
+                        ->paginate(2); // DISESUAIKAN AGAR PAGINATION MUNCUL
 
         // Ambil data untuk modal tambah (karena create dihapus)
         $users = User::where('role', 'anggota')->get();
@@ -79,7 +79,7 @@ class PeminjamanController extends Controller
                             });
                         })
                         ->latest()
-                        ->paginate(10); // GANTI KE PAGINATE AGAR TIDAK ERROR firstItem
+                        ->paginate(2); // DIUBAH KE 2 AGAR DENGAN 5 DATA PAGINATION MUNCUL
 
         return view('page.backend.petugas.peminjaman.pengembalian', compact('pengembalian'));
     }
@@ -119,6 +119,7 @@ class PeminjamanController extends Controller
         $search = $request->input('search');
 
         // Mengambil data peminjaman yang memiliki denda (lebih dari 0)
+        // PERBAIKAN: Menggunakan paginate(2) agar dengan 3 data, tombol navigasi muncul
         $denda = Peminjaman::with(['user', 'buku'])
                     ->where('denda', '>', 0)
                     ->when($search, function ($query, $search) {
@@ -129,7 +130,7 @@ class PeminjamanController extends Controller
                         });
                     })
                     ->latest()
-                    ->paginate(10); // GANTI KE PAGINATE
+                    ->paginate(2); 
 
         return view('page.backend.petugas.peminjaman.denda', compact('denda'));
     }

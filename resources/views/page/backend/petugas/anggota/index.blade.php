@@ -6,6 +6,14 @@
     {{-- Judul Halaman --}}
     <h2 class="text-white font-bold text-lg mb-6 ml-2">Data Anggota</h2>
 
+    {{-- Notifikasi Sukses --}}
+    @if(session('success'))
+        <div class="bg-emerald-500/10 border border-emerald-500 text-emerald-500 px-4 py-3 rounded-xl mb-6 flex justify-between items-center mx-2">
+            <span>{{ session('success') }}</span>
+            <button type="button" onclick="this.parentElement.remove()" class="text-emerald-500 font-bold">&times;</button>
+        </div>
+    @endif
+
     {{-- Container Utama --}}
     <div class="bg-[#111419] rounded-xl p-6 border border-gray-800 shadow-2xl">
         
@@ -98,12 +106,43 @@
             </table>
         </div>
 
-        {{-- Pagination (Menggunakan $petugas agar sinkron dengan Controller) --}}
-        @if(method_exists($petugas, 'links'))
-            <div class="mt-6">
-                {{ $petugas->appends(['search' => request('search')])->links() }}
+        {{-- Pagination (Custom Styled) --}}
+        @if(method_exists($petugas, 'links') && $petugas->hasPages())
+            <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 px-2 border-t border-gray-800 pt-6">
+                <div class="text-gray-500 text-[11px]">
+                    Menampilkan {{ $petugas->firstItem() ?? 0 }} sampai {{ $petugas->lastItem() ?? 0 }} dari {{ $petugas->total() }} Anggota
+                </div>
+                <div class="pagination-wrapper">
+                    {{ $petugas->appends(['search' => request('search')])->links() }}
+                </div>
             </div>
         @endif
     </div>
 </div>
+
+{{-- CSS Tambahan untuk Merapikan Tampilan Pagination Laravel (Tailwind) --}}
+<style>
+    .pagination-wrapper nav svg { width: 18px; height: 18px; }
+    .pagination-wrapper nav div:first-child { display: none; } /* Sembunyikan navigasi mobile bawaan */
+    .pagination-wrapper nav div:last-child { display: flex; justify-content: center; gap: 6px; }
+    .pagination-wrapper span, .pagination-wrapper a { 
+        background-color: #2c3038 !important; 
+        color: #9ca3af !important; 
+        border: 1px solid #374151 !important; 
+        border-radius: 6px !important;
+        font-size: 11px !important;
+        padding: 6px 14px !important;
+        transition: all 0.2s;
+    }
+    .pagination-wrapper .active span { 
+        background-color: #e06c1a !important; 
+        border-color: #e06c1a !important;
+        color: white !important; 
+    }
+    .pagination-wrapper a:hover { 
+        background-color: #3f444e !important; 
+        color: white !important; 
+        border-color: #4b5563 !important;
+    }
+</style>
 @endsection

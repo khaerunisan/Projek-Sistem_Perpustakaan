@@ -37,7 +37,7 @@
                 <tbody class="text-gray-300 text-xs">
                     @forelse($peminjaman as $index => $item)
                     <tr class="border-b border-gray-800/50 hover:bg-white/5 transition table-row-data">
-                        <td class="px-4 py-5 text-center text-gray-500">{{ $index + 1 }}</td>
+                        <td class="px-4 py-5 text-center text-gray-500">{{ ($peminjaman->currentPage() - 1) * $peminjaman->perPage() + $loop->iteration }}</td>
                         <td class="px-4 py-5 text-gray-400 font-medium nama-anggota">{{ $item->user->name ?? 'User Terhapus' }}</td>
                         <td class="px-4 py-5 text-gray-500 judul-buku">{{ $item->buku->judul ?? 'Buku Terhapus' }}</td>
                         <td class="px-4 py-5 text-gray-500 font-mono italic">#BK-{{ $item->buku_id }}</td>
@@ -48,12 +48,6 @@
                                <a href="{{ route('petugas.peminjaman.show', $item->id) }}" class="bg-[#b91c1c] text-[10px] text-white px-3 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition shadow-sm inline-block">
                                     Detail
                                </a>
-                                <button class="bg-[#10b981] text-[10px] text-white px-3 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">Edit</button>
-                                <form action="{{ route('petugas.peminjaman.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="bg-[#e06c1a] text-[10px] text-white px-3 py-1.5 rounded-sm font-bold uppercase hover:opacity-80 transition">Delete</button>
-                                </form>
                             </div>
                         </td>
                     </tr>
@@ -67,10 +61,22 @@
                 </tbody>
             </table>
         </div>
+
+        {{-- PAGINATION --}}
+        @if($peminjaman->hasPages())
+            <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 px-2 border-t border-gray-800 pt-6">
+                <div class="text-gray-500 text-[11px]">
+                    Menampilkan {{ $peminjaman->firstItem() }} - {{ $peminjaman->lastItem() }} dari {{ $peminjaman->total() }} Data
+                </div>
+                <div class="pagination-wrapper">
+                    {{ $peminjaman->links() }}
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 
-{{-- MODAL TAMBAH PEMINJAMAN (Tetap ada kodenya, dipicu lewat dashboard atau cara lain jika perlu) --}}
+{{-- MODAL TAMBAH PEMINJAMAN --}}
 <div id="modalTambah" class="fixed inset-0 z-50 hidden overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4">
         <div class="fixed inset-0 bg-black/80 transition-opacity" onclick="toggleModal('modalTambah')"></div>
@@ -112,6 +118,19 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* Styling Pagination Agar Matching Dark Mode */
+    .pagination-wrapper nav div:first-child { display: none; }
+    .pagination-wrapper nav div:last-child { display: flex; gap: 4px; }
+    .pagination-wrapper span, .pagination-wrapper a { 
+        background: #1c2128 !important; color: #9ca3af !important; border: 1px solid #374151 !important; 
+        border-radius: 4px !important; padding: 6px 12px !important; font-size: 11px !important;
+    }
+    .pagination-wrapper .active span { background: #e06c1a !important; color: white !important; border-color: #e06c1a !important; }
+    .pagination-wrapper a:hover { background: #2d333b !important; color: white !important; }
+    .pagination-wrapper svg { width: 16px; height: 16px; }
+</style>
 
 <script>
     function toggleModal(id) {

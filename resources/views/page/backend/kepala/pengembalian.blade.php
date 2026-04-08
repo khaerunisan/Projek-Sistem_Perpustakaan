@@ -59,7 +59,6 @@
                             {{ $item->denda > 0 ? 'Rp ' . number_format($item->denda, 0, ',', '.') : '-' }}
                         </td>
                         <td class="px-4 py-4 text-center">
-                            {{-- Link detail ini akan kita pakai di langkah selanjutnya --}}
                             <a href="{{ route('kepala.show_pengembalian', $item->id) }}" class="bg-[#b91c1c] text-[10px] text-white px-3 py-1 rounded font-bold hover:bg-red-700 transition uppercase shadow-md">
                                  Detail
                             </a>
@@ -75,10 +74,60 @@
         </div>
 
         {{-- Pagination --}}
-        <div class="mt-6">
-            {{ $pengembalian->links() }}
-        </div>
+        @if(method_exists($pengembalian, 'links') && $pengembalian->hasPages())
+            <div class="mt-8 px-2 border-t border-gray-800 pt-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="text-gray-500 text-[11px]">
+                        Menampilkan {{ $pengembalian->firstItem() }} sampai {{ $pengembalian->lastItem() }} dari {{ $pengembalian->total() }} Data
+                    </div>
+                    <div class="pagination-custom">
+                        {{ $pengembalian->links() }}
+                    </div>
+                </div>
+            </div>
+        @endif
 
     </div>
 </div>
+
+{{-- CSS KHUSUS PAGINATION --}}
+<style>
+    /* Sembunyikan teks bawaan Laravel */
+    .pagination-custom nav div:first-child { display: none !important; }
+    
+    /* Atur container tombol agar rapi */
+    .pagination-custom nav div:last-child { 
+        display: flex !important; 
+        gap: 5px; 
+        box-shadow: none !important; 
+    }
+    
+    /* Ukuran Icon Panah */
+    .pagination-custom nav svg { width: 14px !important; height: 14px !important; }
+    
+    /* Desain Tombol */
+    .pagination-custom span, .pagination-custom a { 
+        background-color: #1c1f26 !important; 
+        color: #9ca3af !important; 
+        border: 1px solid #374151 !important; 
+        border-radius: 6px !important;
+        font-size: 10px !important;
+        padding: 6px 12px !important;
+        text-decoration: none !important;
+        transition: all 0.2s ease;
+    }
+    
+    /* Hover tombol */
+    .pagination-custom a:hover { 
+        background-color: #2d333d !important; 
+        color: white !important; 
+    }
+    
+    /* Tombol Aktif */
+    .pagination-custom span[aria-current="page"] span { 
+        background-color: #b91c1c !important; 
+        border-color: #b91c1c !important;
+        color: white !important; 
+    }
+</style>
 @endsection

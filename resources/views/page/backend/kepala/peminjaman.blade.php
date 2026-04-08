@@ -40,7 +40,7 @@
                     @forelse($peminjaman as $index => $item)
                     <tr class="border-b border-gray-800 hover:bg-white/5 transition">
                         <td class="px-4 py-4 text-center border-r border-gray-800">
-                            {{ $loop->iteration }}
+                            {{ ($peminjaman->currentPage() - 1) * $peminjaman->perPage() + $loop->iteration }}
                         </td>
                         <td class="px-4 py-4 border-r border-gray-800 text-gray-200 uppercase">
                             {{ $item->user->name ?? '-' }}
@@ -49,15 +49,12 @@
                             {{ $item->buku->judul ?? '-' }}
                         </td>
                         <td class="px-4 py-4 border-r border-gray-800 font-mono text-red-500">
-                            {{-- Sesuai database: buku_id atau id_peminjaman --}}
                             {{ $item->buku->id_buku ?? $item->buku_id ?? '-' }}
                         </td>
                         <td class="px-4 py-4 border-r border-gray-800">
-                            {{-- DISESUAIKAN DENGAN GAMBAR DATABASE: tgl_pinjam --}}
                             {{ $item->tgl_pinjam ? \Carbon\Carbon::parse($item->tgl_pinjam)->format('d F Y') : '-' }}
                         </td>
                         <td class="px-4 py-4 border-r border-gray-800">
-                            {{-- DISESUAIKAN DENGAN GAMBAR DATABASE: tgl_kembali --}}
                             {{ $item->tgl_kembali ? \Carbon\Carbon::parse($item->tgl_kembali)->format('d F Y') : '-' }}
                         </td>
                         <td class="px-4 py-4 text-center">
@@ -75,12 +72,42 @@
             </table>
         </div>
 
-        @if(method_exists($peminjaman, 'links'))
-            <div class="mt-6">
-                {{ $peminjaman->links() }}
+        {{-- Pagination --}}
+        @if(method_exists($peminjaman, 'links') && $peminjaman->hasPages())
+            <div class="mt-8 px-2 border-t border-gray-800 pt-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="text-gray-500 text-[11px]">
+                        Menampilkan {{ $peminjaman->firstItem() }} sampai {{ $peminjaman->lastItem() }} dari {{ $peminjaman->total() }} Data
+                    </div>
+                    <div class="pagination-custom">
+                        {{ $peminjaman->links() }}
+                    </div>
+                </div>
             </div>
         @endif
 
     </div>
 </div>
+
+{{-- CSS KHUSUS PAGINATION --}}
+<style>
+    .pagination-custom nav div:first-child { display: none !important; }
+    .pagination-custom nav div:last-child { display: flex !important; gap: 5px; box-shadow: none !important; }
+    .pagination-custom nav svg { width: 14px !important; height: 14px !important; }
+    .pagination-custom span, .pagination-custom a { 
+        background-color: #1c1f26 !important; 
+        color: #9ca3af !important; 
+        border: 1px solid #374151 !important; 
+        border-radius: 6px !important;
+        font-size: 10px !important;
+        padding: 6px 12px !important;
+        text-decoration: none !important;
+    }
+    .pagination-custom a:hover { background-color: #2d333d !important; color: white !important; }
+    .pagination-custom span[aria-current="page"] span { 
+        background-color: #b91c1c !important; 
+        border-color: #b91c1c !important;
+        color: white !important; 
+    }
+</style>
 @endsection

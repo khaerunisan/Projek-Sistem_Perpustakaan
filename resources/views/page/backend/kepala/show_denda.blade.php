@@ -1,112 +1,82 @@
 @extends('layouts.backend.app')
 
 @section('content')
-<div class="min-h-screen bg-[#000000] p-6 text-sm font-sans text-gray-300">
+<div class="min-h-screen bg-[#000000] p-6 text-sm font-sans">
     
-    <div class="flex items-center mb-6 ml-2">
-        <div class="w-1 h-6 bg-red-600 mr-3"></div>
-        <h2 class="text-white font-bold text-lg uppercase italic tracking-wider">Detail Informasi Denda</h2>
+    <div class="flex items-center gap-2 mb-6">
+        <a href="{{ route('petugas.denda') }}" class="text-gray-500 hover:text-white transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+        </a>
+        <h2 class="text-white font-bold text-lg italic uppercase tracking-wider">Detail Rincian Denda</h2>
     </div>
 
-    <div class="bg-[#111419] rounded-xl p-8 border border-gray-800 shadow-2xl max-w-4xl mx-auto relative overflow-hidden">
-        {{-- Watermark Status --}}
-        <div class="absolute -right-8 -top-8 bg-red-600/10 text-red-600 px-16 py-8 rotate-12 font-black text-2xl border border-red-600/20 uppercase pointer-events-none">
-            Terlambat
-        </div>
-
-        <div class="flex flex-col md:flex-row gap-8">
-            
-            {{-- Foto Buku --}}
-            <div class="w-full md:w-1/3 text-center border-r border-gray-800 pr-8">
-                <div class="bg-[#2a2e35] rounded-lg p-3 shadow-inner inline-block w-full border border-gray-700">
-                    {{-- CEK DISINI: Menggunakan 'cover' sesuai screenshot database kamu --}}
-                    @if($denda->buku && $denda->buku->cover)
-                        @php
-                            $nama_file = str_replace('buku/', '', $denda->buku->cover);
-                        @endphp
-                        <img src="{{ asset('assetsbackend/img/' . $nama_file) }}" 
-                             class="w-full rounded shadow-md object-cover" 
-                             style="max-height: 400px;"
-                             onerror="this.onerror=null;this.src='{{ asset('assetsbackend/img/user.jpg') }}';">
-                    @else
-                        <div class="w-full h-64 bg-gray-900 flex items-center justify-center rounded border border-gray-700 italic text-gray-600 uppercase">No Image</div>
-                    @endif
+    <div class="bg-[#111419] rounded-xl p-8 border border-gray-800 shadow-2xl max-w-4xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {{-- Sisi Kiri: Gambar Buku & Informasi Peminjaman --}}
+            <div class="space-y-6">
+                {{-- Tambahan Gambar Buku --}}
+                <div class="flex gap-4 items-start">
+                    <div class="w-32 h-44 bg-[#1c2128] rounded-lg border border-gray-800 overflow-hidden shadow-lg flex-shrink-0">
+                        {{-- FIX: Menggunakan kolom 'cover' sesuai database kamu --}}
+                        @if($peminjaman->buku && $peminjaman->buku->cover)
+                            <img src="{{ asset('storage/' . $peminjaman->buku->cover) }}" class="w-full h-full object-cover" alt="Cover Buku">
+                        @else
+                            <div class="w-full h-full flex flex-col items-center justify-center text-gray-700 bg-[#161b22]">
+                                <svg class="w-8 h-8 mb-2 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                                <span class="text-[10px] uppercase font-bold tracking-tighter">No Image</span>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-gray-500 text-[10px] uppercase tracking-[2px] font-bold">ID Peminjaman</label>
+                            <p class="text-gray-200 font-mono italic text-base">#{{ $peminjaman->id_peminjaman ?? $peminjaman->id }}</p>
+                        </div>
+                        <div>
+                            <label class="text-gray-500 text-[10px] uppercase tracking-[2px] font-bold">Judul Buku</label>
+                            <p class="text-orange-500 font-medium text-base">{{ $peminjaman->buku->judul }}</p>
+                        </div>
+                        <div>
+                            <label class="text-gray-500 text-[10px] uppercase tracking-[2px] font-bold">Nama Anggota</label>
+                            <p class="text-gray-200 text-base">{{ $peminjaman->user->name }}</p>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-white font-bold text-lg mt-4 uppercase tracking-tighter italic">
-                    {{ $denda->buku->judul ?? '-' }}
-                </h3>
-                <span class="text-red-500 font-mono text-[10px]">#Buku-{{ $denda->buku->id_buku ?? $denda->buku_id }}</span>
             </div>
 
-            {{-- Form Detail Denda --}}
-            <div class="w-full md:w-2/3 space-y-4">
-                
+            {{-- Sisi Kanan: Informasi Waktu & Denda --}}
+            <div class="space-y-4">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="text-gray-500 text-[10px] uppercase font-bold tracking-widest block mb-1">ID Denda</label>
-                        <div class="w-full bg-[#1c1f26] text-white p-2.5 rounded border border-gray-800 font-mono">
-                            #DND-{{ $denda->id }}
-                        </div>
+                        <label class="text-gray-500 text-[10px] uppercase tracking-[2px] font-bold">Tgl Pinjam</label>
+                        <p class="text-gray-300">{{ \Carbon\Carbon::parse($peminjaman->tgl_pinjam)->format('d/m/Y') }}</p>
                     </div>
                     <div>
-                        <label class="text-gray-500 text-[10px] uppercase font-bold tracking-widest block mb-1">Nama Anggota</label>
-                        <div class="w-full bg-[#1c1f26] text-gray-200 p-2.5 rounded border border-gray-800 uppercase font-semibold">
-                            {{ $denda->user->name ?? '-' }}
-                        </div>
+                        <label class="text-gray-500 text-[10px] uppercase tracking-[2px] font-bold">Tgl Kembali</label>
+                        <p class="text-gray-300">{{ \Carbon\Carbon::parse($peminjaman->tgl_kembali)->format('d/m/Y') }}</p>
                     </div>
                 </div>
-
-                {{-- Bagian Tanggal --}}
-                <div class="grid grid-cols-2 gap-4 border-y border-gray-800/50 py-4">
-                    <div>
-                        <label class="text-gray-500 text-[10px] uppercase font-bold tracking-widest block mb-1">Seharusnya Kembali</label>
-                        <div class="text-white text-xs">
-                            {{ \Carbon\Carbon::parse($denda->tgl_kembali)->translatedFormat('d F Y') }}
-                        </div>
-                    </div>
-                    <div>
-                        <label class="text-gray-500 text-[10px] uppercase font-bold tracking-widest block mb-1">Dikembalikan Pada</label>
-                        <div class="text-red-500 text-xs font-bold">
-                            {{ \Carbon\Carbon::parse($denda->updated_at)->translatedFormat('d F Y') }}
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Perbaikan Hitungan Hari --}}
-                <div class="bg-red-600/5 border border-red-600/20 p-4 rounded-lg">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-gray-400 text-[10px] uppercase font-bold">Total Keterlambatan</span>
-                        <span class="text-white font-bold">
-                            @php
-                                $deadline = \Carbon\Carbon::parse($denda->tgl_kembali)->startOfDay();
-                                $realita = \Carbon\Carbon::parse($denda->updated_at)->startOfDay();
-                                $hari = $deadline->diffInDays($realita, false);
-                                $hasilHari = $hari > 0 ? $hari : 0;
-                            @endphp
-                            {{ $hasilHari }} Hari
-                        </span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-gray-400 text-[10px] uppercase font-bold text-[11px]">Total Tagihan Denda</span>
-                        <span class="text-red-500 font-black text-xl italic">
-                            Rp {{ number_format($denda->denda, 0, ',', '.') }}
-                        </span>
-                    </div>
-                </div>
-
                 <div>
-                    <label class="text-gray-500 text-[10px] uppercase font-bold tracking-widest block mb-1">Metode Pembayaran</label>
-                    <div class="w-full bg-[#1c1f26] text-green-500 p-2.5 rounded border border-gray-800 font-bold uppercase tracking-widest">
-                        {{ $denda->metode_pembayaran ?? 'CASH / TUNAI' }}
+                    <label class="text-gray-500 text-[10px] uppercase tracking-[2px] font-bold">Status Pengembalian</label>
+                    <div>
+                        <span class="bg-green-500/10 text-green-500 border border-green-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Selesai</span>
                     </div>
                 </div>
-
-                <div class="pt-6 flex justify-end">
-                    <a href="{{ route('kepala.denda') }}" class="bg-[#2a2e35] hover:bg-gray-700 text-white px-10 py-2 rounded font-bold text-xs transition uppercase tracking-widest border border-gray-700">
-                        Kembali
-                    </a>
+                <div class="bg-[#1c2128] p-4 rounded-lg border border-gray-800">
+                    <label class="text-gray-500 text-[10px] uppercase tracking-[2px] font-bold">Total Denda</label>
+                    <p class="text-[#b91c1c] text-2xl font-black">Rp. {{ number_format($peminjaman->denda, 0, ',', '.') }}</p>
                 </div>
             </div>
+        </div>
+
+        <div class="mt-10 pt-6 border-t border-gray-800 flex gap-3">
+            <a href="{{ route('petugas.denda') }}" class="bg-gray-800 text-gray-400 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-gray-700 transition flex items-center gap-2">
+                Kembali
+            </a>
         </div>
     </div>
 </div>
