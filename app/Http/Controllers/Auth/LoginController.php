@@ -25,8 +25,8 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // PERBAIKAN: Ubah '/' menjadi '/dashboard' agar tidak mampir ke landing page
-            return redirect()->intended('/dashboard');
+            // PERBAIKAN: Menggunakan route name 'dashboard' agar lebih aman dan langsung ke tujuan
+            return redirect()->intended(route('dashboard'));
         }
 
         throw ValidationException::withMessages([

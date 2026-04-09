@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth; // TAMBAHAN UNTUK CEK LOGIN
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminDashboardController;
@@ -9,14 +10,18 @@ use App\Http\Controllers\Petugas\AnggotaController as PetugasAnggotaController;
 use App\Http\Controllers\Petugas\PetugasController; // TAMBAHAN BARU
 use App\Http\Controllers\Petugas\PeminjamanController as PetugasPeminjamanController; // Tambahan Baru
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ProfileController; // TAMBAHAN UNTUK PROFILE
 
 /*
 |--------------------------------------------------------------------------
 | Landing Page (Halaman Utama Publik)
 |--------------------------------------------------------------------------
 */
-// TAMBAHAN: Route ini agar file welcome.blade.php bisa diakses tanpa login
+// PERBAIKAN: Jika sudah login, otomatis lempar ke dashboard
 Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('dashboard');
+    }
     return view('welcome');
 })->name('landing');
 
@@ -47,6 +52,9 @@ Route::middleware('auth')->group(function () {
     // Dashboard (Bisa diakses semua role yang sudah login)
     // PERBAIKAN: URL diubah ke /dashboard agar tidak bentrok dengan landing page /
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+    // --- ROUTE PROFILE (Bisa diakses semua role) ---
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 
     // Logout
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -119,9 +127,8 @@ Route::middleware('auth')->group(function () {
     |--------------------------------------------------------------------------
     */
     Route::middleware('role:kepala')->group(function () {
-        Route::get('/laporan', function() {
-            return "Halaman Laporan Cetak";
-        })->name('kepala.laporan');
+        // PERBAIKAN: Route Laporan tunggal yang memanggil fungsi laporan di controller
+        Route::get('/laporan', [AdminDashboardController::class, 'laporan'])->name('kepala.laporan');
 
         // PERBAIKAN: Sekarang memanggil PetugasController agar data tidak tertukar dengan anggota
         Route::get('/petugas-data', [PetugasController::class, 'index'])->name('kepala.petugas');
@@ -141,9 +148,9 @@ Route::middleware('auth')->group(function () {
         // Halaman daftar pengembalian kepala
         Route::get('/kepala/pengembalian', [AdminDashboardController::class, 'dataPengembalianKepala'])->name('kepala.pengembalian');
         Route::get('/kepala/pengembalian/detail/{id}', [AdminDashboardController::class, 'showPengembalianKepala'])->name('kepala.show_pengembalian');
+        
         Route::get('/kepala/denda', [AdminDashboardController::class, 'dataDendaKepala'])->name('kepala.denda');
         Route::get('/kepala/denda/detail/{id}', [AdminDashboardController::class, 'showDendaKepala'])->name('kepala.show_denda');
-        Route::get('/laporan', [AdminDashboardController::class, 'laporan'])->name('kepala.laporan');
     });
 
     /*

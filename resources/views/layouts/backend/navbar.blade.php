@@ -8,8 +8,9 @@
     
     <div class="navbar-nav align-items-center ms-auto">
         <div class="nav-item dropdown">
-            <a href="#" class="nav-link">
-                <img class="rounded-circle me-lg-2" src="{{ asset('assetsbackend/img/user.jpg') }}" alt="" style="width: 30px; height: 30px;">
+            {{-- PERBAIKAN: Mengarahkan link langsung ke route profile --}}
+            <a href="{{ route('profile.index') }}" class="nav-link">
+                <img class="rounded-circle me-lg-2" src="{{ asset('assetsbackend/img/user.jpg') }}" alt="" style="width: 30px; height: 30px; border: 1px solid #ff0000;">
                 <span class="d-none d-lg-inline-flex text-white">{{ Auth::user()->name }}</span>
             </a>
         </div>
