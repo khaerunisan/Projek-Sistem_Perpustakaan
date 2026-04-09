@@ -55,7 +55,8 @@
                         <div>
                             <label class="text-gray-500 text-[10px] uppercase tracking-widest font-black block mb-2">Nomor Telepon</label>
                             <div class="bg-[#000000] p-4 rounded-lg border border-gray-800 text-gray-200 font-medium">
-                                {{ $user->no_telp ?? 'Data belum diisi' }}
+                                {{-- DISESUAIKAN: Memanggil kolom 'telp' sesuai database --}}
+                                {{ $user->telp ?? 'Data belum diisi' }}
                             </div>
                         </div>
 
@@ -81,7 +82,7 @@
             <div class="p-6 bg-[#0c0f13] border-t border-gray-800 flex justify-between items-center">
                 <p class="text-gray-600 text-[10px] italic">*Data ini sesuai dengan informasi pendaftaran Anda.</p>
                 <div class="flex gap-4">
-                    {{-- PERBAIKAN: Tombol Kembali ke Dashboard --}}
+                    {{-- Tombol Kembali ke Dashboard --}}
                     <a href="{{ route('dashboard') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition shadow-lg no-underline inline-block">
                         Kembali
                     </a>
