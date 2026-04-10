@@ -66,12 +66,12 @@
             
             {{-- Mengubah text-gray-700 jadi text-gray-400 agar kelihatan di bg gelap --}}
             <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-[0.9] text-white">
-                PINJAM BUKU <br> <span class="text-gray-400 italic">TANPA ANTRI.</span>
+                PINJAM BUKU <br> <span class="text-gray-400 italic">TANPA ANTRI</span>
             </h1>
             
             {{-- Sedikit menerangkan p agar teks lebih tajam --}}
             <p class="text-gray-200 max-w-2xl text-sm md:text-lg leading-relaxed mb-12 font-medium backdrop-blur-[2px] rounded-xl p-2">
-                Akses koleksi digital, pantau riwayat peminjaman, dan bayar denda secara transparan dalam satu platform modern.
+                Akses koleksi digital, pantau riwayat peminjaman, dan bayar denda dalam satu platform modern.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-5">

@@ -53,26 +53,6 @@
         </button>
     </div>
 
-    {{-- Statistik Ringkas --}}
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div class="bg-[#111419] p-6 rounded-xl border border-gray-800 shadow-xl">
-            <label class="text-gray-500 text-[10px] uppercase tracking-[2px] font-bold">Total Transaksi</label>
-            <p class="text-white text-3xl font-black mt-2">{{ $totalPeminjaman }}</p>
-        </div>
-        <div class="bg-[#111419] p-6 rounded-xl border border-gray-800 shadow-xl">
-            <label class="text-gray-500 text-[10px] uppercase tracking-[2px] font-bold">Sedang Dipinjam</label>
-            <p class="text-blue-500 text-3xl font-black mt-2">{{ $totalPinjamAktif }}</p>
-        </div>
-        <div class="bg-[#111419] p-6 rounded-xl border border-gray-800 shadow-xl">
-            <label class="text-gray-500 text-[10px] uppercase tracking-[2px] font-bold">Buku Telah Kembali</label>
-            <p class="text-green-500 text-3xl font-black mt-2">{{ $totalKembali }}</p>
-        </div>
-        <div class="bg-[#111419] p-6 rounded-xl border border-gray-800 shadow-xl">
-            <label class="text-gray-500 text-[10px] uppercase tracking-[2px] font-bold">Total Pendapatan Denda</label>
-            <p class="text-red-500 text-3xl font-black mt-2">Rp {{ number_format($totalDenda, 0, ',', '.') }}</p>
-        </div>
-    </div>
-
     {{-- KOTAK 1: TABEL PEMINJAMAN --}}
     <div class="mb-10 bg-[#111419] rounded-xl border border-gray-800 overflow-hidden shadow-2xl printable-area">
         <div class="p-6 border-b border-gray-800 flex justify-between items-center bg-[#161b22]">

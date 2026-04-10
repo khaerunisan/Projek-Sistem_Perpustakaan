@@ -14,9 +14,13 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">
-                <i class="fa fa-tachometer-alt me-2"></i>Dashboard
-            </a>
+            {{-- MENU DASHBOARD - DISERAGAMKAN --}}
+            <li class="mb-2">
+                <a href="/" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('/') ? 'bg-red-600 text-white' : '' }}">
+                    <i class="fa fa-tachometer-alt w-5 text-center"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
 
             {{-- MENU KHUSUS PETUGAS --}}
             @if(Auth::user()->role == 'petugas')
@@ -100,7 +104,6 @@
                     </a>
                 </li>
 
-                {{-- MENU LAPORAN KHUSUS KEPALA --}}
                 <li class="mb-2">
                     <a href="{{ route('kepala.laporan') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('laporan*') ? 'bg-red-600 text-white' : '' }}">
                         <i class="fas fa-chart-line w-5 text-center"></i>
@@ -113,28 +116,28 @@
             @if(Auth::user()->role == 'anggota')
                 <li class="mb-2">
                     <a href="{{ route('anggota.daftarbuku') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('daftarbuku*') ? 'bg-red-600 text-white' : '' }}">
-                        <i class="fas fa-book w-5"></i>
+                        <i class="fas fa-book w-5 text-center"></i>
                         <span>Daftar Buku</span>
                     </a>
                 </li>
 
                 <li class="mb-2">
                     <a href="{{ route('peminjaman.index') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('peminjaman*') ? 'bg-red-600 text-white' : '' }}">
-                        <i class="fas fa-hand-holding-heart w-5"></i>
+                        <i class="fas fa-hand-holding-heart w-5 text-center"></i>
                         <span>Peminjaman</span>
                     </a>
                 </li>
 
                 <li class="mb-2">
                     <a href="{{ route('pengembalian.index') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('pengembalian*') ? 'bg-red-600 text-white' : '' }}">
-                        <i class="fas fa-undo w-5"></i>
+                        <i class="fas fa-undo w-5 text-center"></i>
                         <span>Pengembalian</span>
                     </a>
                 </li>
 
                 <li class="mb-2">
                     <a href="{{ route('denda.index') }}" class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-600 transition text-gray-300 hover:text-white {{ Request::is('denda*') ? 'bg-red-600 text-white' : '' }}">
-                        <i class="fas fa-money-bill-wave w-5"></i>
+                        <i class="fas fa-money-bill-wave w-5 text-center"></i>
                         <span>Denda</span>
                     </a>
                 </li>
@@ -144,7 +147,8 @@
             
             <a href="{{ route('logout') }}" class="nav-item nav-link text-danger flex items-center gap-3 p-3" 
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <i class="fas fa-sign-out-alt w-5 text-center"></i>Logout
+                <i class="fas fa-sign-out-alt w-5 text-center"></i>
+                <span>Logout</span>
             </a>
             
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

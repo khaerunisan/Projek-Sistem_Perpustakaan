@@ -18,7 +18,7 @@
 
                 <div class="bg-[#64748b] p-4 rounded-xl text-xs text-gray-900 font-medium space-y-2">
                     <p>Lama Pinjam: 7 Hari</p>
-                    <p>Denda Keterlambatan: Rp 10.000/hari</p>
+                    <p>Denda Keterlambatan: Rp 15.000/hari</p>
                 </div>
             </div>
 

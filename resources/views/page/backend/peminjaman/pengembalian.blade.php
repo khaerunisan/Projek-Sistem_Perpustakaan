@@ -61,11 +61,13 @@
                     @if($denda > 0)
                     <div>
                         <label class="text-gray-400 text-xs block mb-1 uppercase tracking-wider">Metode Pembayaran (Denda: Rp {{ number_format($denda, 0, ',', '.') }})</label>
-                        <select name="metode_pembayaran" class="w-full bg-[#0d1117] border border-gray-800 rounded-md p-2.5 text-gray-300 focus:ring-1 focus:ring-orange-500 focus:outline-none">
-                            <option value="Tunai">Tunai / Bayar di Pustakawan</option>
-                            <option value="Dana">Dana - 08123456789 (A/N Perpustakaan)</option>
-                        </select>
-                        <p class="text-[10px] text-gray-500 mt-1 italic">*Silakan pilih metode pembayaran untuk melunasi denda.</p>
+                        {{-- Bagian Dropdown dihapus, diganti dengan tampilan statis --}}
+                        <div class="w-full bg-[#0d1117] border border-orange-500/30 rounded-md p-2.5 text-orange-400 font-bold flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            Bayar Tunai di Petugas Perpustakaan
+                        </div>
+                        <input type="hidden" name="metode_pembayaran" value="Tunai">
+                        <p class="text-[10px] text-gray-500 mt-1 italic">*Silakan serahkan uang denda secara tunai ke petugas saat mengembalikan buku.</p>
                     </div>
                     @else
                     <div class="bg-green-900/20 border border-green-900/50 p-3 rounded-md">
