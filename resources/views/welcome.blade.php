@@ -71,20 +71,14 @@
             
             {{-- Sedikit menerangkan p agar teks lebih tajam --}}
             <p class="text-gray-200 max-w-2xl text-sm md:text-lg leading-relaxed mb-12 font-medium backdrop-blur-[2px] rounded-xl p-2">
-                Akses koleksi digital, pantau riwayat peminjaman, dan bayar denda dalam satu platform modern.
+                Akses koleksi digital, pantau riwayat peminjaman, bayar denda dalam satu platform modern dan Klik. Baca. Tahu.
             </p>
-
-            <div class="flex flex-col sm:flex-row gap-5">
-                <a href="{{ route('register') }}" class="bg-white text-black px-12 py-5 rounded-full font-black uppercase text-[12px] tracking-widest hover:scale-105 transition-all duration-300 shadow-2xl">
-                    Mulai Pinjam Sekarang
-                </a>
-            </div>
         </header>
 
         {{-- Menghapus border-t agar lebih bersih --}}
         <footer class="py-10 bg-black/50 backdrop-blur-sm text-center mt-auto">
             <p class="text-gray-400 text-[10px] uppercase tracking-[4px] font-bold">
-                &copy; 2026 Digital Library System &bull; Build with Laravel
+                &copy; 2026 Digital Library System &bull; PERSDI
             </p>
         </footer>
 

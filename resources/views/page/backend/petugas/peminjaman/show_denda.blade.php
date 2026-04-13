@@ -74,10 +74,6 @@
         </div>
 
         <div class="mt-10 pt-6 border-t border-gray-800 flex gap-3">
-            {{-- FIX: Route disesuaikan dengan petugas.denda.edit yang ada di web.php kamu --}}
-            <a href="{{ route('petugas.denda.edit', $peminjaman->id) }}" class="bg-[#10b981] text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-emerald-700 transition shadow-lg flex items-center gap-2">
-                Edit Nominal
-            </a>
             <a href="{{ route('petugas.denda') }}" class="bg-gray-800 text-gray-400 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-gray-700 transition flex items-center gap-2">
                 Kembali
             </a>

@@ -18,6 +18,13 @@
         </div>
     @endif
 
+    {{-- TAMBAHAN: Alert Error (Untuk notifikasi gagal hapus karena buku masih dipinjam) --}}
+    @if(session('error'))
+        <div class="mb-4 p-3 bg-red-500/20 border border-red-500 rounded-lg text-red-500 text-xs font-bold uppercase tracking-wider">
+            {{ session('error') }}
+        </div>
+    @endif
+
     {{-- Grid Layout --}}
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         @forelse($buku as $item)

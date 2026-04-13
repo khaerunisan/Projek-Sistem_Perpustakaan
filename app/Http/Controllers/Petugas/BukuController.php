@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Petugas;
 
 use App\Http\Controllers\Controller;
 use App\Models\Buku;
+use App\Models\Peminjaman; // Tambahan namespace untuk model Peminjaman
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -97,7 +98,7 @@ class BukuController extends Controller
             'penulis'      => 'required',
             'penerbit'     => 'required',
             'tahun_terbit' => 'required|numeric',
-            'stok'         => 'required|numeric',
+            'stok'         => 'required|numeric|min:0',
             'cover'        => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'deskripsi'    => 'nullable'
         ]);
@@ -132,8 +133,21 @@ class BukuController extends Controller
     public function destroy($id)
     {
         $buku = Buku::findOrFail($id);
+
+        // KEMUNGKINAN BESAR: Nama kolom kamu adalah 'tgl_kembali' bukan 'tgl_kembali_realitas'
+        // Kita cek apakah buku ini masih dipinjam (asumsi: statusnya belum dikembalikan)
+        $sedangDipinjam = Peminjaman::where('buku_id', $id)
+                            ->where(function($query) {
+                                // Cek kolom yang menandakan buku sudah balik. 
+                                // Ganti 'tgl_kembali' di bawah ini sesuai nama kolom di tabel peminjamanmu
+                                $query->whereNull('tgl_kembali'); 
+                            })
+                            ->exists();
+
+        if ($sedangDipinjam) {
+            return redirect()->route('petugas.buku')->with('error', 'Gagal menghapus! Buku ini masih dalam status dipinjam oleh anggota.');
+        }
         
-        // Hapus file cover dari storage sebelum hapus data
         if ($buku->cover && Storage::disk('public')->exists($buku->cover)) {
             Storage::disk('public')->delete($buku->cover);
         }

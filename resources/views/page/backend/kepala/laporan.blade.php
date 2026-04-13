@@ -17,7 +17,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition flex items-center gap-2">
+            <button type="submit" class="bg-orange-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition flex items-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
                 Terapkan Filter
             </button>
@@ -56,7 +56,7 @@
     {{-- KOTAK 1: TABEL PEMINJAMAN --}}
     <div class="mb-10 bg-[#111419] rounded-xl border border-gray-800 overflow-hidden shadow-2xl printable-area">
         <div class="p-6 border-b border-gray-800 flex justify-between items-center bg-[#161b22]">
-            <h3 class="text-blue-500 font-bold uppercase text-xs tracking-widest">Daftar Peminjaman (Belum Kembali)</h3>
+            <h3 class="text-black-500 font-bold uppercase text-xs tracking-widest">Daftar Peminjaman (Belum Kembali)</h3>
             <span class="text-gray-500 text-[10px] italic">Jumlah: {{ $dataPeminjaman->count() }}</span>
         </div>
         <div class="overflow-x-auto">
@@ -94,7 +94,7 @@
     {{-- KOTAK 2: TABEL PENGEMBALIAN --}}
     <div class="mb-10 bg-[#111419] rounded-xl border border-gray-800 overflow-hidden shadow-2xl printable-area">
         <div class="p-6 border-b border-gray-800 flex justify-between items-center bg-[#161b22]">
-            <h3 class="text-green-500 font-bold uppercase text-xs tracking-widest">Riwayat Pengembalian Buku</h3>
+            <h3 class="text-white-500 font-bold uppercase text-xs tracking-widest">Riwayat Pengembalian Buku</h3>
             <span class="text-gray-500 text-[10px] italic">Jumlah: {{ $dataPengembalian->count() }}</span>
         </div>
         <div class="overflow-x-auto">
@@ -126,7 +126,7 @@
     {{-- KOTAK 3: TABEL DENDA --}}
     <div class="bg-[#111419] rounded-xl border border-gray-800 overflow-hidden shadow-2xl printable-area">
         <div class="p-6 border-b border-gray-800 flex justify-between items-center bg-[#161b22]">
-            <h3 class="text-red-500 font-bold uppercase text-xs tracking-widest">Laporan Pendapatan Denda</h3>
+            <h3 class="text-white-500 font-bold uppercase text-xs tracking-widest">Laporan Pendapatan Denda</h3>
             <span class="text-gray-500 text-[10px] italic">Total: Rp {{ number_format($totalDenda, 0, ',', '.') }}</span>
         </div>
         <div class="overflow-x-auto">

@@ -11,12 +11,17 @@
             {{-- Foto Buku --}}
             <div class="w-full md:w-1/3 text-center border-r border-gray-800 pr-8">
                 <div class="bg-[#2a2e35] rounded-lg p-3 shadow-inner inline-block w-full">
-                    @if($peminjaman->buku && $peminjaman->buku->foto)
-                        {{-- Logika Fallback Gambar: Cek folder root storage, lalu folder buku --}}
-                        <img src="{{ asset('storage/' . $peminjaman->buku->foto) }}" 
+                    @php
+                        // Cek apakah menggunakan kolom 'foto' atau 'cover'
+                        $gambarBuku = $peminjaman->buku->foto ?? $peminjaman->buku->cover ?? null;
+                    @endphp
+
+                    @if($peminjaman->buku && $gambarBuku)
+                        {{-- Logika Fallback Gambar: Mencoba folder root storage, lalu folder buku --}}
+                        <img src="{{ asset('storage/' . $gambarBuku) }}" 
                              class="w-full rounded shadow-md object-cover" 
                              style="max-height: 400px;"
-                             onerror="this.onerror=null;this.src='{{ asset('storage/buku/' . $peminjaman->buku->foto) }}';">
+                             onerror="this.onerror=null;this.src='{{ asset('storage/buku/' . $gambarBuku) }}';">
                     @else
                         <div class="w-full h-64 bg-gray-900 flex items-center justify-center rounded border border-gray-700 italic text-gray-600">No Image</div>
                     @endif
