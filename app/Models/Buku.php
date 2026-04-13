@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes; // Tambahan untuk Soft Deletes
 
 class Buku extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes; // Tambahan SoftDeletes di sini
 
     // Kolom yang boleh diisi secara massal
     protected $fillable = [

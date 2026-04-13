@@ -134,24 +134,23 @@ class BukuController extends Controller
     {
         $buku = Buku::findOrFail($id);
 
-        // KEMUNGKINAN BESAR: Nama kolom kamu adalah 'tgl_kembali' bukan 'tgl_kembali_realitas'
-        // Kita cek apakah buku ini masih dipinjam (asumsi: statusnya belum dikembalikan)
+        // CEK STATUS: Kita cek apakah buku ini masih berstatus 'Dipinjam'
+        // Ini lebih akurat untuk memastikan riwayat tidak rusak
         $sedangDipinjam = Peminjaman::where('buku_id', $id)
-                            ->where(function($query) {
-                                // Cek kolom yang menandakan buku sudah balik. 
-                                // Ganti 'tgl_kembali' di bawah ini sesuai nama kolom di tabel peminjamanmu
-                                $query->whereNull('tgl_kembali'); 
-                            })
+                            ->where('status', 'Dipinjam') 
                             ->exists();
 
         if ($sedangDipinjam) {
             return redirect()->route('petugas.buku')->with('error', 'Gagal menghapus! Buku ini masih dalam status dipinjam oleh anggota.');
         }
         
-        if ($buku->cover && Storage::disk('public')->exists($buku->cover)) {
-            Storage::disk('public')->delete($buku->cover);
-        }
+        // Catatan: Storage::delete tidak dijalankan agar cover tetap tampil di riwayat lama
+        // Jika kamu ingin tetap hapus file fisiknya, hapus tanda komentar di bawah ini:
+        // if ($buku->cover && Storage::disk('public')->exists($buku->cover)) {
+        //     Storage::disk('public')->delete($buku->cover);
+        // }
 
+        // Menjalankan Soft Delete
         $buku->delete();
 
         return redirect()->route('petugas.buku')->with('success', 'Buku berhasil dihapus!');

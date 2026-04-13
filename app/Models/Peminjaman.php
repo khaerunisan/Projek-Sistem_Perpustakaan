@@ -40,9 +40,10 @@ class Peminjaman extends Model
 
     /**
      * Relasi ke model Buku (Buku apa yang dipinjam)
+     * Ditambahkan withTrashed() agar riwayat tetap tampil meski buku sudah dihapus (Soft Delete)
      */
     public function buku()
     {
-        return $this->belongsTo(Buku::class, 'buku_id');
+        return $this->belongsTo(Buku::class, 'buku_id')->withTrashed();
     }
 }
