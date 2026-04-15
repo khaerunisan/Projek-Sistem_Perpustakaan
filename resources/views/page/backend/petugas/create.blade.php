@@ -12,6 +12,12 @@
         {{-- Menampilkan Error agar kamu tahu kalau ada yang kurang --}}
         @if ($errors->any())
             <div class="mb-5 p-4 bg-red-900/20 border border-red-900/50 rounded-lg">
+                <div class="flex items-center gap-2 mb-2">
+                    <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0114 0z"></path>
+                    </svg>
+                    <span class="text-red-500 font-bold text-xs uppercase tracking-widest">Terjadi Kesalahan</span>
+                </div>
                 <ul class="list-disc list-inside text-red-500 text-xs">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -28,26 +34,26 @@
                 <div>
                     <label class="block mb-1.5 text-xs text-gray-500 font-medium uppercase tracking-wider">Judul Buku</label>
                     <input type="text" name="judul" value="{{ old('judul') }}" placeholder="Contoh: Diary of Canva" 
-                           class="w-full bg-[#111111] border border-gray-800 rounded-lg p-3 text-white placeholder-gray-700 focus:ring-1 focus:ring-cyan-500 outline-none transition" required>
+                           class="w-full bg-[#111111] border @error('judul') border-red-500 @else border-gray-800 @enderror rounded-lg p-3 text-white placeholder-gray-700 focus:ring-1 focus:ring-cyan-500 outline-none transition" required>
                 </div>
 
                 {{-- PERBAIKAN: name diganti jadi 'penulis' agar sesuai Controller --}}
                 <div>
                     <label class="block mb-1.5 text-xs text-gray-500 font-medium uppercase tracking-wider">Penulis</label>
                     <input type="text" name="penulis" value="{{ old('penulis') }}" placeholder="Nama penulis..." 
-                           class="w-full bg-[#111111] border border-gray-800 rounded-lg p-3 text-white placeholder-gray-700 focus:ring-1 focus:ring-cyan-500 outline-none transition" required>
+                           class="w-full bg-[#111111] border @error('penulis') border-red-500 @else border-gray-800 @enderror rounded-lg p-3 text-white placeholder-gray-700 focus:ring-1 focus:ring-cyan-500 outline-none transition" required>
                 </div>
 
                 <div>
                     <label class="block mb-1.5 text-xs text-gray-500 font-medium uppercase tracking-wider">Penerbit</label>
                     <input type="text" name="penerbit" value="{{ old('penerbit') }}" placeholder="Nama penerbit..." 
-                           class="w-full bg-[#111111] border border-gray-800 rounded-lg p-3 text-white placeholder-gray-700 focus:ring-1 focus:ring-cyan-500 outline-none transition" required>
+                           class="w-full bg-[#111111] border @error('penerbit') border-red-500 @else border-gray-800 @enderror rounded-lg p-3 text-white placeholder-gray-700 focus:ring-1 focus:ring-cyan-500 outline-none transition" required>
                 </div>
 
                 {{-- PERBAIKAN: name diganti jadi 'tahun_terbit' agar sesuai Controller --}}
                 <div>
                     <label class="block mb-1.5 text-xs text-gray-500 font-medium uppercase tracking-wider">Tahun Terbit</label>
-                    <select name="tahun_terbit" class="w-full bg-[#111111] border border-gray-800 rounded-lg p-3 text-white focus:ring-1 focus:ring-cyan-500 outline-none transition appearance-none">
+                    <select name="tahun_terbit" class="w-full bg-[#111111] border @error('tahun_terbit') border-red-500 @else border-gray-800 @enderror rounded-lg p-3 text-white focus:ring-1 focus:ring-cyan-500 outline-none transition appearance-none">
                         @for($year = date('Y'); $year >= 1990; $year--)
                             <option value="{{ $year }}" {{ old('tahun_terbit') == $year ? 'selected' : '' }}>{{ $year }}</option>
                         @endfor
@@ -57,12 +63,12 @@
                 <div>
                     <label class="block mb-1.5 text-xs text-gray-500 font-medium uppercase tracking-wider">Jumlah Stok</label>
                     <input type="number" name="stok" value="{{ old('stok', 1) }}" 
-                           class="w-full bg-[#111111] border border-gray-800 rounded-lg p-3 text-white focus:ring-1 focus:ring-cyan-500 outline-none transition" required>
+                           class="w-full bg-[#111111] border @error('stok') border-red-500 @else border-gray-800 @enderror rounded-lg p-3 text-white focus:ring-1 focus:ring-cyan-500 outline-none transition" required>
                 </div>
 
                 <div>
                     <label class="block mb-1.5 text-xs text-gray-500 font-medium uppercase tracking-wider">Upload Sampul</label>
-                    <div class="flex items-center gap-4 bg-[#111111] border border-gray-800 rounded-lg p-2.5">
+                    <div class="flex items-center gap-4 bg-[#111111] border @error('cover') border-red-500 @else border-gray-800 @enderror rounded-lg p-2.5">
                         <label class="cursor-pointer bg-[#3a3a3c] text-white px-4 py-1.5 rounded text-[10px] font-bold uppercase hover:bg-gray-600 transition">
                             Pilih File
                             <input type="file" name="cover" id="cover" class="hidden" accept="image/*" required>
@@ -76,7 +82,7 @@
             <div class="mt-5">
                 <label class="block mb-1.5 text-xs text-gray-500 font-medium uppercase tracking-wider">Deskripsi Buku</label>
                 <textarea name="deskripsi" rows="4" placeholder="Masukkan sinopsis buku..." 
-                          class="w-full bg-[#111111] border border-gray-800 rounded-lg p-3 text-white placeholder-gray-700 focus:ring-1 focus:ring-cyan-500 outline-none transition resize-none">{{ old('deskripsi') }}</textarea>
+                          class="w-full bg-[#111111] border @error('deskripsi') border-red-500 @else border-gray-800 @enderror rounded-lg p-3 text-white placeholder-gray-700 focus:ring-1 focus:ring-cyan-500 outline-none transition resize-none">{{ old('deskripsi') }}</textarea>
             </div>
 
             <div class="flex justify-end gap-3 mt-8 pt-6 border-t border-gray-800">

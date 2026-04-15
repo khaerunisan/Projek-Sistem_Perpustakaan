@@ -10,14 +10,16 @@ use Illuminate\Http\Request; // Tambahkan ini untuk handle search
 
 class PeminjamanController extends Controller
 {
-    // Menampilkan buku yang SEDANG dipinjam
+    // Menampilkan SEMUA riwayat peminjaman (Baik yang dipinjam maupun sudah kembali)
     public function index(Request $request)
     {
         $search = $request->input('search');
 
-        // Pastikan relasi 'user' dan 'buku' ada di Model Peminjaman
-        $peminjaman = Peminjaman::with(['user', 'buku'])
-                        ->where('status', 'dipinjam')
+        // PERBAIKAN: Menghapus 'where status dipinjam' agar semua riwayat muncul
+        // Ditambahkan withTrashed() agar buku yang dihapus petugas tetap tampil di riwayat
+        $peminjaman = Peminjaman::with(['user', 'buku' => function($query) {
+                            $query->withTrashed();
+                        }])
                         ->when($search, function ($query, $search) {
                             return $query->whereHas('user', function($q) use ($search) {
                                 $q->where('name', 'like', "%{$search}%");
@@ -26,7 +28,7 @@ class PeminjamanController extends Controller
                             });
                         })
                         ->latest()
-                        ->paginate(2); // DISESUAIKAN AGAR PAGINATION MUNCUL
+                        ->paginate(10); // Disarankan angka lebih besar agar tidak terlalu sering ganti halaman
 
         // Ambil data untuk modal tambah (karena create dihapus)
         $users = User::where('role', 'anggota')->get();
@@ -64,12 +66,15 @@ class PeminjamanController extends Controller
         return redirect()->route('petugas.peminjaman')->with('success', 'Data peminjaman berhasil disimpan!');
     }
 
-    // Menampilkan buku yang SUDAH dikembalikan
+    // Menampilkan buku yang SUDAH dikembalikan (Riwayat Pengembalian)
     public function riwayatPengembalian(Request $request)
     {
         $search = $request->input('search');
 
-        $pengembalian = Peminjaman::with(['user', 'buku'])
+        // Tambahkan withTrashed agar data buku tetap aman
+        $pengembalian = Peminjaman::with(['user', 'buku' => function($query) {
+                            $query->withTrashed();
+                        }])
                         ->where('status', 'dikembalikan')
                         ->when($search, function ($query, $search) {
                             return $query->whereHas('user', function($q) use ($search) {
@@ -79,7 +84,7 @@ class PeminjamanController extends Controller
                             });
                         })
                         ->latest()
-                        ->paginate(2); // DIUBAH KE 2 AGAR DENGAN 5 DATA PAGINATION MUNCUL
+                        ->paginate(10); 
 
         return view('page.backend.petugas.peminjaman.pengembalian', compact('pengembalian'));
     }
@@ -87,14 +92,18 @@ class PeminjamanController extends Controller
     // Detail untuk yang MASIH dipinjam
     public function show($id)
     {
-        $peminjaman = Peminjaman::with(['user', 'buku'])->findOrFail($id);
+        $peminjaman = Peminjaman::with(['user', 'buku' => function($query) {
+            $query->withTrashed();
+        }])->findOrFail($id);
         return view('page.backend.petugas.peminjaman.show', compact('peminjaman'));
     }
 
     // Detail untuk yang SUDAH kembali (Halaman Pengembalian)
     public function detailPengembalian($id)
     {
-        $peminjaman = Peminjaman::with(['user', 'buku'])->findOrFail($id);
+        $peminjaman = Peminjaman::with(['user', 'buku' => function($query) {
+            $query->withTrashed();
+        }])->findOrFail($id);
         return view('page.backend.petugas.peminjaman.detail_pengembalian', compact('peminjaman'));
     }
 
@@ -119,8 +128,9 @@ class PeminjamanController extends Controller
         $search = $request->input('search');
 
         // Mengambil data peminjaman yang memiliki denda (lebih dari 0)
-        // PERBAIKAN: Menggunakan paginate(2) agar dengan 3 data, tombol navigasi muncul
-        $denda = Peminjaman::with(['user', 'buku'])
+        $denda = Peminjaman::with(['user', 'buku' => function($query) {
+                        $query->withTrashed();
+                    }])
                     ->where('denda', '>', 0)
                     ->when($search, function ($query, $search) {
                         return $query->whereHas('user', function($q) use ($search) {
@@ -130,7 +140,7 @@ class PeminjamanController extends Controller
                         });
                     })
                     ->latest()
-                    ->paginate(2); 
+                    ->paginate(10); 
 
         return view('page.backend.petugas.peminjaman.denda', compact('denda'));
     }
@@ -160,7 +170,7 @@ class PeminjamanController extends Controller
     public function storeDenda(Request $request)
     {
         $request->validate([
-            'peminjaman_id' => 'required|exists:peminjaman,id',
+            'peminjaman_id' => 'required|exists:peminjamans,id', // Diperbaiki nama tabelnya ke peminjamans
             'tgl_kembali' => 'required|date',
             'denda' => 'required|numeric',
         ]);
@@ -185,7 +195,9 @@ class PeminjamanController extends Controller
     // --- TAMBAHAN BARU: EDIT PENGEMBALIAN ---
     public function editPengembalian($id)
     {
-        $peminjaman = Peminjaman::with(['user', 'buku'])->findOrFail($id);
+        $peminjaman = Peminjaman::with(['user', 'buku' => function($query) {
+            $query->withTrashed();
+        }])->findOrFail($id);
         return view('page.backend.petugas.peminjaman.edit_pengembalian', compact('peminjaman'));
     }
 
@@ -290,7 +302,7 @@ class PeminjamanController extends Controller
     public function storePengembalian(Request $request)
     {
         $request->validate([
-            'peminjaman_id' => 'required|exists:peminjaman,id',
+            'peminjaman_id' => 'required|exists:peminjamans,id',
             'tgl_kembali' => 'required|date',
             'denda' => 'required|numeric',
         ]);
@@ -321,14 +333,18 @@ class PeminjamanController extends Controller
     // --- TAMBAHAN BARU: DETAIL KHUSUS DENDA ---
     public function showDenda($id)
     {
-        $peminjaman = Peminjaman::with(['user', 'buku'])->findOrFail($id);
+        $peminjaman = Peminjaman::with(['user', 'buku' => function($query) {
+            $query->withTrashed();
+        }])->findOrFail($id);
         return view('page.backend.petugas.peminjaman.show_denda', compact('peminjaman'));
     }
 
     // --- TAMBAHAN BARU: EDIT KHUSUS DENDA ---
     public function editDenda($id)
     {
-        $peminjaman = Peminjaman::with(['user', 'buku'])->findOrFail($id);
+        $peminjaman = Peminjaman::with(['user', 'buku' => function($query) {
+            $query->withTrashed();
+        }])->findOrFail($id);
         return view('page.backend.petugas.peminjaman.edit_denda', compact('peminjaman'));
     }
 

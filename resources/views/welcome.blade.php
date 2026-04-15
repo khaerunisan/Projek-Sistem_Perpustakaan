@@ -75,13 +75,6 @@
             </p>
         </header>
 
-        {{-- Menghapus border-t agar lebih bersih --}}
-        <footer class="py-10 bg-black/50 backdrop-blur-sm text-center mt-auto">
-            <p class="text-gray-400 text-[10px] uppercase tracking-[4px] font-bold">
-                &copy; 2026 Digital Library System &bull; PERSDI
-            </p>
-        </footer>
-
     </div> {{-- Penutup Konten Relative Z-10 --}}
 
 </body>

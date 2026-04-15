@@ -33,15 +33,18 @@ class BukuController extends Controller
 
     public function store(Request $request)
     {
-        // 1. Validasi (Nama field disesuaikan dengan atribut 'name' di Form HTML kamu)
+        // 1. Validasi - Ditambahkan UNIQUE pada judul agar tidak ada buku kembar
         $request->validate([
-            'judul'        => 'required',
+            'judul'        => 'required|unique:bukus,judul', // Judul tidak boleh sama dengan yang sudah ada
             'penulis'      => 'required',
             'penerbit'     => 'required',
             'tahun_terbit' => 'required|numeric',
             'stok'         => 'required|numeric',
             'cover'        => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'deskripsi'    => 'nullable'
+        ], [
+            // Pesan error custom jika judul duplikat
+            'judul.unique' => 'Judul buku ini sudah ada! Silakan update stok di menu edit jika ingin menambah jumlah buku yang sama.',
         ]);
 
         // 2. Olah data manual agar masuk ke kolom database yang benar
@@ -92,9 +95,9 @@ class BukuController extends Controller
     {
         $buku = Buku::findOrFail($id);
 
-        // 1. Validasi input
+        // 1. Validasi input - Gunakan unique kecuali untuk ID buku ini sendiri saat update
         $request->validate([
-            'judul'        => 'required',
+            'judul'        => 'required|unique:bukus,judul,' . $id,
             'penulis'      => 'required',
             'penerbit'     => 'required',
             'tahun_terbit' => 'required|numeric',

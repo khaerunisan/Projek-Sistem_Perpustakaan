@@ -3,7 +3,24 @@
 @section('content')
 <div class="min-h-screen bg-[#000000] p-6 text-sm font-sans">
     
-    <h2 class="text-white font-bold text-lg mb-6 ml-2 italic uppercase tracking-wider">Riwayat Peminjaman</h2>
+    <div class="flex justify-between items-center mb-6 px-2">
+        <h2 class="text-white font-bold text-lg italic uppercase tracking-wider">Riwayat Peminjaman</h2>
+    </div>
+
+    {{-- ALERT SUCCESS / ERROR (Untuk Pesan Maksimal Pinjam) --}}
+    @if (session('success'))
+        <div class="mb-5 bg-green-500/10 border border-green-500/50 text-green-500 px-4 py-3 rounded-xl flex items-center gap-3">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span class="text-[10px] uppercase font-bold tracking-widest">{{ session('success') }}</span>
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="mb-5 bg-red-500/10 border border-red-500/50 text-red-500 px-4 py-3 rounded-xl flex items-center gap-3 animate-pulse">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            <span class="text-[10px] uppercase font-bold tracking-widest">{{ session('error') }}</span>
+        </div>
+    @endif
 
     <div class="bg-[#111419] rounded-xl p-6 border border-gray-800 shadow-2xl">
         
@@ -77,12 +94,23 @@
 </div>
 
 {{-- MODAL TAMBAH PEMINJAMAN --}}
-<div id="modalTambah" class="fixed inset-0 z-50 hidden overflow-y-auto">
+<div id="modalTambah" class="fixed inset-0 z-50 {{ $errors->any() ? '' : 'hidden' }} overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4">
         <div class="fixed inset-0 bg-black/80 transition-opacity" onclick="toggleModal('modalTambah')"></div>
         <div class="bg-[#111419] border border-gray-800 w-full max-w-md p-8 rounded-2xl relative z-10 shadow-2xl">
             <h3 class="text-white font-bold italic uppercase tracking-wider mb-6 text-center">Form Peminjaman Baru</h3>
             
+            {{-- Error Validasi di Dalam Modal --}}
+            @if ($errors->any())
+                <div class="mb-4 p-3 bg-red-500/10 border border-red-500/50 rounded-lg">
+                    <ul class="text-red-500 text-[10px] uppercase font-bold tracking-tight list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="{{ route('petugas.peminjaman.store') }}" method="POST">
                 @csrf
                 <div class="mb-5">
@@ -90,7 +118,7 @@
                     <select name="user_id" required class="w-full bg-[#1c2128] text-gray-300 text-xs rounded-lg py-2.5 px-4 border border-gray-800 outline-none focus:ring-1 focus:ring-orange-500 transition">
                         <option value="" disabled selected>Pilih Anggota...</option>
                         @foreach($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -100,14 +128,14 @@
                     <select name="buku_id" required class="w-full bg-[#1c2128] text-gray-300 text-xs rounded-lg py-2.5 px-4 border border-gray-800 outline-none focus:ring-1 focus:ring-orange-500 transition">
                         <option value="" disabled selected>Pilih Buku...</option>
                         @foreach($buku as $b)
-                            <option value="{{ $b->id }}">{{ $b->judul }} (Stok: {{ $b->stok }})</option>
+                            <option value="{{ $b->id }}" {{ old('buku_id') == $b->id ? 'selected' : '' }}>{{ $b->judul }} (Stok: {{ $b->stok }})</option>
                         @endforeach
                     </select>
                 </div>
 
                 <div class="mb-8">
                     <label class="block text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-2">Tanggal Pinjam</label>
-                    <input type="date" name="tgl_pinjam" value="{{ date('Y-m-d') }}" required class="w-full bg-[#1c2128] text-gray-300 text-xs rounded-lg py-2.5 px-4 border border-gray-800 outline-none focus:ring-1 focus:ring-orange-500 transition">
+                    <input type="date" name="tgl_pinjam" value="{{ old('tgl_pinjam', date('Y-m-d')) }}" required class="w-full bg-[#1c2128] text-gray-300 text-xs rounded-lg py-2.5 px-4 border border-gray-800 outline-none focus:ring-1 focus:ring-orange-500 transition">
                 </div>
 
                 <div class="flex gap-3">
