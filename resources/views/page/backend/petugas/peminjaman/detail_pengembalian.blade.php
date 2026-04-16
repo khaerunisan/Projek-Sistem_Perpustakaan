@@ -53,7 +53,7 @@
                     <label class="text-gray-500 text-[10px] mb-2 block uppercase font-bold tracking-widest">Metode Pembayaran</label>
                     <div class="flex gap-4">
                         <div class="bg-black text-gray-300 py-3 px-8 rounded-lg border border-gray-800 flex-1 text-center font-bold italic shadow-inner">
-                            {{ $peminjaman->metode_pembayaran ?? 'Dana' }}
+                            Bayar ke Petugas di Perpustakaan
                         </div>
                         <div class="bg-black text-gray-300 py-3 px-8 rounded-lg border border-gray-800 flex-1 text-center font-bold shadow-inner">
                             {{ number_format($peminjaman->denda, 2, '.', ',') }}

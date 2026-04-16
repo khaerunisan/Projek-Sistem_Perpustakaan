@@ -202,7 +202,7 @@ class AdminDashboardController extends Controller
                 });
             })
             ->latest()
-            ->paginate(2);
+            ->paginate(5);
 
         return view('page.backend.kepala.pengembalian', compact('pengembalian'));
     }
@@ -243,27 +243,42 @@ class AdminDashboardController extends Controller
         return view('page.backend.kepala.show_denda', compact('peminjaman'));
     }
 
-    // --- FUNGSI LAPORAN DENGAN FILTER ---
+    // --- FUNGSI LAPORAN DENGAN FILTER (AKUMULATIF: PINJAM ATAU KEMBALI) ---
     public function laporan(Request $request)
     {
         $filter = $request->query('filter'); 
         $query = Peminjaman::with(['user', 'buku']);
 
         if ($filter == 'today') {
-            $query->whereDate('created_at', Carbon::today());
+            $query->where(function($q) {
+                $q->whereDate('created_at', Carbon::today())
+                  ->orWhereDate('updated_at', Carbon::today());
+            });
         } 
         elseif ($filter == 'weekly') {
-            // Mengambil awal minggu sampai akhir minggu dengan format waktu lengkap
-            $start = Carbon::now()->startOfWeek()->format('Y-m-d 00:00:00');
-            $end = Carbon::now()->endOfWeek()->format('Y-m-d 23:59:59');
-            $query->whereBetween('created_at', [$start, $end]);
+            $start = Carbon::now()->startOfWeek()->toDateTimeString();
+            $end = Carbon::now()->endOfWeek()->toDateTimeString();
+            $query->where(function($q) use ($start, $end) {
+                $q->whereBetween('created_at', [$start, $end])
+                  ->orWhereBetween('updated_at', [$start, $end]);
+            });
         } 
         elseif ($filter == 'monthly') {
-            $query->whereMonth('created_at', Carbon::now()->month)
-                  ->whereYear('created_at', Carbon::now()->year);
+            $query->where(function($q) {
+                $q->where(function($sub) {
+                    $sub->whereMonth('created_at', Carbon::now()->month)
+                        ->whereYear('created_at', Carbon::now()->year);
+                })->orWhere(function($sub) {
+                    $sub->whereMonth('updated_at', Carbon::now()->month)
+                        ->whereYear('updated_at', Carbon::now()->year);
+                });
+            });
         } 
         elseif ($filter == 'yearly') {
-            $query->whereYear('created_at', Carbon::now()->year);
+            $query->where(function($q) {
+                $q->whereYear('created_at', Carbon::now()->year)
+                  ->orWhereYear('updated_at', Carbon::now()->year);
+            });
         }
 
         $semuaPeminjaman = $query->latest()->get();
