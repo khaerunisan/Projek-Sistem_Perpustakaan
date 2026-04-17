@@ -295,10 +295,6 @@ class PeminjamanController extends Controller
         return redirect()->route('petugas.pengembalian')->with('success', 'Buku telah berhasil dikembalikan!');
     }
 
-    /**
-     * --- TAMBAHAN BARU: FUNGSI STORE KHUSUS PENGEMBALIAN ---
-     * Fungsi ini menangani input dari form create_pengembalian.blade.php
-     */
     public function storePengembalian(Request $request)
     {
         $request->validate([
@@ -361,5 +357,60 @@ class PeminjamanController extends Controller
         ]);
 
         return redirect()->route('petugas.denda')->with('success', 'Nominal denda berhasil diperbarui!');
+    }
+
+    // =========================================================================
+    // FITUR KONFIRMASI PENGEMBALIAN (TAMBAHAN BARU)
+    // =========================================================================
+
+    /**
+     * Anggota "mengajukan" pengembalian buku.
+     * Status berubah menjadi 'menunggu_konfirmasi'.
+     */
+    public function ajukanPengembalian($id)
+    {
+        $peminjaman = Peminjaman::findOrFail($id);
+        
+        $peminjaman->update([
+            'status' => 'menunggu_konfirmasi'
+        ]);
+
+        return redirect()->back()->with('success', 'Permintaan pengembalian telah dikirim ke petugas.');
+    }
+
+    /**
+     * Menampilkan daftar pengembalian yang butuh konfirmasi petugas.
+     */
+      public function daftarKonfirmasi()
+    {
+        $konfirmasi = Peminjaman::with(['user', 'buku'])
+                        ->where('status', 'menunggu_konfirmasi')
+                        ->latest()
+                        ->paginate(10);
+
+        return view('page.backend.petugas.peminjaman.konfirmasi', compact('konfirmasi'));
+    }
+    
+    /**
+     * Petugas menyetujui (Konfirmasi) pengembalian dari anggota.
+     */
+    public function setujuiPengembalian(Request $request, $id)
+    {
+        $peminjaman = Peminjaman::findOrFail($id);
+
+        // Update status dan denda (jika ada input denda saat konfirmasi)
+        $peminjaman->update([
+            'tgl_kembali' => now(),
+            'status' => 'dikembalikan',
+            'denda' => $request->denda ?? 0
+        ]);
+
+        // Tambahkan stok kembali ke buku
+        $buku = Buku::find($peminjaman->buku_id);
+        if ($buku) {
+            $buku->increment('stok');
+        }
+
+        return redirect()->route('petugas.pengembalian')->with('success', 'Pengembalian buku telah dikonfirmasi!');
     }
 }

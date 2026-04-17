@@ -36,11 +36,19 @@
                         @endif
                     </td>
                     <td class="px-6 py-4 text-center">
-                        {{-- LOGIKA TOMBOL: HANYA MUNCUL JIKA STATUS MASIH DIPINJAM --}}
+                        {{-- LOGIKA TOMBOL: DISESUAIKAN UNTUK KONFIRMASI --}}
                         @if($item->status == 'dipinjam')
-                            <a href="{{ route('buku.pengembalian', $item->id) }}" class="bg-[#10b981] hover:bg-green-600 text-white px-4 py-1.5 rounded-md text-xs font-medium transition duration-300 inline-block">
-                                Kembalikan Buku
-                            </a>
+                            <form action="{{ route('anggota.ajukan_kembali', $item->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="bg-[#10b981] hover:bg-green-600 text-white px-4 py-1.5 rounded-md text-xs font-medium transition duration-300 inline-block">
+                                    Kembalikan Buku
+                                </button>
+                            </form>
+                        @elseif($item->status == 'menunggu_konfirmasi')
+                            <span class="bg-yellow-600/20 text-yellow-500 px-4 py-1.5 rounded-md text-xs font-medium border border-yellow-600/30">
+                                Menunggu Konfirmasi
+                            </span>
                         @else
                             <span class="bg-gray-800 text-gray-500 px-4 py-1.5 rounded-md text-xs font-medium border border-gray-700 opacity-60 cursor-not-allowed">
                                 Selesai
@@ -63,6 +71,7 @@
 {{-- Script SweetAlert2 untuk Notifikasi Berhasil --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+{{-- Notifikasi Berhasil Pinjam --}}
 @if(session('success_pinjam'))
 <script>
     Swal.fire({
@@ -73,7 +82,27 @@
         confirmButtonColor: '#f37021',
         background: '#1c2128',
         color: '#ffffff',
-        iconColor: '#000000', {{-- Biar icon centangnya hitam seperti di gambar --}}
+        iconColor: '#000000',
+        customClass: {
+            popup: 'rounded-3xl border border-gray-700',
+            confirmButton: 'rounded-lg px-10'
+        }
+    });
+</script>
+@endif
+
+{{-- Notifikasi Berhasil Mengajukan Pengembalian --}}
+@if(session('success'))
+<script>
+    Swal.fire({
+        title: 'Berhasil',
+        text: "{{ session('success') }}",
+        icon: 'success',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#10b981',
+        background: '#1c2128',
+        color: '#ffffff',
+        iconColor: '#10b981',
         customClass: {
             popup: 'rounded-3xl border border-gray-700',
             confirmButton: 'rounded-lg px-10'

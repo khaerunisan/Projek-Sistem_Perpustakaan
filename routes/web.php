@@ -9,6 +9,7 @@ use App\Http\Controllers\Petugas\BukuController as PetugasBukuController;
 use App\Http\Controllers\Petugas\AnggotaController as PetugasAnggotaController;
 use App\Http\Controllers\Petugas\PetugasController; // TAMBAHAN BARU
 use App\Http\Controllers\Petugas\PeminjamanController as PetugasPeminjamanController; // Tambahan Baru
+use App\Http\Controllers\Petugas\PeminjamanController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController; // TAMBAHAN UNTUK PROFILE
 
@@ -109,7 +110,14 @@ Route::middleware('auth')->group(function () {
         // TAMBAHAN ROUTE PENGEMBALIAN
         Route::get('/petugas/pengembalian', [PetugasPeminjamanController::class, 'riwayatPengembalian'])->name('petugas.pengembalian');
         Route::get('/petugas/pengembalian/{id}', [PetugasPeminjamanController::class, 'detailPengembalian'])->name('petugas.pengembalian.detail');
-        
+       
+        // 1. Halaman daftar pengembalian yang butuh konfirmasi
+            Route::get('/peminjaman/konfirmasi', [PeminjamanController::class, 'daftarKonfirmasi'])->name('petugas.konfirmasi');
+
+            // 2. Aksi untuk menyetujui pengembalian (Petugas klik tombol setujui)
+            Route::post('/peminjaman/setujui/{id}', [PeminjamanController::class, 'setujuiPengembalian'])->name('petugas.setujui');
+
+            
         // TAMBAHAN ROUTE DENDA PETUGAS
         Route::get('/petugas/denda', [PetugasPeminjamanController::class, 'daftarDenda'])->name('petugas.denda');
 
@@ -171,6 +179,9 @@ Route::middleware('auth')->group(function () {
         // Pengembalian & Store (Proses Simpan)
         Route::get('/pengembalian/buku/{id}', [BukuController::class, 'pengembalian'])->name('buku.pengembalian');
         Route::post('/pengembalian/buku/{id}', [BukuController::class, 'pengembalianStore'])->name('pengembalian.store');
+        // Pastikan route ini bisa diakses oleh role anggota juga
+        Route::put('/peminjaman/ajukan/{id}', [PeminjamanController::class, 'ajukanPengembalian'])->name('anggota.ajukan_kembali');
+
 
         // Halaman Rekap Denda
         Route::get('/denda', [BukuController::class, 'daftarDenda'])->name('denda.index');
